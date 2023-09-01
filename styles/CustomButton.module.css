@@ -1,0 +1,119 @@
+.button {
+  /* background: linear-gradient(
+    282.74deg,
+    #80caff 12.22%,
+    #81cfe9 44.79%,
+    #85e0a3 95.05%
+  ); */
+  /* cursor: pointer; */
+  background-image: url("../public/images/button_bg1.png");
+  background-size: 100% 100%;
+  font-weight: 400;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.button-secondary {
+  background-image: url("../public/images/button_bg2.png");
+  background-size: 100% 100%;
+
+  font-weight: 400;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.button-bg3 {
+  background-image: url("../public/images/button_bg3.png");
+  background-size: 100% 100%;
+
+  font-weight: 400;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.button-bg4 {
+  background-image: url("../public/images/button_bg4.png");
+  background-size: 100% 100%;
+
+  font-weight: 400;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.button-small {
+  /* background: linear-gradient(
+    96.29deg,
+    rgba(133, 224, 163, 0.5) 4.84%,
+    rgba(128, 202, 255, 0.5) 65.37%
+  ); */
+  background-image: url("../public/images/button_bg1.png");
+  background-size: 100% 100%;
+  font-weight: 400;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.button-purple {
+  background: linear-gradient(140.73deg, #a091ff 4.72%, #6758ff 96.52%);
+  border: 0.01rem solid rgba(38, 73, 78, 0.5);
+  backdrop-filter: blur(1.35px);
+
+  font-weight: 400;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.button-disabled {
+  cursor: default;
+  background: #6c86ad34;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.button-stroke {
+  border: 0.01rem solid rgba(108, 134, 173, 0.5);
+
+  font-weight: 400;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.button-stroke-disabled {
+  border: 0.01rem solid rgba(108, 134, 173, 0.5);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  opacity: 0.5;
+}
+
+.modal-button {
+  background-image: url("../public/images/modal_button_bg1.png");
+  background-size: 100% 100%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.selected-bg {
+  background-image: url("../public/images/selected_bg.png");
+  background-size: 100% 100%;
+}

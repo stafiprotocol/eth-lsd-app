@@ -1,0 +1,88 @@
+{
+  "appTitle": "ETH LSD App",
+  "token": {
+    "tokenName": "ETH",
+    "lsdTokenName": "rETH",
+    "supportChains": ["Ethereum", "Arbitrum", "Optimism", "Polygon"],
+    "lsdTokenIconUri": "https://cdn.stafi.io/rtoken/logo/rETH.png",
+    "ETHImg": "public/images/token/ETH.svg",
+    "lsdETHImg": "public/images/token/lsdETH.svg"
+  },
+  "unstake": {
+    "lockTipLink": "https://docs.stafi.io/stakingeth/unstake/",
+    "duration": "1-5 days"
+  },
+  "apr": 3.1,
+  "detailedInfo": {
+    "audit": {
+      "nameList": ["Peckshield", "Blocksec", "CertiK"],
+      "link": "https://github.com/stafiprotocol/security/blob/main/audits/202304_BlockSec_StaFi-ETHWithdraw/blocksec_stafi_v1.0-signed.pdf"
+    },
+    "listedIns": [
+      {
+        "name": "Coingecko",
+        "link": "https://www.coingecko.com/en/coins/stafi-staked-eth"
+      },
+      {
+        "name": "Defilama",
+        "link": "https://defillama.com/yields/pool/b2fe5b13-eca4-47cc-b3fd-1de24a296018"
+      }
+    ]
+  },
+  "auditList": ["PeckShield", "BlockSec"],
+  "faqList": [
+    {
+      "title": "What are the factors that affect the staking rewards?",
+      "contents": "Staking rewards in the StaFi protocol are influenced by various factors including the total amount of native tokens staked and redeemed, the staking rewards earned, slash occurrences, penalties, and the commission ratio. Slashing events, caused by disconnection or malicious behavior of validator nodes, could potentially reduce rewards; however, StaFi mitigates this risk by diversifying the staking funds across multiple validators with clean records and requiring them to provide additional deposits as collaterals. The staking reward claim status and the timing of claims on the original chain can also affect staking rewards.\nTo learn more about how staking rewards are calculated, please read:\n<a>https://docs.stafi.io/rtoken/#rtoken-exchange-rate(https://docs.stafi.io/rtoken/#rtoken-exchange-rate)</a>"
+    },
+    {
+      "title": "How rETH can be converted to ETH?",
+      "contents": "StaFi Protocol has enabled ETH withdrawal functions that allows users to redeem their rETH back into ETH. This feature can be accessed through the <a>unstake page</a>.For a more detailed guide on how to perform an rETH withdrawal, please refer to our comprehensive <a>rETH withdrawal design(https://commonwealth.im/stafi/discussion/10127-withdrawal-design-for-reth-solution-for-upcoming-shanghai-upgrade)</a>."
+    }
+  ],
+  "externalLinkList": [
+    {
+      "name": "Docs",
+      "link": "https://docs.stafi.io/"
+    },
+    {
+      "name": "Website",
+      "link": "https://www.stafi.io/"
+    },
+    {
+      "name": "DAO Forum",
+      "link": "https://dao.stafi.io/"
+    },
+    {
+      "name": "Dune Dashboard",
+      "link": "https://dune.com/stafi-analysis/stafi"
+    },
+    {
+      "name": "Validator APP",
+      "link": "https://test-rtoken-app.stafi.io/eth/validator/token-stake"
+    },
+    {
+      "name": "rETH Pool",
+      "link": "https://test-rtoken-app.stafi.io/eth/pool"
+    }
+  ],
+  "contactList": [
+    {
+      "type": "Twitter",
+      "link": "https://twitter.com/Stafi_Protocol"
+    },
+    {
+      "type": "Medium",
+      "link": "https://stafi-protocol.medium.com/"
+    },
+    {
+      "type": "Discord",
+      "link": "https://discord.com/invite/jB77etn"
+    },
+    {
+      "type": "Telegram",
+      "link": "https://t.me/stafi_protocol"
+    }
+  ],
+  "gasPriceUrl": "https://beaconcha.in/api/v1/execution/gasnow"
+}

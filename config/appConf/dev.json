@@ -1,0 +1,21 @@
+{
+  "chain": {
+    "id": 5,
+    "name": "Goerli"
+  },
+  "rpc": "https://eth-goerli.public.blastapi.io/",
+  "contracts": {
+    "rTokenContract": {
+      "address": "0x80D97fc1c559A6F13b6447C4a2b6164b1ED7cd84"
+    },
+    "depositContract": {
+      "address": "0x70C5744d377aE6E9926CcBCF19D501340CB26285"
+    },
+    "withdrawContract": {
+      "address": "0xE773dbe9d073dBEfdC147fbdCCB06dBD4f5AAF54"
+    },
+    "networkBalanceContract": {
+      "address": "0x5a2c3FF70C48eA17B1dC39e8c963bAF65d67DEa7"
+    }
+  }
+}

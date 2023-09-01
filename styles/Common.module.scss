@@ -1,0 +1,63 @@
+.loading {
+  animation-name: loading;
+  animation-duration: 1500ms;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+}
+
+@keyframes loading {
+  0% {
+    rotate: 0;
+  }
+  100% {
+    rotate: 360deg;
+  }
+}
+
+.gradient-text {
+  background: linear-gradient(140.73deg, #0093ed 4.72%, #00f3ab 96.52%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.gradient-text-purple {
+  background: linear-gradient(140.73deg, #a091ff 4.72%, #6758ff 96.52%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.gradient-text-error {
+  background: linear-gradient(
+    168.12deg,
+    rgba(203, 119, 255, 0.64587) -168.74%,
+    #ff0858 230.23%
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.gradient-button-border {
+  border: 1px solid transparent; /*2*/
+  // background: linear-gradient(45deg, #ffe85a2e, #ffffff10, #fea8ff3e) border-box; /*3*/
+  // -webkit-mask: /*4*/ linear-gradient(#fff 0 0) padding-box,
+  //   linear-gradient(#fff 0 0);
+  // mask: /*4*/ linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
+  // -webkit-mask-composite: xor; /*5'*/
+  // mask-composite: exclude; /*5*/
+  background-image: linear-gradient(#071526, #071526),
+    linear-gradient(45deg, #ffe85a2e, #ffffff10, #fea8ff3e);
+  background-origin: border-box;
+  background-clip: content-box, border-box;
+}
+
+.hide-scrollbar {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;
+}
