@@ -15,24 +15,16 @@ import {
 } from "material-ui-popup-state/hooks";
 import Image from "next/image";
 import auditIcon from "public/images/audit.svg";
-// import blockSedIcon from "public/audit/block_sed.svg";
-// import blockSedDarkIcon from "public/audit/block_sed_dark.svg";
-// import peckShieldIcon from "public/audit/peck_shield.svg";
-// import peckShieldDarkIcon from "public/audit/peck_shield_dark.svg";
 import defaultAvatar from "public/images/default_avatar.png";
 import ethereumLogo from "public/images/ethereum.png";
 import { useEffect, useMemo, useState } from "react";
 import { connectMetaMask, disconnectWallet } from "redux/reducers/WalletSlice";
 import { RootState } from "redux/store";
 import { getShortAddress } from "utils/stringUtils";
-// import appLogo from "public/stafi_logo.png";
-// import appLogoLight from "public/stafi_logo_lightmode.png";
 import { getEthereumChainId } from "config/env";
 import { getAuditList } from "utils/configUtils";
-import { getAuditIcon } from "utils/iconUtils";
 
 const Navbar = () => {
-  const { darkMode } = useAppSlice();
   const [noticeDrawerOpen, setNoticeDrawerOpen] = useState(false);
   const [settingsDrawerOpen, setSettingsDrawerOpen] = useState(false);
   const [auditExpand, setAuditExpand] = useState(false);
@@ -383,15 +375,20 @@ const AuditComponent = (props: AuditComponentProps) => {
           Audited By
         </div>
 
-        {getAuditList().map((name: string) => (
-          <div className="ml-[.1rem] w-[.8rem] h-[.17rem] relative" key={name}>
-            <Image
-              src={getAuditIcon(name, darkMode)}
-              alt="audit"
-              layout="fill"
-            />
-          </div>
-        ))}
+        {getAuditList().map(
+          (item: { name: string; icon: string; iconDark: string }) => (
+            <div
+              className="ml-[.1rem] w-[.8rem] h-[.17rem] relative"
+              key={item.name}
+            >
+              <Image
+                src={darkMode ? item.iconDark : item.icon}
+                alt="audit"
+                layout="fill"
+              />
+            </div>
+          )
+        )}
 
         <div
           className="mx-[.12rem] cursor-pointer"

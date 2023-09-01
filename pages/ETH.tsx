@@ -94,15 +94,6 @@ const ETHPage = () => {
     const paragraphs = contents.split("\n");
     const renderedJSX: React.ReactElement[] = [];
     paragraphs.forEach((paragraph: string, index: number) => {
-      // <a
-      //             className="text-color-link cursor-pointer"
-      //             href={`${getValidatorAppHost()}/eth/validator/token-stake`}
-      //             target="_blank"
-      //             rel="noreferrer"
-      //           >
-      //             {`${getValidatorAppHost()}/eth/validator/token-stake`}
-      //           </a>
-      // renderFaqLink(paragraph);
       const paraJSX = (
         <div className={classNames(index > 0 ? "mt-faqGap" : "")}>
           {paragraph}

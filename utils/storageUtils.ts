@@ -1,15 +1,11 @@
 import dayjs from "dayjs";
 import { getTokenName } from "./configUtils";
 
-export const STORAGE_KEY_APP_ENV = "stafi_app_env";
-export const STORAGE_KEY_DARK_MODE = "stafi_dark_mode_v2";
-export const STORAGE_KEY_NOTICE = "stafi_notice_v2";
-export const STORAGE_KEY_UNREAD_NOTICE = "stafi_unread_notice_v2";
-export const STORAGE_KEY_HIDE_CONFIGURE_FEE_RECIPIENT_TIP =
-  "stafi_hide_configure_fee_recipient_tip";
-export const STORAGE_KEY_HIDE_SLASH_TIP = "stafi_hide_slash_tip";
-export const STORAGE_KEY_UNBOND_RECORDS = "stafi_unbond_records";
-export const STORAGE_KEY_DISCONNECT_METAMASK = "stafi_disconnect_metamask";
+export const STORAGE_KEY_DARK_MODE = "eth_lsd_dark_mode_v2";
+export const STORAGE_KEY_NOTICE = "eth_lsd_notice_v2";
+export const STORAGE_KEY_UNREAD_NOTICE = "eth_lsd_unread_notice_v2";
+export const STORAGE_KEY_UNBOND_RECORDS = "eth_lsd_unbond_records";
+export const STORAGE_KEY_DISCONNECT_METAMASK = "eth_lsd_disconnect_metamask";
 
 const tokenName = getTokenName();
 

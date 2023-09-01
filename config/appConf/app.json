@@ -5,8 +5,8 @@
     "lsdTokenName": "rETH",
     "supportChains": ["Ethereum", "Arbitrum", "Optimism", "Polygon"],
     "lsdTokenIconUri": "https://cdn.stafi.io/rtoken/logo/rETH.png",
-    "ETHImg": "public/images/token/ETH.svg",
-    "lsdETHImg": "public/images/token/lsdETH.svg"
+    "ETHImg": "/images/token/ETH.svg",
+    "lsdETHImg": "/images/token/lsdETH.svg"
   },
   "unstake": {
     "lockTipLink": "https://docs.stafi.io/stakingeth/unstake/",
@@ -29,7 +29,18 @@
       }
     ]
   },
-  "auditList": ["PeckShield", "BlockSec"],
+  "auditList": [
+    {
+      "name": "PeckShield",
+      "icon": "/images/audit/peck_shield.svg",
+      "iconDark": "/images/audit/peck_shield_dark.svg"
+    },
+    {
+      "name": "BlockSec",
+      "icon": "/images/audit/block_sec.svg",
+      "iconDark": "/images/audit/block_sec_dark.svg"
+    }
+  ],
   "faqList": [
     {
       "title": "What are the factors that affect the staking rewards?",
@@ -37,7 +48,7 @@
     },
     {
       "title": "How rETH can be converted to ETH?",
-      "contents": "StaFi Protocol has enabled ETH withdrawal functions that allows users to redeem their rETH back into ETH. This feature can be accessed through the unstake page.."
+      "contents": "StaFi Protocol has enabled ETH withdrawal functions that allows users to redeem their rETH back into ETH. This feature can be accessed through the unstake page."
     }
   ],
   "externalLinkList": [
