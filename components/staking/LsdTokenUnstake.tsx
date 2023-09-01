@@ -20,7 +20,7 @@ import { DataLoading } from "../common/DataLoading";
 import { getLsdTokenName, getUnstakeTipLink } from "utils/configUtils";
 import Image from "next/image";
 import { getLsdTokenIcon } from "utils/iconUtils";
-import { useLsdEthRatio } from "hooks/useLsdEthRatio";
+import { useLsdEthRate } from "hooks/useLsdEthRate";
 import { useApr } from "hooks/useApr";
 import { useAppSlice } from "hooks/selector";
 
@@ -32,7 +32,7 @@ export const LsdTokenUnstake = () => {
   const { metaMaskAccount, metaMaskChainId } = useWalletAccount();
   const { balance } = useBalance();
   const { ethPrice, lsdEthPrice, gasPrice } = usePrice();
-  const lsdEthRatio = useLsdEthRatio();
+  const lsdEthRate = useLsdEthRate();
 
   const { lsdBalance } = useBalance();
 
@@ -100,13 +100,13 @@ export const LsdTokenUnstake = () => {
   const willReceiveAmount = useMemo(() => {
     if (
       isNaN(Number(unstakeAmount)) ||
-      isNaN(Number(lsdEthRatio)) ||
+      isNaN(Number(lsdEthRate)) ||
       Number(unstakeAmount) === 0
     ) {
       return "--";
     }
-    return Number(unstakeAmount) * Number(lsdEthRatio) - Number(redeemFee) + "";
-  }, [unstakeAmount, lsdEthRatio, redeemFee]);
+    return Number(unstakeAmount) * Number(lsdEthRate) - Number(redeemFee) + "";
+  }, [unstakeAmount, lsdEthRate, redeemFee]);
 
   const estimateCostValue = useMemo(() => {
     if (isNaN(Number(ethPrice)) || isNaN(Number(estimateFee))) {

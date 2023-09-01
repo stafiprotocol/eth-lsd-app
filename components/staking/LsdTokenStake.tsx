@@ -2,7 +2,7 @@ import { Icomoon } from "components/icon/Icomoon";
 import { getEthereumChainId, getEthereumChainName } from "config/env";
 import { useAppDispatch, useAppSelector } from "hooks/common";
 import { usePrice } from "hooks/usePrice";
-import { useLsdEthRatio } from "hooks/useLsdEthRatio";
+import { useLsdEthRate } from "hooks/useLsdEthRate";
 import { useWalletAccount } from "hooks/useWalletAccount";
 import Image from "next/image";
 import { useMemo, useState } from "react";
@@ -26,7 +26,7 @@ export const LsdTokenStake = () => {
   const dispatch = useAppDispatch();
   const { darkMode } = useAppSlice();
   const { gasPrice, ethPrice } = usePrice();
-  const lsdEthRatio = useLsdEthRatio();
+  const lsdEthRate = useLsdEthRate();
 
   const { lsdBalance } = useBalance();
   const { apr } = useApr();
@@ -66,13 +66,13 @@ export const LsdTokenStake = () => {
   const willReceiveAmount = useMemo(() => {
     if (
       isNaN(Number(stakeAmount)) ||
-      isNaN(Number(lsdEthRatio)) ||
+      isNaN(Number(lsdEthRate)) ||
       Number(stakeAmount) === 0
     ) {
       return "--";
     }
-    return Number(stakeAmount) / Number(lsdEthRatio) + "";
-  }, [stakeAmount, lsdEthRatio]);
+    return Number(stakeAmount) / Number(lsdEthRate) + "";
+  }, [stakeAmount, lsdEthRate]);
 
   const estimateFee = useMemo(() => {
     let gasLimit = 146316;
@@ -147,11 +147,11 @@ export const LsdTokenStake = () => {
       return "--";
     }
 
-    if (isNaN(Number(stakeAmount)) || isNaN(Number(lsdEthRatio))) {
+    if (isNaN(Number(stakeAmount)) || isNaN(Number(lsdEthRate))) {
       return "--";
     }
-    return Number(lsdBalance) + Number(stakeAmount) * Number(lsdEthRatio) + "";
-  }, [lsdBalance, lsdEthRatio, stakeAmount]);
+    return Number(lsdBalance) + Number(stakeAmount) * Number(lsdEthRate) + "";
+  }, [lsdBalance, lsdEthRate, stakeAmount]);
 
   const clickConnectWallet = () => {
     dispatch(connectMetaMask(getEthereumChainId()));

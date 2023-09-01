@@ -65,7 +65,6 @@ export async function addLsdEthToMetaMask() {
         method: "wallet_watchAsset",
         params: {
           type: "ERC20", // Initially only supports ERC20, but eventually more!
-          // type: tokenStandard,
           options: {
             address: params.tokenAddress, // The address that the token is at.
             symbol: params.tokenSymbol, // A ticker symbol or shorthand, up to 5 chars.

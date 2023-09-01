@@ -36,10 +36,3 @@ export function getLsdEthMetamaskParam() {
     tokenImage: appConfig.token.lsdTokenIconUri,
   };
 }
-
-export function getApiHost() {
-  if (isDev()) {
-    return "https://test-drop-api.stafi.io";
-  }
-  return "https://drop-api.stafi.io";
-}

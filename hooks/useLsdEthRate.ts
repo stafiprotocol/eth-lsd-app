@@ -4,7 +4,7 @@ import { RootState } from "redux/store";
 import { useAppDispatch, useAppSelector } from "./common";
 import { useAppSlice } from "./selector";
 
-export function useLsdEthRatio() {
+export function useLsdEthRate() {
   const dispatch = useAppDispatch();
   const { updateFlag } = useAppSlice();
 

@@ -30,7 +30,7 @@ import {
 } from "utils/configUtils";
 import { StakePage } from "components/staking/StakePage";
 import { useBalance } from "hooks/useBalance";
-import { useLsdEthRatio } from "hooks/useLsdEthRatio";
+import { useLsdEthRate } from "hooks/useLsdEthRate";
 import { useWalletAccount } from "hooks/useWalletAccount";
 import { useApr } from "hooks/useApr";
 
@@ -48,7 +48,7 @@ const ETHPage = () => {
   const { metaMaskAccount } = useWalletAccount();
 
   const { lsdBalance } = useBalance();
-  const rate = useLsdEthRatio();
+  const rate = useLsdEthRate();
 
   const stakedEth = useMemo(() => {
     if (isNaN(Number(lsdBalance)) || isNaN(Number(rate))) {
