@@ -24,7 +24,17 @@ export function getDetailInfoAudit() {
   return appConfig.detailedInfo.audit;
 }
 
-export function getFaqList() {
+export interface IFaqContent {
+  type: string;
+  content: string;
+  link?: string;
+}
+export interface IFaqItem {
+  title: string;
+  contents: IFaqContent[];
+}
+
+export function getFaqList(): IFaqItem[] {
   return appConfig.faqList;
 }
 

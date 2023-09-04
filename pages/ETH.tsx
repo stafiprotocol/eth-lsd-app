@@ -22,11 +22,13 @@ import { formatNumber } from "utils/numberUtils";
 import { addLsdEthToMetaMask } from "utils/web3Utils";
 import { getLsdTokenIcon } from "utils/iconUtils";
 import {
+  IFaqItem,
   getDetailInfoAudit,
   getDetailInfoListedIns,
   getFaqList,
   getLsdTokenName,
   getSupportChains,
+  IFaqContent,
 } from "utils/configUtils";
 import { StakePage } from "components/staking/StakePage";
 import { useBalance } from "hooks/useBalance";
@@ -90,16 +92,51 @@ const ETHPage = () => {
     });
   };
 
-  const renderFaqContent = (contents: string) => {
-    const paragraphs = contents.split("\n");
+  const renderFaqContent = (content: IFaqContent, index: number) => {
+    if (content.type === "link") {
+      if (content.content.endsWith("\n")) {
+        return (
+          <div className={classNames(index > 0 ? "mt-faqGap" : "")}>
+            <a
+              className="text-color-link cursor-pointer"
+              href={content.link}
+              target="_blank"
+              rel="noreferrer"
+            >
+              {content.content.trimEnd()}
+            </a>
+          </div>
+        );
+      } else {
+        return (
+          <a
+            className="text-color-link cursor-pointer"
+            href={content.link}
+            target="_blank"
+            rel="noreferrer"
+          >
+            {content.content}
+          </a>
+        );
+      }
+    } else {
+      if (content.content.endsWith("\n")) {
+        return (
+          <div className={classNames(index > 0 ? "mt-faqGap" : "")}>
+            {content.content}
+          </div>
+        );
+      } else {
+        return <>{content.content}</>;
+      }
+    }
+  };
+
+  const renderFaqContents = (contents: IFaqContent[]) => {
     const renderedJSX: React.ReactElement[] = [];
-    paragraphs.forEach((paragraph: string, index: number) => {
-      const paraJSX = (
-        <div className={classNames(index > 0 ? "mt-faqGap" : "")}>
-          {paragraph}
-        </div>
-      );
-      renderedJSX.push(paraJSX);
+    contents.forEach((content: IFaqContent, index: number) => {
+      const contentJSX = renderFaqContent(content, index);
+      renderedJSX.push(contentJSX);
     });
     return renderedJSX;
   };
@@ -336,13 +373,11 @@ const ETHPage = () => {
                 rowGap: ".16rem",
               }}
             >
-              {getFaqList().map(
-                (item: { title: string; contents: string }, index: number) => (
-                  <FaqItem text={item.title} key={index}>
-                    {renderFaqContent(item.contents)}
-                  </FaqItem>
-                )
-              )}
+              {getFaqList().map((item: IFaqItem, index: number) => (
+                <FaqItem text={item.title} key={index}>
+                  {renderFaqContents(item.contents)}
+                </FaqItem>
+              ))}
             </div>
           </div>
         )}
