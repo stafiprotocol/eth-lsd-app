@@ -21,7 +21,7 @@ export function useEthUnclaimedWithdrawls() {
   );
 
   const rate = useAppSelector((state: RootState) => {
-    return state.lsdToken.rate;
+    return state.lsdEth.rate;
   });
 
   const willReceiveAmount = useMemo(() => {

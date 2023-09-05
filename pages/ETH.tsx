@@ -20,13 +20,13 @@ import { useMemo } from "react";
 import { openLink } from "utils/commonUtils";
 import { formatNumber } from "utils/numberUtils";
 import { addLsdEthToMetaMask } from "utils/web3Utils";
-import { getLsdTokenIcon } from "utils/iconUtils";
+import { getLsdEthIcon } from "utils/iconUtils";
 import {
   IFaqItem,
   getDetailInfoAudit,
   getDetailInfoListedIns,
   getFaqList,
-  getLsdTokenName,
+  getLsdEthName,
   getSupportChains,
   IFaqContent,
 } from "utils/configUtils";
@@ -146,12 +146,12 @@ const ETHPage = () => {
       <PageTitleContainer>
         <div className="h-full flex items-center w-smallContentW xl:w-contentW 2xl:w-largeContentW">
           <div className="w-[.68rem] h-[.68rem] relative">
-            <Image src={getLsdTokenIcon()} layout="fill" alt="icon" />
+            <Image src={getLsdEthIcon()} layout="fill" alt="icon" />
           </div>
           <div className="ml-[.12rem]">
             <div className="flex items-center">
               <div className="text-[.34rem] font-[700] text-color-text1">
-                {getLsdTokenName()}
+                {getLsdEthName()}
               </div>
 
               <div className="ml-[.16rem]">
@@ -180,7 +180,7 @@ const ETHPage = () => {
                 }}
               >
                 <div className="text-color-link text-[.14rem]">
-                  Add {getLsdTokenName()} to Wallet
+                  Add {getLsdEthName()} to Wallet
                 </div>
 
                 <span className="ml-[.06rem] flex items-center">
@@ -289,7 +289,7 @@ const ETHPage = () => {
 
               <div className="mt-[.16rem] bg-text2/10 rounded-[.12rem] py-[.16rem] px-[.24rem] text-[.14rem]">
                 <div className="text-color-text1 font-[700]">
-                  {getLsdTokenName()} Token Contract Address
+                  {getLsdEthName()} Token Contract Address
                 </div>
 
                 <div
@@ -308,7 +308,7 @@ const ETHPage = () => {
                 </div>
 
                 <div className="mt-[.16rem] text-color-text1 font-[700]">
-                  {getLsdTokenName()} Deposit Contract Address
+                  {getLsdEthName()} Deposit Contract Address
                 </div>
 
                 <div
@@ -327,7 +327,7 @@ const ETHPage = () => {
                 </div>
 
                 <div className="mt-[.16rem] text-color-text1 font-[700]">
-                  {getLsdTokenName()} Withdraw Contract Address
+                  {getLsdEthName()} Withdraw Contract Address
                 </div>
 
                 <div
@@ -346,7 +346,7 @@ const ETHPage = () => {
                 </div>
 
                 <div className="mt-[.16rem] text-color-text1 font-[700] hidden">
-                  {getLsdTokenName()} Onchain Exchange Rate Source
+                  {getLsdEthName()} Onchain Exchange Rate Source
                 </div>
 
                 <div className="mt-[.12rem] text-color-link hidden items-center">

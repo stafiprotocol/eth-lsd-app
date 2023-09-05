@@ -9,7 +9,7 @@ export function useLsdEthRate() {
   const { updateFlag } = useAppSlice();
 
   const lsdEthRate = useAppSelector((state: RootState) => {
-    return state.lsdToken.rate;
+    return state.lsdEth.rate;
   });
 
   useEffect(() => {

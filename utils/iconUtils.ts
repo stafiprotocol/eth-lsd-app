@@ -4,6 +4,6 @@ export function getTokenIcon() {
   return appConfig.token.ETHImg;
 }
 
-export function getLsdTokenIcon() {
+export function getLsdEthIcon() {
   return appConfig.token.lsdETHImg;
 }

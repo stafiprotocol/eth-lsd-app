@@ -17,9 +17,9 @@ import Web3 from "web3";
 import { CustomButton } from "../common/CustomButton";
 import { CustomNumberInput } from "../common/CustomNumberInput";
 import { DataLoading } from "../common/DataLoading";
-import { getLsdTokenName, getUnstakeTipLink } from "utils/configUtils";
+import { getLsdEthName, getUnstakeTipLink } from "utils/configUtils";
 import Image from "next/image";
-import { getLsdTokenIcon } from "utils/iconUtils";
+import { getLsdEthIcon } from "utils/iconUtils";
 import { useLsdEthRate } from "hooks/useLsdEthRate";
 import { useApr } from "hooks/useApr";
 import { useAppSlice } from "hooks/selector";
@@ -137,7 +137,7 @@ export const LsdTokenUnstake = () => {
     }
 
     if (Number(unstakeAmount) > Number(availableBalance)) {
-      return [true, `Not Enough ${getLsdTokenName()} to Unstake`];
+      return [true, `Not Enough ${getLsdEthName()} to Unstake`];
     }
 
     if (
@@ -268,11 +268,11 @@ export const LsdTokenUnstake = () => {
           <div className="h-[.42rem] bg-color-bg2 rounded-[.3rem] flex items-center cursor-pointer">
             <div className="ml-[.08rem] flex items-center">
               <div className="w-[.34rem] h-[.34rem] relative">
-                <Image src={getLsdTokenIcon()} alt="logo" layout="fill" />
+                <Image src={getLsdEthIcon()} alt="logo" layout="fill" />
               </div>
 
               <div className="text-color-text1 text-[.16rem] ml-[.16rem]">
-                {getLsdTokenName()}
+                {getLsdEthName()}
               </div>
             </div>
 

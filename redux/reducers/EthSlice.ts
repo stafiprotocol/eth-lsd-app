@@ -34,7 +34,7 @@ import {
   updateWithdrawLoadingParams,
   updateUnstakeLoadingParams,
 } from "./AppSlice";
-import { getLsdTokenName } from "utils/configUtils";
+import { getLsdEthName } from "utils/configUtils";
 
 export interface EthState {
   txLoading: boolean;
@@ -360,7 +360,7 @@ export const handleLsdEthUnstake =
         updateUnstakeLoadingParams({
           customMsg: `Please confirm the ${Number(
             unstakeAmount
-          )} ${getLsdTokenName()} unstaking transaction in your MetaMask wallet`,
+          )} ${getLsdEthName()} unstaking transaction in your MetaMask wallet`,
         })
       );
 

@@ -2,14 +2,14 @@ import { Action, configureStore, ThunkAction } from "@reduxjs/toolkit";
 import appReducer from "./reducers/AppSlice";
 import walletReducer from "./reducers/WalletSlice";
 import ethReducer from "./reducers/EthSlice";
-import lsdTokenReducer from "./reducers/LsdEthSlice";
+import lsdEthReducer from "./reducers/LsdEthSlice";
 
 export const store = configureStore({
   reducer: {
     app: appReducer,
     wallet: walletReducer,
     eth: ethReducer,
-    lsdToken: lsdTokenReducer,
+    lsdEth: lsdEthReducer,
   },
 });
 

@@ -11,7 +11,7 @@ export function useBalance() {
   const { balance, lsdBalance } = useAppSelector((state: RootState) => {
     return {
       balance: state.eth.balance,
-      lsdBalance: state.lsdToken.balance,
+      lsdBalance: state.lsdEth.balance,
     };
   });
 

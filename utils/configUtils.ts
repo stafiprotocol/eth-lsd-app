@@ -4,7 +4,7 @@ export function getTokenName() {
   return appConfig.token.tokenName;
 }
 
-export function getLsdTokenName() {
+export function getLsdEthName() {
   return appConfig.token.lsdTokenName;
 }
 

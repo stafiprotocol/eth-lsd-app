@@ -24,7 +24,7 @@ const initialState: LsdEthState = {
 };
 
 export const lsdEthSlice = createSlice({
-  name: "lsdToken",
+  name: "lsdEth",
   initialState,
   reducers: {
     setBalance: (
@@ -55,7 +55,7 @@ export const clearLsdEthBalance =
   };
 
 /**
- * update lsdToken balance
+ * update lsdEth balance
  */
 export const updateLsdEthBalance =
   (): AppThunk => async (dispatch, getState) => {

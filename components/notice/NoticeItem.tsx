@@ -22,7 +22,7 @@ import {
 import { openLink } from "utils/commonUtils";
 import Image from "next/image";
 import { useAppSlice } from "hooks/selector";
-import { getLsdTokenName } from "utils/configUtils";
+import { getLsdEthName } from "utils/configUtils";
 
 export const NoticeItem = (props: {
   notice: LocalNotice;
@@ -127,20 +127,20 @@ export const NoticeItem = (props: {
           data.amount
         )} ETH from your Wallet to StaFi Pool Contract, and receive ${formatNumber(
           data.willReceiveAmount
-        )} ${getLsdTokenName()}.`;
+        )} ${getLsdEthName()}.`;
       }
       if (notice.type === "Unstake") {
         data = notice.data as NoticeUnstakeData;
         if (!data.needWithdraw) {
           return `Unstake ${formatNumber(
             data.amount
-          )} ${getLsdTokenName()} from StaFi Pool Contract to your wallet, and receive ${formatNumber(
+          )} ${getLsdEthName()} from StaFi Pool Contract to your wallet, and receive ${formatNumber(
             data.willReceiveAmount
           )} ETH.`;
         } else {
           return `Unstake ${formatNumber(
             data.amount
-          )} ${getLsdTokenName()} from StaFi Pool Contract to your wallet.`;
+          )} ${getLsdEthName()} from StaFi Pool Contract to your wallet.`;
         }
       }
       if (notice.type === "Withdraw" || notice.type === "Validator Withdraw") {

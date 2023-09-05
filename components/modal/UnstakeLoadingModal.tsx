@@ -14,7 +14,7 @@ import {
 } from "redux/reducers/AppSlice";
 import { handleLsdEthUnstake } from "redux/reducers/EthSlice";
 import { RootState } from "redux/store";
-import { getLsdTokenName, getUnstakeDuration } from "utils/configUtils";
+import { getLsdEthName, getUnstakeDuration } from "utils/configUtils";
 import { formatNumber } from "utils/numberUtils";
 import snackbarUtil from "utils/snackbarUtils";
 
@@ -36,12 +36,12 @@ export const UnstakeLoadingModal = () => {
       : unstakeLoadingParams?.status === "success"
       ? `Your new balance is ${formatNumber(
           unstakeLoadingParams?.newLsdTokenBalance
-        )} ${getLsdTokenName()}`
+        )} ${getLsdEthName()}`
       : unstakeLoadingParams?.status === "error"
       ? "Unstake Failed"
       : `You are now unstaking ${Number(
           unstakeLoadingParams?.amount
-        )} ${getLsdTokenName()}`;
+        )} ${getLsdEthName()}`;
   }, [unstakeLoadingParams]);
 
   const secondaryMsg = useMemo(() => {
@@ -54,7 +54,7 @@ export const UnstakeLoadingModal = () => {
         "Something went wrong, please try again"
       : `Unstake ${
           unstakeLoadingParams?.amount
-        } ${getLsdTokenName()}, you will receive ${formatNumber(
+        } ${getLsdEthName()}, you will receive ${formatNumber(
           unstakeLoadingParams?.willReceiveAmount
         )} ETH`;
   }, [unstakeLoadingParams]);

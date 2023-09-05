@@ -15,7 +15,7 @@ import { handleEthStake } from "redux/reducers/EthSlice";
 import { RootState } from "redux/store";
 import { formatNumber } from "utils/numberUtils";
 import { roboto } from "config/font";
-import { getLsdTokenName } from "utils/configUtils";
+import { getLsdEthName } from "utils/configUtils";
 
 export const StakeLoadingModal = () => {
   const dispatch = useAppDispatch();
@@ -35,7 +35,7 @@ export const StakeLoadingModal = () => {
       : stakeLoadingParams?.status === "success"
       ? `Your new balance is ${formatNumber(
           stakeLoadingParams?.newLsdTokenBalance
-        )} ${getLsdTokenName()}`
+        )} ${getLsdEthName()}`
       : stakeLoadingParams?.status === "error"
       ? "Transaction Failed"
       : `You are now staking ${stakeLoadingParams?.amount} ETH`;
@@ -55,7 +55,7 @@ export const StakeLoadingModal = () => {
         } ETH, you will receive ${formatNumber(
           stakeLoadingParams?.willReceiveAmount
         )} 
-  ${getLsdTokenName()}`;
+  ${getLsdEthName()}`;
   }, [stakeLoadingParams]);
 
   const closeModal = () => {

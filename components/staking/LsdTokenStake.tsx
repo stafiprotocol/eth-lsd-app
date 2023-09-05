@@ -17,7 +17,7 @@ import { CustomNumberInput } from "../common/CustomNumberInput";
 import { DataLoading } from "../common/DataLoading";
 import { getTokenIcon } from "utils/iconUtils";
 import { useBalance } from "hooks/useBalance";
-import { getLsdTokenName, getTokenName } from "utils/configUtils";
+import { getLsdEthName, getTokenName } from "utils/configUtils";
 import { useMinimumStakeLimit } from "hooks/useMinimumStakeLimit";
 import { useApr } from "hooks/useApr";
 import { useAppSlice } from "hooks/selector";
@@ -295,7 +295,7 @@ export const LsdTokenStake = () => {
               Will Receive
             </div>
             <div className="mt-[.1rem] text-color-text2 text-[.16rem]">
-              {formatLargeAmount(willReceiveAmount)} {getLsdTokenName()}
+              {formatLargeAmount(willReceiveAmount)} {getLsdEthName()}
             </div>
           </div>
         </div>
