@@ -236,7 +236,7 @@ const ETHPage = () => {
             <div className="ml-[.87rem] flex-1">
               <div className="text-[.24rem] text-color-text1">Detail Info</div>
 
-              <div className="mt-[.15rem] bg-text2/10 rounded-[.12rem] py-[.16rem] px-[.24rem] text-[.14rem]">
+              <div className="mt-[.15rem] bg-color-bg3 rounded-[.12rem] py-[.16rem] px-[.24rem] text-[.14rem]">
                 <div className="flex items-center">
                   <div className="w-[.22rem] h-[.22rem] relative">
                     <Image src={auditIcon} alt="audit" layout="fill" />
@@ -287,7 +287,7 @@ const ETHPage = () => {
                 )}
               </div>
 
-              <div className="mt-[.16rem] bg-text2/10 rounded-[.12rem] py-[.16rem] px-[.24rem] text-[.14rem]">
+              <div className="mt-[.16rem] bg-color-bg3 rounded-[.12rem] py-[.16rem] px-[.24rem] text-[.14rem]">
                 <div className="text-color-text1 font-[700]">
                   {getLsdEthName()} Token Contract Address
                 </div>

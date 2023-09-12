@@ -77,20 +77,12 @@ body {
     @apply text-text2 dark:text-text2Dark;
   }
 
-  .text-color-text4 {
-    @apply text-text4 dark:text-text4Dark;
-  }
-
   .text-color-highlight {
     @apply text-textHighlight dark:text-textHighlightDark;
   }
 
   .text-color-link {
     @apply text-link dark:text-linkDark;
-  }
-
-  .text-color-active {
-    @apply text-active dark:text-activeDark;
   }
 
   .bg-color-bgPage {
@@ -105,12 +97,8 @@ body {
     @apply bg-bg2 dark:bg-bg2Dark;
   }
 
-  .bg-color-link {
-    @apply bg-link dark:bg-linkDark;
-  }
-
-  .bg-color-text1 {
-    @apply bg-text1 dark:bg-text1Dark;
+  .bg-color-bg3 {
+    @apply bg-bg3 dark:bg-bg3Dark;
   }
 
   .bg-color-highlight {
@@ -133,35 +121,11 @@ body {
     @apply hover:bg-bgHover dark:hover:bg-bgHoverDark;
   }
 
-  .bg-color-tab {
-    @apply bg-bgTab dark:bg-bgTabDark;
-  }
-
-  .border-color-divider1 {
-    @apply border-divider1 dark:border-divider1Dark;
-  }
-
   .border-color-border1 {
     @apply border-border1 dark:border-border1Dark;
   }
 
   .border-color-borderActive {
     @apply border-borderActive dark:border-borderActiveDark;
-  }
-
-  .border-color-border2 {
-    @apply border-border2 dark:border-border2Dark;
-  }
-
-  .border-color-border3 {
-    @apply border-border3 dark:border-border3Dark;
-  }
-
-  .border-color-border4 {
-    @apply border-border4 dark:border-border4Dark;
-  }
-
-  .border-color-text2 {
-    @apply border-text2 dark:border-text2Dark;
   }
 }
