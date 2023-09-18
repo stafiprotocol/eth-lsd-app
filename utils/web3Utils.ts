@@ -80,3 +80,36 @@ export async function addLsdEthToMetaMask() {
       });
   } catch (err: any) {}
 }
+
+/**
+ * decode BalancesUpdated event log data
+ * @param data event data
+ * @param topics event topics
+ * @returns decoded log values
+ */
+export function decodeBalancesUpdatedLog(data: string, topics: string[]) {
+  const web3 = getEthWeb3();
+  const values = web3.eth.abi.decodeLog(
+    [
+      {
+        name: "block",
+        type: "uint256",
+      },
+      {
+        name: "totalEth",
+        type: "uint256",
+      },
+      {
+        name: "lsdTokenSupply",
+        type: "uint256",
+      },
+      {
+        name: "time",
+        type: "uint256",
+      },
+    ],
+    data,
+    topics
+  );
+  return values;
+}

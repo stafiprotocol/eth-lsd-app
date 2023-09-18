@@ -287,11 +287,11 @@ export const handleLsdEthUnstake =
         .call();
       // console.log("currentWithdrawCycle", currentWithdrawCycle);
       const withdrawLimitPerCycle = await contract.methods
-        .withdrawLimitPerCycle()
+        .withdrawLimitAmountPerCycle()
         .call();
       // console.log("withdrawLimitPerCycle", withdrawLimitPerCycle);
       const userWithdrawLimitPerCycle = await contract.methods
-        .userWithdrawLimitPerCycle()
+        .userWithdrawLimitAmountPerCycle()
         .call();
       // console.log("userWithdrawLimitPerCycle", userWithdrawLimitPerCycle);
       const totalWithdrawAmountAtCycle = await contract.methods
@@ -354,7 +354,7 @@ export const handleLsdEthUnstake =
       const nextWithdrawIndex = await contract.methods
         .nextWithdrawIndex()
         .call();
-      console.log("nextWithdrawIndex", nextWithdrawIndex);
+      // console.log("nextWithdrawIndex", nextWithdrawIndex);
 
       dispatch(
         updateUnstakeLoadingParams({

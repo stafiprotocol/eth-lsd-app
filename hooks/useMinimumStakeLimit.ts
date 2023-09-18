@@ -27,9 +27,7 @@ export function useMinimumStakeLimit() {
           {}
         );
 
-        const minimumDeposit = await contract.methods
-          .getMinimumDeposit()
-          .call();
+        const minimumDeposit = await contract.methods.minDeposit().call();
 
         if (!minimumDeposit) {
           setMinimumDeposit("0");

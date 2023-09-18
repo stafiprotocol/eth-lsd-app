@@ -49,7 +49,7 @@ export function useEthWithdrawLimit() {
               // console.log("currentWithdrawCycle", currentWithdrawCycle);
               // console.log("req1");
               const withdrawLimitPerCycle = await contract.methods
-                .withdrawLimitPerCycle()
+                .withdrawLimitAmountPerCycle()
                 .call()
                 .catch((err: any) => {});
               // console.log("withdrawLimitPerCycle", withdrawLimitPerCycle);
@@ -63,7 +63,7 @@ export function useEthWithdrawLimit() {
             try {
               // console.log("req2");
               const userWithdrawLimitPerCycle = await contract.methods
-                .userWithdrawLimitPerCycle()
+                .userWithdrawLimitAmountPerCycle()
                 .call()
                 .catch((err: any) => {});
               // console.log("userWithdrawLimitPerCycle", userWithdrawLimitPerCycle);
@@ -120,7 +120,7 @@ export function useEthWithdrawLimit() {
           const req1 = (async () => {
             // console.log("custom req1");
             const withdrawLimitPerCycle = await customContract.methods
-              .withdrawLimitPerCycle()
+              .withdrawLimitAmountPerCycle()
               .call()
               .catch((err: any) => {});
             // console.log("custom withdrawLimitPerCycle", withdrawLimitPerCycle);
@@ -130,7 +130,7 @@ export function useEthWithdrawLimit() {
           const req2 = (async () => {
             // console.log("custom req2");
             const userWithdrawLimitPerCycle = await customContract.methods
-              .userWithdrawLimitPerCycle()
+              .userWithdrawLimitAmountPerCycle()
               .call()
               .catch((err: any) => {});
             // console.log(

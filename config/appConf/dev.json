@@ -3,19 +3,19 @@
     "id": 5,
     "name": "Goerli"
   },
-  "rpc": "https://eth-goerli.public.blastapi.io/",
+  "rpc": "https://goerli.infura.io/v3/9aa3d95b3bc440fa88ea12eaa4456161",
   "contracts": {
-    "rTokenContract": {
-      "address": "0x80D97fc1c559A6F13b6447C4a2b6164b1ED7cd84"
+    "lsdTokenContract": {
+      "address": "0xF0c62079a0463097Cb3f535e3345b7565f62deF7"
     },
     "depositContract": {
-      "address": "0x70C5744d377aE6E9926CcBCF19D501340CB26285"
+      "address": "0x944Eae29EE6C8fB51482bbD44cb5Fcf3f6D9117A"
     },
     "withdrawContract": {
-      "address": "0xE773dbe9d073dBEfdC147fbdCCB06dBD4f5AAF54"
+      "address": "0xCe30F09D6E5BD50D8D70D87dEd1961CC78E6c47A"
     },
     "networkBalanceContract": {
-      "address": "0x5a2c3FF70C48eA17B1dC39e8c963bAF65d67DEa7"
+      "address": "0x2e18d16187fa88aF6e7FF0aa5f6bA19fe54505Ed"
     }
   }
 }
