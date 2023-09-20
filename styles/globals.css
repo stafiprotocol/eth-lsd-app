@@ -11,7 +11,7 @@ html {
   line-height: 1;
   letter-spacing: 0.005rem;
   /* font-size: 70px; */
-  font-size: min(calc(100vw * 100 / 1280), 100);
+  font-size: min(calc(100vw * 100 / 1280), 100px);
 }
 
 body {

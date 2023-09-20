@@ -96,7 +96,7 @@ const ETHPage = () => {
     if (content.type === "link") {
       if (content.content.endsWith("\n")) {
         return (
-          <div className={classNames(index > 0 ? "mt-faqGap" : "")}>
+          <div className={classNames(index > 0 ? "mt-faqGap" : "")} key={index}>
             <a
               className="text-color-link cursor-pointer"
               href={content.link}
@@ -114,6 +114,7 @@ const ETHPage = () => {
             href={content.link}
             target="_blank"
             rel="noreferrer"
+            key={index}
           >
             {content.content}
           </a>
@@ -122,12 +123,12 @@ const ETHPage = () => {
     } else {
       if (content.content.endsWith("\n")) {
         return (
-          <div className={classNames(index > 0 ? "mt-faqGap" : "")}>
+          <div className={classNames(index > 0 ? "mt-faqGap" : "")} key={index}>
             {content.content}
           </div>
         );
       } else {
-        return <>{content.content}</>;
+        return <span key={index}>{content.content}</span>;
       }
     }
   };
