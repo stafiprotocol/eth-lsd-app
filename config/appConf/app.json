@@ -5,7 +5,7 @@
     "lsdTokenName": "rETH",
     "supportChains": ["Ethereum", "Arbitrum", "Optimism", "Polygon"],
     "lsdTokenIconUri": "https://cdn.stafi.io/rtoken/logo/rETH.png",
-    "ETHImg": "/images/token/ETH.svg",
+    "ETHImg": "/images/token/ETH_green.svg",
     "lsdETHImg": "/images/token/lsdETH.svg"
   },
   "unstake": {
@@ -15,7 +15,7 @@
   "apr": 3.1,
   "detailedInfo": {
     "audit": {
-      "nameList": ["Peckshield", "Blocksec", "CertiK"],
+      "nameList": ["Peckshield", "Blocksec"],
       "link": "https://github.com/stafiprotocol/security/blob/main/audits/202304_BlockSec_StaFi-ETHWithdraw/blocksec_stafi_v1.0-signed.pdf"
     },
     "listedIns": [
@@ -106,12 +106,8 @@
       "link": "https://dune.com/stafi-analysis/stafi"
     },
     {
-      "name": "Validator APP",
-      "link": "https://test-rtoken-app.stafi.io/eth/validator/token-stake"
-    },
-    {
-      "name": "rETH Pool",
-      "link": "https://test-rtoken-app.stafi.io/eth/pool"
+      "name": "New lsdToken Listing",
+      "link": "https://docs.stafi.io/"
     }
   ],
   "contactList": [

@@ -253,7 +253,7 @@ const ETHPage = () => {
                   }}
                 >
                   <span className="mr-[.12rem] dark:text-linkDark/50">
-                    Audited By {getDetailInfoAudit().nameList.join(" ")}
+                    Audited By {getDetailInfoAudit().nameList.join(", ")}
                   </span>
                   <span className="min-w-[.15rem] min-h-[.15rem]">
                     <Icomoon icon="share" size=".12rem" />

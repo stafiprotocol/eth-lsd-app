@@ -51,18 +51,10 @@ const Navbar = () => {
     <div className="bg-color-bgPage py-[.36rem] flex items-center justify-center">
       <div className="w-smallContentW xl:w-contentW 2xl:w-largeContentW mx-auto flex items-center justify-between relative">
         <div
-          className={classNames(
-            "absolute top-[.11rem] w-[.82rem] h-[.2rem]",
-            pageWidth >= 1600 ? "left-[-1.06rem]" : "left-0"
-          )}
+          className={classNames("absolute top-[.11rem] w-[.82rem] h-[.2rem]")}
         ></div>
 
-        <div
-          className={classNames(
-            "flex items-center",
-            pageWidth >= 1600 ? "" : "pl-[1.06rem]"
-          )}
-        >
+        <div className={classNames("flex items-center")}>
           <AuditComponent
             expand={auditExpand}
             onExpandChange={setAuditExpand}
@@ -284,6 +276,7 @@ const ConnectButton = () => {
       onClick={() => {
         clickConnectWallet();
       }}
+      border="none"
       // textColor={darkMode ? "#E8EFFD" : ""}
     >
       Connect Wallet

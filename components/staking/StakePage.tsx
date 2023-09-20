@@ -37,7 +37,7 @@ export const StakePage = () => {
 
   return (
     <div>
-      <div className="bg-color-bg2 rounded-[.3rem] pb-[.14rem]">
+      <div className="bg-color-bg2 rounded-[.3rem] pb-[.14rem] border-[.01rem] border-color-border1">
         <div
           className="h-[.56rem] grid items-stretch"
           style={{ gridTemplateColumns: "50% 50%" }}

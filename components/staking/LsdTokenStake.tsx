@@ -21,6 +21,11 @@ import { getLsdEthName, getTokenName } from "utils/configUtils";
 import { useMinimumStakeLimit } from "hooks/useMinimumStakeLimit";
 import { useApr } from "hooks/useApr";
 import { useAppSlice } from "hooks/selector";
+import aprIcon from "public/images/apr_icon.svg";
+import HoverPopover from "material-ui-popup-state/HoverPopover";
+import { bindPopover } from "material-ui-popup-state";
+import { bindHover, usePopupState } from "material-ui-popup-state/hooks";
+import classNames from "classnames";
 
 export const LsdTokenStake = () => {
   const dispatch = useAppDispatch();
@@ -203,6 +208,11 @@ export const LsdTokenStake = () => {
     );
   };
 
+  const ratePopupState = usePopupState({
+    variant: "popover",
+    popupId: "rate",
+  });
+
   return (
     <div>
       <div className="h-[1.07rem] mt-[.18rem] pt-[.24rem] mx-[.24rem] bg-color-bgPage rounded-[.3rem]">
@@ -219,7 +229,7 @@ export const LsdTokenStake = () => {
             </div>
 
             <div className="ml-[.16rem] mr-[.16rem]">
-              <Icomoon icon="arrow-down" size=".1rem" color="#848B97" />
+              {/* <Icomoon icon="arrow-down" size=".1rem" color="#848B97" /> */}
             </div>
           </div>
 
@@ -287,7 +297,7 @@ export const LsdTokenStake = () => {
       </CustomButton>
 
       <div
-        className="mx-[.75rem] mt-[.24rem] grid items-stretch font-[500]"
+        className="mx-[.75rem] my-[.24rem] grid items-stretch font-[500]"
         style={{ gridTemplateColumns: "40% 30% 30%" }}
       >
         <div className="flex justify-start ml-[.18rem]">
@@ -295,8 +305,26 @@ export const LsdTokenStake = () => {
             <div className="text-text2/50 dark:text-text2Dark/50 text-[.14rem]">
               Will Receive
             </div>
-            <div className="mt-[.1rem] text-color-text2 text-[.16rem]">
-              {formatLargeAmount(willReceiveAmount)} {getLsdEthName()}
+            <div className="mt-[.1rem] flex items-center">
+              <div
+                className="text-color-text2 text-[.16rem]"
+                {...bindHover(ratePopupState)}
+              >
+                {formatLargeAmount(willReceiveAmount)} {getLsdEthName()}
+              </div>
+              <div
+                className={classNames(
+                  "ml-[.06rem] flex items-center relative self-center",
+                  ratePopupState.isOpen ? "rotate-[270deg]" : "rotate-90"
+                )}
+              >
+                <Icomoon
+                  icon="right"
+                  size=".12rem"
+                  color="#6C86AD"
+                  layout="fill"
+                />
+              </div>
             </div>
           </div>
         </div>
@@ -306,15 +334,20 @@ export const LsdTokenStake = () => {
             APR
           </div>
 
-          {apr !== undefined ? (
-            <div className="mt-[.1rem] text-color-text2 text-[.16rem]">
-              {formatNumber(apr, { decimals: 2, toReadable: false })}%
+          <div className="mt-[.1rem] flex items-center">
+            {apr !== undefined ? (
+              <div className="text-color-text2 text-[.16rem]">
+                {formatNumber(apr, { decimals: 2, toReadable: false })}%
+              </div>
+            ) : (
+              <div className="">
+                <DataLoading height=".16rem" />
+              </div>
+            )}
+            <div className="relative w-[.18rem] h-[.18rem] ml-[.08rem]">
+              <Image src={aprIcon} alt="apr" layout="fill" />
             </div>
-          ) : (
-            <div className="mt-[.1rem]">
-              <DataLoading height=".16rem" />
-            </div>
-          )}
+          </div>
         </div>
 
         <div className="flex justify-end mr-[.0rem]">
@@ -329,6 +362,48 @@ export const LsdTokenStake = () => {
           </div>
         </div>
       </div>
+
+      <HoverPopover
+        {...bindPopover(ratePopupState)}
+        anchorOrigin={{
+          vertical: "bottom",
+          horizontal: "center",
+        }}
+        transformOrigin={{
+          vertical: "top",
+          horizontal: "center",
+        }}
+        elevation={0}
+        sx={{
+          marginTop: ".15rem",
+          "& .MuiPopover-paper": {
+            background: darkMode ? "#6C86AD4D" : "#ffffff80",
+            border: darkMode
+              ? "0.01rem solid #6C86AD80"
+              : "0.01rem solid #FFFFFF",
+            backdropFilter: "blur(.4rem)",
+            borderRadius: ".3rem",
+          },
+          "& .MuiTypography-root": {
+            padding: "0px",
+          },
+          "& .MuiBox-root": {
+            padding: "0px",
+          },
+        }}
+      >
+        <div
+          className={classNames(
+            "p-[.16rem] text-[.14rem] text-color-text2 flex flex-col justify-center",
+            darkMode ? "dark" : ""
+          )}
+        >
+          <div className="text-center leading-[150%]">Exchange Rate</div>
+          <div className="text-center mt-[.08rem] leading-[150%]">
+            1:{formatNumber(lsdEthRate, { decimals: 6 })}
+          </div>
+        </div>
+      </HoverPopover>
     </div>
   );
 };
