@@ -125,7 +125,7 @@ export const NoticeItem = (props: {
         data = notice.data as NoticeStakeData;
         return `Stake ${formatNumber(
           data.amount
-        )} ETH from your Wallet to StaFi Pool Contract, and receive ${formatNumber(
+        )} ETH from your Wallet to LSD Pool Contract, and receive ${formatNumber(
           data.willReceiveAmount
         )} ${getLsdEthName()}.`;
       }
@@ -134,13 +134,13 @@ export const NoticeItem = (props: {
         if (!data.needWithdraw) {
           return `Unstake ${formatNumber(
             data.amount
-          )} ${getLsdEthName()} from StaFi Pool Contract to your wallet, and receive ${formatNumber(
+          )} ${getLsdEthName()} from LSD Pool Contract to your wallet, and receive ${formatNumber(
             data.willReceiveAmount
           )} ETH.`;
         } else {
           return `Unstake ${formatNumber(
             data.amount
-          )} ${getLsdEthName()} from StaFi Pool Contract to your wallet.`;
+          )} ${getLsdEthName()} from LSD Pool Contract to your wallet.`;
         }
       }
       if (notice.type === "Withdraw" || notice.type === "Validator Withdraw") {

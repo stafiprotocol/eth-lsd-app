@@ -55,13 +55,7 @@ const Navbar = () => {
             "absolute top-[.11rem] w-[.82rem] h-[.2rem]",
             pageWidth >= 1600 ? "left-[-1.06rem]" : "left-0"
           )}
-        >
-          {/* <Image
-            src={darkMode ? appLogo : appLogoLight}
-            alt="stafi"
-            layout="fill"
-          /> */}
-        </div>
+        ></div>
 
         <div
           className={classNames(
@@ -137,35 +131,14 @@ const UserInfo = (props: { auditExpand: boolean }) => {
     };
   });
 
-  const [hideNet, hideAddress] = useMemo(() => {
-    if (!auditExpand) {
-      return [false, false];
-    }
-    let html = document.documentElement;
-    let clientW = html.clientWidth;
-    let hideNet = false;
-    let hideAddress = true;
-    if (Number(clientW) <= 1280) {
-      hideNet = true;
-    }
-
-    return [hideNet, hideAddress];
+  const hideAddress = useMemo(() => {
+    return auditExpand;
   }, [auditExpand]);
 
   const addressPopupState = usePopupState({
     variant: "popover",
     popupId: "address",
   });
-
-  // useEffect(() => {
-  //   if (appEnv === AppEnv.Polkadot) {
-  //     dispatch(setAppNet(NetName.Polkadot_StaFi));
-  //   } else if (appEnv === AppEnv.Ethereum) {
-  //     dispatch(setAppNet(NetName.Evm_ERC20));
-  //   } else {
-  //     dispatch(setAppNet(undefined));
-  //   }
-  // }, [appEnv, dispatch]);
 
   return (
     <div className="h-[.42rem] bg-color-bg2 rounded-[.6rem] flex items-stretch">

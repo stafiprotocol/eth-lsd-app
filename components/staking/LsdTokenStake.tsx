@@ -272,6 +272,7 @@ export const LsdTokenStake = () => {
         height=".56rem"
         type={isButtonSecondary ? "secondary" : "primary"}
         onClick={clickStake}
+        border="none"
       >
         <div className="flex items-center">
           {buttonText}

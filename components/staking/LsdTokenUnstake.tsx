@@ -17,7 +17,11 @@ import Web3 from "web3";
 import { CustomButton } from "../common/CustomButton";
 import { CustomNumberInput } from "../common/CustomNumberInput";
 import { DataLoading } from "../common/DataLoading";
-import { getLsdEthName, getUnstakeTipLink } from "utils/configUtils";
+import {
+  getLsdEthName,
+  getUnstakeDuration,
+  getUnstakeTipLink,
+} from "utils/configUtils";
 import Image from "next/image";
 import { getLsdEthIcon } from "utils/iconUtils";
 import { useLsdEthRate } from "hooks/useLsdEthRate";
@@ -255,8 +259,9 @@ export const LsdTokenUnstake = () => {
           <Icomoon icon="tip" size=".2rem" />
 
           <div className="ml-[.06rem] text-color-text2 text-[.14rem]">
-            Unstaking may take around 1-5 days . After that, withdraw function
-            will open
+            Unstaking may take around{" "}
+            <span className="text-color-text1">{getUnstakeDuration()}</span>.
+            After that, withdraw function will open
           </div>
         </div>
 
@@ -330,6 +335,7 @@ export const LsdTokenUnstake = () => {
         height=".56rem"
         onClick={clickUnstake}
         type={isButtonSecondary ? "secondary" : "primary"}
+        border="none"
       >
         <div className="flex items-center">
           {buttonText}
