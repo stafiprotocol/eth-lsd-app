@@ -408,9 +408,6 @@ export const LsdTokenUnstake = () => {
                 <DataLoading height=".32rem" />
               </div>
             )}
-            <div className="relative w-[.18rem] h-[.18rem] ml-[.08rem]">
-              <Image src={aprIcon} alt="apr" layout="fill" />
-            </div>
           </div>
         </div>
 
