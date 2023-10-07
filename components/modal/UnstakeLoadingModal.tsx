@@ -99,9 +99,6 @@ export const UnstakeLoadingModal = () => {
     <Modal
       open={unstakeLoadingParams?.modalVisible === true}
       onClose={closeModal}
-      sx={{
-        backgroundColor: "#0A131Bba",
-      }}
     >
       <Box
         pt="0"
