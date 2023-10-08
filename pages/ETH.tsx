@@ -29,6 +29,7 @@ import {
   getLsdEthName,
   getSupportChains,
   IFaqContent,
+  getTokenName,
 } from "utils/configUtils";
 import { StakePage } from "components/staking/StakePage";
 import { useBalance } from "hooks/useBalance";
@@ -201,7 +202,7 @@ const ETHPage = () => {
                 {formatNumber(lsdBalance)}
               </div>
               <div className="text-[.12rem] text-color-text2 mt-[.04rem]">
-                {formatNumber(stakedEth)} ETH Staked
+                {formatNumber(stakedEth)} {getTokenName()} Staked
               </div>
             </div>
           )}

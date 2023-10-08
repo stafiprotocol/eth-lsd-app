@@ -13,6 +13,7 @@ import {
 import { RootState } from "redux/store";
 import { formatNumber } from "utils/numberUtils";
 import { roboto } from "config/font";
+import { getTokenName } from "utils/configUtils";
 
 export const WithdrawLoadingModal = () => {
   const dispatch = useAppDispatch();
@@ -113,13 +114,13 @@ export const WithdrawLoadingModal = () => {
             {withdrawLoadingParams?.status === "success"
               ? `Withdraw ${formatNumber(withdrawLoadingParams.tokenAmount, {
                   roundMode: "floor",
-                })} ETH success`
+                })} ${getTokenName()} success`
               : withdrawLoadingParams?.status === "error"
               ? "Withdraw Failed"
               : `You are now withdrawing ${formatNumber(
                   Number(withdrawLoadingParams?.tokenAmount),
                   { roundMode: "floor" }
-                )} ETH`}
+                )} ${getTokenName()}`}
           </div>
 
           <div
@@ -136,7 +137,7 @@ export const WithdrawLoadingModal = () => {
                 "Something went wrong, please try again"
               : `Withdraw ${formatNumber(withdrawLoadingParams?.tokenAmount, {
                   roundMode: "floor",
-                })} ETH`}
+                })} ${getTokenName()}`}
           </div>
 
           <div className="mt-[.24rem] flex flex-col items-center">

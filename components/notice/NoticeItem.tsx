@@ -22,7 +22,7 @@ import {
 import { openLink } from "utils/commonUtils";
 import Image from "next/image";
 import { useAppSlice } from "hooks/selector";
-import { getLsdEthName } from "utils/configUtils";
+import { getLsdEthName, getTokenName } from "utils/configUtils";
 
 export const NoticeItem = (props: {
   notice: LocalNotice;
@@ -125,7 +125,7 @@ export const NoticeItem = (props: {
         data = notice.data as NoticeStakeData;
         return `Stake ${formatNumber(
           data.amount
-        )} ETH from your Wallet to LSD Pool Contract, and receive ${formatNumber(
+        )} ${getTokenName()} from your Wallet to LSD Pool Contract, and receive ${formatNumber(
           data.willReceiveAmount
         )} ${getLsdEthName()}.`;
       }
@@ -136,7 +136,7 @@ export const NoticeItem = (props: {
             data.amount
           )} ${getLsdEthName()} from LSD Pool Contract to your wallet, and receive ${formatNumber(
             data.willReceiveAmount
-          )} ETH.`;
+          )} ${getTokenName()}.`;
         } else {
           return `Unstake ${formatNumber(
             data.amount
@@ -145,7 +145,7 @@ export const NoticeItem = (props: {
       }
       if (notice.type === "Withdraw" || notice.type === "Validator Withdraw") {
         data = notice.data as NoticeWithdrawData;
-        return `Withdraw ${formatNumber(data.tokenAmount)} ETH.`;
+        return `Withdraw ${formatNumber(data.tokenAmount)} ${getTokenName()}.`;
       }
     } catch (err: unknown) {}
 

@@ -126,7 +126,10 @@ export const LsdTokenStake = () => {
     }
 
     if (Number(stakeAmount) < Number(ethMinimumDeposit)) {
-      return [true, `Minimal Stake Amount is ${ethMinimumDeposit} ETH`];
+      return [
+        true,
+        `Minimal Stake Amount is ${ethMinimumDeposit} ${getTokenName()}`,
+      ];
     }
 
     if (
@@ -134,7 +137,7 @@ export const LsdTokenStake = () => {
         (isNaN(Number(estimateFee)) ? 0 : Number(estimateFee) * 1.4) >
       Number(balance)
     ) {
-      return [true, `Not Enough ETH to Stake`];
+      return [true, `Not Enough ${getTokenName()} to Stake`];
     }
 
     return [false, "Stake"];

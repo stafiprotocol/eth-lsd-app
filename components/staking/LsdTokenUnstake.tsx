@@ -154,7 +154,7 @@ export const LsdTokenUnstake = () => {
       (isNaN(Number(estimateFee)) ? 0 : Number(estimateFee) * 1.4) >
       Number(balance)
     ) {
-      return [true, `Not Enough ETH for Fee`];
+      return [true, `Not Enough ${getTokenName()} for Fee`];
     }
 
     if (Number(unstakeAmount) > Number(userWithdrawLimitPerCycle)) {

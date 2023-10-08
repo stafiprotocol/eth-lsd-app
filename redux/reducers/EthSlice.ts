@@ -34,7 +34,7 @@ import {
   updateWithdrawLoadingParams,
   updateUnstakeLoadingParams,
 } from "./AppSlice";
-import { getLsdEthName } from "utils/configUtils";
+import { getLsdEthName, getTokenName } from "utils/configUtils";
 
 export interface EthState {
   txLoading: boolean;
@@ -375,8 +375,10 @@ export const handleLsdEthUnstake =
         const needWithdraw =
           unclaimedWithdrawsOfUser.indexOf(nextWithdrawIndex) >= 0;
         const customMsg = !needWithdraw
-          ? `Unstaking ${Number(unstakeAmount)} ETH operation was successful.`
-          : "Unstaking operation was successful. Withdraw function will be shown in the page later, please wait for the withdraw opening to get your unstaked ETH.";
+          ? `Unstaking ${Number(
+              unstakeAmount
+            )} ${getTokenName()} operation was successful.`
+          : `Unstaking operation was successful. Withdraw function will be shown in the page later, please wait for the withdraw opening to get your unstaked ${getTokenName()}.`;
 
         cb && cb(result.status, needWithdraw, result);
 
@@ -479,7 +481,7 @@ export const handleEthWithdraw =
         updateWithdrawLoadingParams({
           customMsg: `Please confirm the ${formatNumber(
             Number(withdrawAmount)
-          )} ETH withdraw transaction in your MetaMask wallet`,
+          )} ${getTokenName()} withdraw transaction in your MetaMask wallet`,
         })
       );
 

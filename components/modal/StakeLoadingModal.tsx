@@ -15,7 +15,7 @@ import { handleEthStake } from "redux/reducers/EthSlice";
 import { RootState } from "redux/store";
 import { formatNumber } from "utils/numberUtils";
 import { roboto } from "config/font";
-import { getLsdEthName } from "utils/configUtils";
+import { getLsdEthName, getTokenName } from "utils/configUtils";
 
 export const StakeLoadingModal = () => {
   const dispatch = useAppDispatch();
@@ -38,7 +38,7 @@ export const StakeLoadingModal = () => {
         )} ${getLsdEthName()}`
       : stakeLoadingParams?.status === "error"
       ? "Transaction Failed"
-      : `You are now staking ${stakeLoadingParams?.amount} ETH`;
+      : `You are now staking ${stakeLoadingParams?.amount} ${getTokenName()}`;
   }, [stakeLoadingParams]);
 
   const secondaryMsg = useMemo(() => {
@@ -52,7 +52,7 @@ export const StakeLoadingModal = () => {
       : stakeLoadingParams?.displayMsg ||
         `Staking ${
           stakeLoadingParams?.amount
-        } ETH, you will receive ${formatNumber(
+        } ${getTokenName()}, you will receive ${formatNumber(
           stakeLoadingParams?.willReceiveAmount
         )} 
   ${getLsdEthName()}`;

@@ -5,6 +5,7 @@ import { RootState } from "redux/store";
 import { formatNumber } from "utils/numberUtils";
 import { useMemo } from "react";
 import { handleEthWithdraw } from "redux/reducers/EthSlice";
+import { getTokenName } from "utils/configUtils";
 
 interface Props {
   overallAmount: string | undefined;
@@ -61,7 +62,7 @@ export const WithdrawUnstaked = (props: Props) => {
             Overall Amount
           </div>
           <div className="ml-[.12rem] text-[.16rem] text-color-text2 font-[500]">
-            {formatNumber(overallAmount)} ETH
+            {formatNumber(overallAmount)} {getTokenName()}
           </div>
         </div>
 
@@ -80,7 +81,7 @@ export const WithdrawUnstaked = (props: Props) => {
           Withdrawable
         </div>
         <div className="text-[.24rem] text-color-text1 font-[500]">
-          {formatNumber(claimableAmount)} ETH
+          {formatNumber(claimableAmount)} {getTokenName()}
         </div>
         <div className="text-[.14rem] text-color-text2 invisible">
           Withdrawable

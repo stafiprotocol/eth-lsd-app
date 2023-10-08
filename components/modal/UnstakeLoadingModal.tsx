@@ -14,7 +14,11 @@ import {
 } from "redux/reducers/AppSlice";
 import { handleLsdEthUnstake } from "redux/reducers/EthSlice";
 import { RootState } from "redux/store";
-import { getLsdEthName, getUnstakeDuration } from "utils/configUtils";
+import {
+  getLsdEthName,
+  getTokenName,
+  getUnstakeDuration,
+} from "utils/configUtils";
 import { formatNumber } from "utils/numberUtils";
 import snackbarUtil from "utils/snackbarUtils";
 
@@ -56,7 +60,7 @@ export const UnstakeLoadingModal = () => {
           unstakeLoadingParams?.amount
         } ${getLsdEthName()}, you will receive ${formatNumber(
           unstakeLoadingParams?.willReceiveAmount
-        )} ETH`;
+        )} ${getTokenName()}`;
   }, [unstakeLoadingParams]);
 
   const closeModal = () => {
