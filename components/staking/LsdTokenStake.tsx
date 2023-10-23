@@ -158,7 +158,7 @@ export const LsdTokenStake = () => {
     if (isNaN(Number(stakeAmount)) || isNaN(Number(lsdEthRate))) {
       return "--";
     }
-    return Number(lsdBalance) + Number(stakeAmount) * Number(lsdEthRate) + "";
+    return Number(lsdBalance) + Number(stakeAmount) / Number(lsdEthRate) + "";
   }, [lsdBalance, lsdEthRate, stakeAmount]);
 
   const clickConnectWallet = () => {

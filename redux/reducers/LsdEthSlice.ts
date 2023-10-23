@@ -132,7 +132,6 @@ export const updateApr = (): AppThunk => async (dispatch, getState) => {
         endEvent.raw.data,
         endEvent.raw.topics
       );
-      console.log({ beginValues, endValues });
       const beginRate = beginValues.totalEth / beginValues.lsdTokenSupply;
       const endRate = endValues.totalEth / endValues.lsdTokenSupply;
       if (

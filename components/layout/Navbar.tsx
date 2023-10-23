@@ -25,6 +25,8 @@ import { getEthereumChainId } from "config/env";
 import { getAuditList } from "utils/configUtils";
 
 const Navbar = () => {
+  const { unreadNoticeFlag } = useAppSlice();
+
   const [noticeDrawerOpen, setNoticeDrawerOpen] = useState(false);
   const [settingsDrawerOpen, setSettingsDrawerOpen] = useState(false);
   const [auditExpand, setAuditExpand] = useState(false);
@@ -72,7 +74,7 @@ const Navbar = () => {
 
           <div
             className={classNames(
-              "cursor-pointer ml-[.3rem] w-[.42rem] h-[.42rem] flex items-center justify-center rounded-[.12rem]",
+              "cursor-pointer ml-[.3rem] w-[.42rem] h-[.42rem] flex items-center justify-center rounded-[.12rem] relative",
               noticeDrawerOpen ? "bg-color-selected" : ""
             )}
             onClick={() => {
@@ -83,6 +85,10 @@ const Navbar = () => {
             <div className="h-[.25rem] w-[.22rem] relative">
               <Image src={noticeIcon} layout="fill" alt="notice" />
             </div>
+
+            {unreadNoticeFlag && (
+              <div className="bg-error rounded-full w-[.06rem] h-[.06rem] absolute right-[0.08rem] top-[0.08rem]"></div>
+            )}
           </div>
 
           <div
