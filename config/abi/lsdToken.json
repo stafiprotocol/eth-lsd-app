@@ -1,11 +1,6 @@
 [
   {
     "inputs": [
-      {
-        "internalType": "address",
-        "name": "_userDepositAddress",
-        "type": "address"
-      },
       { "internalType": "string", "name": "_name", "type": "string" },
       { "internalType": "string", "name": "_symbol", "type": "string" }
     ],
@@ -17,7 +12,7 @@
   { "inputs": [], "name": "AlreadyDealedEpoch", "type": "error" },
   { "inputs": [], "name": "AlreadyDealedHeight", "type": "error" },
   { "inputs": [], "name": "AlreadyInitialized", "type": "error" },
-  { "inputs": [], "name": "AlreadyNotifyCycle", "type": "error" },
+  { "inputs": [], "name": "AlreadyNotifiedCycle", "type": "error" },
   { "inputs": [], "name": "AlreadyVoted", "type": "error" },
   { "inputs": [], "name": "AmountNotZero", "type": "error" },
   { "inputs": [], "name": "AmountUnmatch", "type": "error" },
@@ -28,40 +23,39 @@
   { "inputs": [], "name": "ClaimableAmountZero", "type": "error" },
   { "inputs": [], "name": "ClaimableDepositZero", "type": "error" },
   { "inputs": [], "name": "ClaimableRewardZero", "type": "error" },
+  { "inputs": [], "name": "ClaimableWithdrawIndexOverflow", "type": "error" },
+  { "inputs": [], "name": "CommissionRateInvalid", "type": "error" },
   { "inputs": [], "name": "CycleNotMatch", "type": "error" },
   { "inputs": [], "name": "DepositAmountLTMinAmount", "type": "error" },
   { "inputs": [], "name": "EthAmountZero", "type": "error" },
   { "inputs": [], "name": "FailedToCall", "type": "error" },
-  { "inputs": [], "name": "FailedToTransfer", "type": "error" },
   { "inputs": [], "name": "InvalidMerkleProof", "type": "error" },
   { "inputs": [], "name": "InvalidThreshold", "type": "error" },
   { "inputs": [], "name": "LengthNotMatch", "type": "error" },
-  { "inputs": [], "name": "LightNodeDepositDisabled", "type": "error" },
   { "inputs": [], "name": "LsdTokenAmountZero", "type": "error" },
   { "inputs": [], "name": "NodeAlreadyExist", "type": "error" },
   { "inputs": [], "name": "NodeAlreadyRemoved", "type": "error" },
+  { "inputs": [], "name": "NodeNotClaimable", "type": "error" },
+  { "inputs": [], "name": "NotAuthorizedLsdToken", "type": "error" },
   { "inputs": [], "name": "NotClaimable", "type": "error" },
-  { "inputs": [], "name": "NotFactoryAdmin", "type": "error" },
-  { "inputs": [], "name": "NotNetworkAdmin", "type": "error" },
   { "inputs": [], "name": "NotPubkeyOwner", "type": "error" },
   { "inputs": [], "name": "NotTrustNode", "type": "error" },
-  { "inputs": [], "name": "ProposalAlreadyExecuted", "type": "error" },
+  { "inputs": [], "name": "ProposalExecFailed", "type": "error" },
   { "inputs": [], "name": "PubkeyAlreadyExist", "type": "error" },
   { "inputs": [], "name": "PubkeyNotExist", "type": "error" },
+  { "inputs": [], "name": "PubkeyNumberOverLimit", "type": "error" },
   { "inputs": [], "name": "PubkeyStatusUnmatch", "type": "error" },
   { "inputs": [], "name": "RateChangeOverLimit", "type": "error" },
-  { "inputs": [], "name": "ReachCycleWithdrawLimit", "type": "error" },
-  { "inputs": [], "name": "ReachPubkeyNumberLimit", "type": "error" },
-  { "inputs": [], "name": "ReachUserWithdrawLimit", "type": "error" },
-  { "inputs": [], "name": "SubmitBalancesDisable", "type": "error" },
+  { "inputs": [], "name": "SecondsZero", "type": "error" },
+  { "inputs": [], "name": "SoloNodeDepositAmountZero", "type": "error" },
+  { "inputs": [], "name": "SoloNodeDepositDisabled", "type": "error" },
+  { "inputs": [], "name": "SubmitBalancesDisabled", "type": "error" },
   { "inputs": [], "name": "TrustNodeDepositDisabled", "type": "error" },
   { "inputs": [], "name": "UserDepositDisabled", "type": "error" },
-  { "inputs": [], "name": "VoterNumberOverLimit", "type": "error" },
   { "inputs": [], "name": "VotersDuplicate", "type": "error" },
   { "inputs": [], "name": "VotersNotEnough", "type": "error" },
   { "inputs": [], "name": "VotersNotExist", "type": "error" },
   { "inputs": [], "name": "WithdrawIndexEmpty", "type": "error" },
-  { "inputs": [], "name": "WithdrawIndexOver", "type": "error" },
   {
     "anonymous": false,
     "inputs": [
@@ -200,6 +194,15 @@
   },
   {
     "inputs": [
+      { "internalType": "address", "name": "_minter", "type": "address" }
+    ],
+    "name": "initMinter",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
       { "internalType": "address", "name": "_to", "type": "address" },
       {
         "internalType": "uint256",
@@ -210,6 +213,13 @@
     "name": "mint",
     "outputs": [],
     "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "minter",
+    "outputs": [{ "internalType": "address", "name": "", "type": "address" }],
+    "stateMutability": "view",
     "type": "function"
   },
   {
@@ -252,13 +262,6 @@
     "name": "transferFrom",
     "outputs": [{ "internalType": "bool", "name": "", "type": "bool" }],
     "stateMutability": "nonpayable",
-    "type": "function"
-  },
-  {
-    "inputs": [],
-    "name": "userDepositAddress",
-    "outputs": [{ "internalType": "address", "name": "", "type": "address" }],
-    "stateMutability": "view",
     "type": "function"
   }
 ]

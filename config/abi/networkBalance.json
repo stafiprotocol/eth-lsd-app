@@ -5,7 +5,7 @@
   { "inputs": [], "name": "AlreadyDealedEpoch", "type": "error" },
   { "inputs": [], "name": "AlreadyDealedHeight", "type": "error" },
   { "inputs": [], "name": "AlreadyInitialized", "type": "error" },
-  { "inputs": [], "name": "AlreadyNotifyCycle", "type": "error" },
+  { "inputs": [], "name": "AlreadyNotifiedCycle", "type": "error" },
   { "inputs": [], "name": "AlreadyVoted", "type": "error" },
   { "inputs": [], "name": "AmountNotZero", "type": "error" },
   { "inputs": [], "name": "AmountUnmatch", "type": "error" },
@@ -16,11 +16,12 @@
   { "inputs": [], "name": "ClaimableAmountZero", "type": "error" },
   { "inputs": [], "name": "ClaimableDepositZero", "type": "error" },
   { "inputs": [], "name": "ClaimableRewardZero", "type": "error" },
+  { "inputs": [], "name": "ClaimableWithdrawIndexOverflow", "type": "error" },
+  { "inputs": [], "name": "CommissionRateInvalid", "type": "error" },
   { "inputs": [], "name": "CycleNotMatch", "type": "error" },
   { "inputs": [], "name": "DepositAmountLTMinAmount", "type": "error" },
   { "inputs": [], "name": "EthAmountZero", "type": "error" },
   { "inputs": [], "name": "FailedToCall", "type": "error" },
-  { "inputs": [], "name": "FailedToTransfer", "type": "error" },
   { "inputs": [], "name": "InvalidMerkleProof", "type": "error" },
   { "inputs": [], "name": "InvalidThreshold", "type": "error" },
   { "inputs": [], "name": "LengthNotMatch", "type": "error" },
@@ -28,34 +29,26 @@
   { "inputs": [], "name": "NodeAlreadyExist", "type": "error" },
   { "inputs": [], "name": "NodeAlreadyRemoved", "type": "error" },
   { "inputs": [], "name": "NodeNotClaimable", "type": "error" },
+  { "inputs": [], "name": "NotAuthorizedLsdToken", "type": "error" },
   { "inputs": [], "name": "NotClaimable", "type": "error" },
-  { "inputs": [], "name": "NotFactoryAdmin", "type": "error" },
-  { "inputs": [], "name": "NotNetworkAdmin", "type": "error" },
-  { "inputs": [], "name": "NotNetworkProposal", "type": "error" },
   { "inputs": [], "name": "NotPubkeyOwner", "type": "error" },
   { "inputs": [], "name": "NotTrustNode", "type": "error" },
-  { "inputs": [], "name": "ProposalAlreadyExecuted", "type": "error" },
   { "inputs": [], "name": "ProposalExecFailed", "type": "error" },
   { "inputs": [], "name": "PubkeyAlreadyExist", "type": "error" },
   { "inputs": [], "name": "PubkeyNotExist", "type": "error" },
+  { "inputs": [], "name": "PubkeyNumberOverLimit", "type": "error" },
   { "inputs": [], "name": "PubkeyStatusUnmatch", "type": "error" },
   { "inputs": [], "name": "RateChangeOverLimit", "type": "error" },
-  { "inputs": [], "name": "RateValueUnmatch", "type": "error" },
-  { "inputs": [], "name": "ReachCycleWithdrawLimit", "type": "error" },
-  { "inputs": [], "name": "ReachPubkeyNumberLimit", "type": "error" },
-  { "inputs": [], "name": "ReachUserWithdrawLimit", "type": "error" },
   { "inputs": [], "name": "SecondsZero", "type": "error" },
   { "inputs": [], "name": "SoloNodeDepositAmountZero", "type": "error" },
   { "inputs": [], "name": "SoloNodeDepositDisabled", "type": "error" },
-  { "inputs": [], "name": "SubmitBalancesDisable", "type": "error" },
+  { "inputs": [], "name": "SubmitBalancesDisabled", "type": "error" },
   { "inputs": [], "name": "TrustNodeDepositDisabled", "type": "error" },
   { "inputs": [], "name": "UserDepositDisabled", "type": "error" },
-  { "inputs": [], "name": "VoterNumberOverLimit", "type": "error" },
   { "inputs": [], "name": "VotersDuplicate", "type": "error" },
   { "inputs": [], "name": "VotersNotEnough", "type": "error" },
   { "inputs": [], "name": "VotersNotExist", "type": "error" },
   { "inputs": [], "name": "WithdrawIndexEmpty", "type": "error" },
-  { "inputs": [], "name": "WithdrawIndexOver", "type": "error" },
   {
     "anonymous": false,
     "inputs": [
@@ -73,43 +66,6 @@
       }
     ],
     "name": "AdminChanged",
-    "type": "event"
-  },
-  {
-    "anonymous": false,
-    "inputs": [
-      {
-        "indexed": true,
-        "internalType": "address",
-        "name": "from",
-        "type": "address"
-      },
-      {
-        "indexed": false,
-        "internalType": "uint256",
-        "name": "block",
-        "type": "uint256"
-      },
-      {
-        "indexed": false,
-        "internalType": "uint256",
-        "name": "totalEth",
-        "type": "uint256"
-      },
-      {
-        "indexed": false,
-        "internalType": "uint256",
-        "name": "lsdTokenSupply",
-        "type": "uint256"
-      },
-      {
-        "indexed": false,
-        "internalType": "uint256",
-        "name": "time",
-        "type": "uint256"
-      }
-    ],
-    "name": "BalancesSubmitted",
     "type": "event"
   },
   {
@@ -184,8 +140,12 @@
   },
   {
     "inputs": [],
-    "name": "balancesBlock",
-    "outputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }],
+    "name": "balancesSnapshot",
+    "outputs": [
+      { "internalType": "uint256", "name": "_block", "type": "uint256" },
+      { "internalType": "uint256", "name": "_totalEth", "type": "uint256" },
+      { "internalType": "uint256", "name": "_totalLsdToken", "type": "uint256" }
+    ],
     "stateMutability": "view",
     "type": "function"
   },
@@ -281,11 +241,7 @@
     "inputs": [
       { "internalType": "uint256", "name": "_block", "type": "uint256" },
       { "internalType": "uint256", "name": "_totalEth", "type": "uint256" },
-      {
-        "internalType": "uint256",
-        "name": "_lsdTokenSupply",
-        "type": "uint256"
-      }
+      { "internalType": "uint256", "name": "_totalLsdToken", "type": "uint256" }
     ],
     "name": "submitBalances",
     "outputs": [],
@@ -296,20 +252,6 @@
     "inputs": [],
     "name": "submitBalancesEnabled",
     "outputs": [{ "internalType": "bool", "name": "", "type": "bool" }],
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "inputs": [],
-    "name": "totalEthBalance",
-    "outputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }],
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "inputs": [],
-    "name": "totalLsdTokenSupply",
-    "outputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }],
     "stateMutability": "view",
     "type": "function"
   },
