@@ -66,14 +66,14 @@ export const WithdrawUnstaked = (props: Props) => {
           </div>
         </div>
 
-        <div className="flex items-center ">
+        {/* <div className="flex items-center ">
           <div className="text-[.14rem] text-color-text2 font-[500] opacity-50">
             Remaining Lock Time
           </div>
           <div className="text-[.16rem] text-color-text2 font-[500] ml-[.12rem]">
             {remainingDays} D
           </div>
-        </div>
+        </div> */}
       </div>
 
       <div className="h-[.77rem] mt-[.25rem] mx-[.24rem] px-[.24rem] bg-color-bgPage rounded-[.3rem] flex items-center justify-between">
