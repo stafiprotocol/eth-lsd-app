@@ -6,16 +6,16 @@
   "rpc": "https://goerli.infura.io/v3/9aa3d95b3bc440fa88ea12eaa4456161",
   "contracts": {
     "lsdTokenContract": {
-      "address": "0x19C75dFbA2641B1C86ED5aC1caB8dEC6665F9314"
+      "address": "0x37a7BF277f9b1F32296aB595600eA30c55F6eE4B"
     },
     "depositContract": {
-      "address": "0x2c3440c94141Cc1C7405F28B1a9205cBDCB276A9"
+      "address": "0xE226B1dC51B7d2c996A46107f79C00e1CCe692eB"
     },
     "withdrawContract": {
-      "address": "0x524611Ca2e5A0bE5bca87bf4A6e6468Ed9311572"
+      "address": "0xbFC4235f2788E46c60872fd125415d32C08a1175"
     },
     "networkBalanceContract": {
-      "address": "0xe75fD025159467B5162643C7D803060005736b1b"
+      "address": "0x6fa81E949b7c88198cEe32326659133e09dCE725"
     }
   }
 }

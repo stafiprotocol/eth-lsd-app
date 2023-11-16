@@ -282,36 +282,6 @@ export const handleLsdEthUnstake =
         }
       );
 
-      const currentWithdrawCycle = await contract.methods
-        .currentWithdrawCycle()
-        .call();
-      // console.log("currentWithdrawCycle", currentWithdrawCycle);
-      const withdrawLimitPerCycle = await contract.methods
-        .withdrawLimitAmountPerCycle()
-        .call();
-      // console.log("withdrawLimitPerCycle", withdrawLimitPerCycle);
-      const userWithdrawLimitPerCycle = await contract.methods
-        .userWithdrawLimitAmountPerCycle()
-        .call();
-      // console.log("userWithdrawLimitPerCycle", userWithdrawLimitPerCycle);
-      const totalWithdrawAmountAtCycle = await contract.methods
-        .totalWithdrawAmountAtCycle(currentWithdrawCycle)
-        .call();
-      // console.log("totalWithdrawAmountAtCycle", totalWithdrawAmountAtCycle);
-      const userWithdrawAmountAtCycle = await contract.methods
-        .userWithdrawAmountAtCycle(metaMaskAccount, currentWithdrawCycle)
-        .call();
-      // console.log("userWithdrawAmountAtCycle", userWithdrawAmountAtCycle);
-
-      if (
-        Number(unstakeAmountInWei) + Number(totalWithdrawAmountAtCycle) >
-          Number(withdrawLimitPerCycle) ||
-        Number(unstakeAmountInWei) + Number(userWithdrawAmountAtCycle) >
-          Number(userWithdrawLimitPerCycle)
-      ) {
-        throw new Error("Daily unstaking Limit Reached");
-      }
-
       dispatch(
         setUnstakeLoadingParams({
           modalVisible: true,

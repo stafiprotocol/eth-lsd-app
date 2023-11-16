@@ -1,7 +1,6 @@
 import { Icomoon } from "components/icon/Icomoon";
 import { getEthereumChainId, getEthereumChainName } from "config/env";
 import { useAppDispatch, useAppSelector } from "hooks/common";
-import { useEthWithdrawLimit } from "hooks/useEthWithdrawLimit";
 import { useBalance } from "hooks/useBalance";
 import { usePrice } from "hooks/usePrice";
 import { useWalletAccount } from "hooks/useWalletAccount";
@@ -47,12 +46,6 @@ export const LsdTokenUnstake = () => {
   const { lsdBalance } = useBalance();
 
   const { apr } = useApr();
-  const {
-    userWithdrawAmountAtCycle,
-    withdrawLimitPerCycle,
-    userWithdrawLimitPerCycle,
-    totalWithdrawAmountAtCycle,
-  } = useEthWithdrawLimit();
 
   const [unstakeAmount, setUnstakeAmount] = useState("");
 
@@ -157,18 +150,6 @@ export const LsdTokenUnstake = () => {
       return [true, `Not Enough ${getTokenName()} for Fee`];
     }
 
-    if (Number(unstakeAmount) > Number(userWithdrawLimitPerCycle)) {
-      return [true, "Daily unstaking Limit Reached"];
-    }
-    if (
-      Number(unstakeAmount) + Number(totalWithdrawAmountAtCycle) >
-        Number(withdrawLimitPerCycle) ||
-      Number(unstakeAmount) + Number(userWithdrawAmountAtCycle) >
-        Number(userWithdrawLimitPerCycle)
-    ) {
-      return [true, "Daily unstaking Limit Reached"];
-    }
-
     return [false, "Unstake"];
   }, [
     isWrongMetaMaskNetwork,
@@ -177,10 +158,6 @@ export const LsdTokenUnstake = () => {
     walletNotConnected,
     estimateFee,
     balance,
-    userWithdrawAmountAtCycle,
-    totalWithdrawAmountAtCycle,
-    withdrawLimitPerCycle,
-    userWithdrawLimitPerCycle,
   ]);
 
   const newRTokenBalance = useMemo(() => {
