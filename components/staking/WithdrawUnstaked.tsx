@@ -6,6 +6,7 @@ import { formatNumber } from "utils/numberUtils";
 import { useMemo } from "react";
 import { handleEthWithdraw } from "redux/reducers/EthSlice";
 import { getTokenName } from "utils/configUtils";
+import { useRouter } from "next/router";
 
 interface Props {
   overallAmount: string | undefined;
@@ -21,6 +22,8 @@ export const WithdrawUnstaked = (props: Props) => {
     willReceiveAmount,
     claimableWithdrawals,
   } = props;
+
+  const router = useRouter();
 
   const dispatch = useAppDispatch();
   const { withdrawLoading } = useAppSelector((state: RootState) => {
@@ -49,7 +52,21 @@ export const WithdrawUnstaked = (props: Props) => {
         claimableAmount || "0",
         willReceiveAmount,
         false,
-        (success) => {}
+        (success) => {
+          if (
+            !overallAmount ||
+            isNaN(Number(overallAmount)) ||
+            Number(overallAmount) === 0
+          ) {
+            router.replace({
+              pathname: router.pathname,
+              query: {
+                ...router.query,
+                tab: "stake",
+              },
+            });
+          }
+        }
       )
     );
   };
