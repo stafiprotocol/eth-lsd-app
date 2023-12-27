@@ -1,21 +1,21 @@
 {
   "chain": {
-    "id": 5,
-    "name": "Goerli"
+    "id": 17000,
+    "name": "Holesky"
   },
-  "rpc": "https://goerli.infura.io/v3/9aa3d95b3bc440fa88ea12eaa4456161",
+  "rpc": "https://ethereum-holesky.publicnode.com",
   "contracts": {
     "lsdTokenContract": {
-      "address": "0x37a7BF277f9b1F32296aB595600eA30c55F6eE4B"
+      "address": "0xe1A2391f4902f8bc1fd447192c4a165A7a05189b"
     },
     "depositContract": {
-      "address": "0xE226B1dC51B7d2c996A46107f79C00e1CCe692eB"
+      "address": "0xF077Af44C0EE18d7b960C6C527a249820706a317"
     },
     "withdrawContract": {
-      "address": "0xbFC4235f2788E46c60872fd125415d32C08a1175"
+      "address": "0x0f25a7400EB9a6225F669B99a9aCa46442213632"
     },
     "networkBalanceContract": {
-      "address": "0x6fa81E949b7c88198cEe32326659133e09dCE725"
+      "address": "0x5bEB668968a931b961a7D9a4da6150b7A03a0093"
     }
   }
 }
