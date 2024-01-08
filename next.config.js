@@ -1,5 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  output: 'export',
+  trailingSlash: true,
   reactStrictMode: true,
   swcMinify: false,
   env: {
@@ -9,9 +11,9 @@ const nextConfig = {
   images: {
     unoptimized: true,
   },
-  async redirects() {
-    return [];
-  },
+  // async redirects() {
+  //   return [];
+  // },
   webpack: (
     config,
     { buildId, dev, isServer, defaultLoaders, nextRuntime, webpack }
