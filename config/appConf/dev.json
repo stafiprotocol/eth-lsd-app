@@ -6,16 +6,16 @@
   "rpc": "https://ethereum-holesky.publicnode.com",
   "contracts": {
     "lsdTokenContract": {
-      "address": "0xe1A2391f4902f8bc1fd447192c4a165A7a05189b"
+      "address": "0x85F7c01009B1bf540699C4FDDf3589DDE60BCb14"
     },
     "depositContract": {
-      "address": "0xF077Af44C0EE18d7b960C6C527a249820706a317"
+      "address": "0x044E54D0Fd299917eC9f5cb27B35Ce252D546A2b"
     },
     "withdrawContract": {
-      "address": "0x0f25a7400EB9a6225F669B99a9aCa46442213632"
+      "address": "0x3CB60643B531632A243dA103f3d0A860eB49EEFC"
     },
     "networkBalanceContract": {
-      "address": "0x5bEB668968a931b961a7D9a4da6150b7A03a0093"
+      "address": "0xbfa824c78AC83c09dBF33Fcf6bf8116496189F28"
     }
   }
 }
