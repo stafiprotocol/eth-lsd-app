@@ -26,11 +26,13 @@ import HoverPopover from "material-ui-popup-state/HoverPopover";
 import { bindPopover } from "material-ui-popup-state";
 import { bindHover, usePopupState } from "material-ui-popup-state/hooks";
 import classNames from "classnames";
+import { useGasPrice } from "hooks/useGasPrice";
 
 export const LsdTokenStake = () => {
   const dispatch = useAppDispatch();
   const { darkMode } = useAppSlice();
-  const { gasPrice, ethPrice } = usePrice();
+  const { ethPrice } = usePrice();
+  const { gasPrice } = useGasPrice();
   const lsdEthRate = useLsdEthRate();
 
   const { lsdBalance } = useBalance();

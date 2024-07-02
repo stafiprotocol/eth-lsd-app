@@ -32,6 +32,7 @@ import HoverPopover from "material-ui-popup-state/HoverPopover";
 import { bindPopover, bindHover } from "material-ui-popup-state";
 import classNames from "classnames";
 import { usePopupState } from "material-ui-popup-state/hooks";
+import { useGasPrice } from "hooks/useGasPrice";
 
 export const LsdTokenUnstake = () => {
   const router = useRouter();
@@ -40,7 +41,9 @@ export const LsdTokenUnstake = () => {
 
   const { metaMaskAccount, metaMaskChainId } = useWalletAccount();
   const { balance } = useBalance();
-  const { ethPrice, lsdEthPrice, gasPrice } = usePrice();
+  const { ethPrice, lsdEthPrice } = usePrice();
+  const { gasPrice } = useGasPrice();
+
   const lsdEthRate = useLsdEthRate();
 
   const { lsdBalance } = useBalance();

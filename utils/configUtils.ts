@@ -50,8 +50,8 @@ export function getAuditList() {
   return appConfig.auditList;
 }
 
-export function getGasPriceUrl() {
-  return appConfig.gasPriceUrl;
+export function getTokenPriceUrl() {
+  return appConfig.tokenPriceUrl;
 }
 
 export function getDefaultApr() {

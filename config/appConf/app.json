@@ -128,5 +128,5 @@
       "link": "https://t.me/stafi_protocol"
     }
   ],
-  "gasPriceUrl": "https://beaconcha.in/api/v1/execution/gasnow"
+  "tokenPriceUrl": "https://api.coingecko.com/api/v3/simple/price?ids=ethereum&vs_currencies=usd"
 }
