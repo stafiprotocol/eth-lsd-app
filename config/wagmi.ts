@@ -3,7 +3,6 @@ import { configureChains, createConfig } from "wagmi";
 import { getWagmiChainConfig } from "./env";
 
 // 1. Get projectId
-// export const walletConnectProjectId = "b4a5e478100e2abc546807e8fd74dd7f";
 export const walletConnectProjectId = "49d39e856ab00fbe22d96b7a700a9739";
 // 2. Configure wagmi client
 const chains = [getWagmiChainConfig()];

@@ -36,6 +36,18 @@ import { useBalance } from "hooks/useBalance";
 import { useLsdEthRate } from "hooks/useLsdEthRate";
 import { useWalletAccount } from "hooks/useWalletAccount";
 import { useApr } from "hooks/useApr";
+import { GetStaticProps } from "next";
+
+export async function getStaticPaths() {
+  return {
+    paths: [{ params: { tokenName: getTokenName() } }],
+    fallback: false,
+  };
+}
+
+export const getStaticProps: GetStaticProps = async (context) => {
+  return { props: {} };
+};
 
 const ETHPage = () => {
   const router = useRouter();
@@ -263,7 +275,12 @@ const ETHPage = () => {
                   </span>
                 </div>
 
-                <div className="mt-[.16rem] flex items-center">
+                <div
+                  className={classNames(
+                    "mt-[.16rem] items-center",
+                    getDetailInfoListedIns().length > 0 ? "flex" : "hidden"
+                  )}
+                >
                   <div className="w-[.22rem] h-[.22rem] relative">
                     <Image src={cooperationIcon} alt="audit" layout="fill" />
                   </div>

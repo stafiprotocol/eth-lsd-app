@@ -1,11 +1,9 @@
-import { useCallback, useEffect, useState } from "react";
-import { useAppSlice } from "./selector";
-import { getTokenPriceUrl } from "utils/configUtils";
 import { UseQueryResult, useQuery } from "@tanstack/react-query";
+import { getTokenPriceUrl } from "utils/configUtils";
 
 export function usePrice() {
   const tokenPriceResult: UseQueryResult<number> = useQuery({
-    queryKey: ["GetTokenPrice"],
+    queryKey: ["GetTokenPrice", getTokenPriceUrl()],
     staleTime: 60000,
     initialData: 0,
     queryFn: async () => {
@@ -18,7 +16,7 @@ export function usePrice() {
         });
         const resJson = await response.json();
         if (resJson) {
-          const { usd } = resJson["ethereum"];
+          const { usd } = resJson["pulsechain"];
           return usd;
         }
       } catch (err: any) {}
