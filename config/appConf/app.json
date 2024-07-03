@@ -1,9 +1,9 @@
 {
-  "appTitle": "ETH LSD App",
+  "appTitle": "Pulse LSD App",
   "token": {
-    "tokenName": "ETH",
-    "lsdTokenName": "rETH",
-    "supportChains": ["Ethereum", "Arbitrum", "Optimism", "Polygon"],
+    "tokenName": "PLS",
+    "lsdTokenName": "rPLS",
+    "supportChains": ["Pluse"],
     "lsdTokenIconUri": "https://cdn.stafi.io/rtoken/logo/rETH.png",
     "ETHImg": "/images/token/ETH_green.svg",
     "lsdETHImg": "/images/token/lsdETH.svg"
