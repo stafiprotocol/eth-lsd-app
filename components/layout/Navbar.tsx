@@ -21,7 +21,7 @@ import { useEffect, useMemo, useState } from "react";
 import { connectMetaMask, disconnectWallet } from "redux/reducers/WalletSlice";
 import { RootState } from "redux/store";
 import { getShortAddress } from "utils/stringUtils";
-import { getEthereumChainId } from "config/env";
+import { getEthereumChainId, getEthereumChainName } from "config/env";
 import { getAuditList } from "utils/configUtils";
 import { useSwitchChain } from "wagmi";
 
@@ -159,7 +159,7 @@ const UserInfo = (props: { auditExpand: boolean }) => {
         <div
           className={classNames("ml-[.08rem] text-[.16rem] text-color-text1")}
         >
-          Ethereum
+          {getEthereumChainName()}
         </div>
 
         {/* <div className="ml-[.12rem]">

@@ -20,7 +20,7 @@ import { useMemo } from "react";
 import { openLink } from "utils/commonUtils";
 import { formatNumber } from "utils/numberUtils";
 import { addLsdEthToMetaMask } from "utils/web3Utils";
-import { getLsdEthIcon } from "utils/iconUtils";
+import { getLsdTokenIcon } from "utils/iconUtils";
 import {
   IFaqItem,
   getDetailInfoAudit,
@@ -148,7 +148,7 @@ const ETHPage = () => {
       <PageTitleContainer>
         <div className="h-full flex items-center w-smallContentW xl:w-contentW 2xl:w-largeContentW">
           <div className="w-[.68rem] h-[.68rem] relative">
-            <Image src={getLsdEthIcon()} layout="fill" alt="icon" />
+            <Image src={getLsdTokenIcon()} layout="fill" alt="icon" />
           </div>
           <div className="ml-[.12rem]">
             <div className="flex items-center">

@@ -5,8 +5,8 @@
     "lsdTokenName": "rPLS",
     "supportChains": ["Pluse"],
     "lsdTokenIconUri": "https://cdn.stafi.io/rtoken/logo/rETH.png",
-    "ETHImg": "/images/token/ETH_green.svg",
-    "lsdETHImg": "/images/token/lsdETH.svg"
+    "tokenIcon": "/images/token/PLS.svg",
+    "lsdTokenIcon": "/images/token/lsdPLS.svg"
   },
   "unstake": {
     "lockTipLink": "https://docs.stafi.io/stakingeth/unstake/",
