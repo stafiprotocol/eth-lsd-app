@@ -7,3 +7,7 @@ export function getTokenIcon() {
 export function getLsdEthIcon() {
   return appConfig.token.lsdETHImg;
 }
+
+export function getChainIcon() {
+  return appConfig.chainIcon;
+}

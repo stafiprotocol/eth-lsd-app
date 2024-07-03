@@ -1,5 +1,6 @@
 {
   "appTitle": "ETH LSD App",
+  "chainIcon": "/images/chain/ethereum.png",
   "token": {
     "tokenName": "ETH",
     "lsdTokenName": "rETH",
