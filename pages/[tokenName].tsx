@@ -36,6 +36,18 @@ import { useBalance } from "hooks/useBalance";
 import { useLsdEthRate } from "hooks/useLsdEthRate";
 import { useWalletAccount } from "hooks/useWalletAccount";
 import { useApr } from "hooks/useApr";
+import { GetStaticProps } from "next";
+
+export async function getStaticPaths() {
+  return {
+    paths: [{ params: { tokenName: getTokenName() } }],
+    fallback: false,
+  };
+}
+
+export const getStaticProps: GetStaticProps = async (context) => {
+  return { props: {} };
+};
 
 const ETHPage = () => {
   const router = useRouter();

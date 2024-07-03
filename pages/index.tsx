@@ -1,12 +1,13 @@
-import type { NextPage } from 'next';
-import { useEffect } from 'react';
-import { useRouter } from 'next/router';
+import type { NextPage } from "next";
+import { useEffect } from "react";
+import { useRouter } from "next/router";
+import { getTokenName } from "utils/configUtils";
 
 const Home: NextPage = () => {
   const router = useRouter();
 
   useEffect(() => {
-    router.replace('/ETH');
+    router.replace(`/${getTokenName()}`);
   }, [router]);
 
   return <div></div>;
