@@ -1,37 +1,36 @@
+import classNames from "classnames";
 import { Icomoon } from "components/icon/Icomoon";
 import { getEthereumChainId, getEthereumChainName } from "config/env";
 import { useAppDispatch, useAppSelector } from "hooks/common";
-import { usePrice } from "hooks/usePrice";
+import { useAppSlice } from "hooks/selector";
+import { useApr } from "hooks/useApr";
+import { useBalance } from "hooks/useBalance";
+import { useGasPrice } from "hooks/useGasPrice";
 import { useLsdEthRate } from "hooks/useLsdEthRate";
+import { useMinimumStakeLimit } from "hooks/useMinimumStakeLimit";
+import { usePrice } from "hooks/usePrice";
 import { useWalletAccount } from "hooks/useWalletAccount";
+import { bindPopover } from "material-ui-popup-state";
+import HoverPopover from "material-ui-popup-state/HoverPopover";
+import { bindHover, usePopupState } from "material-ui-popup-state/hooks";
 import Image from "next/image";
 import { useMemo, useState } from "react";
 import { handleEthStake, updateEthBalance } from "redux/reducers/EthSlice";
 import { updateLsdEthBalance } from "redux/reducers/LsdEthSlice";
-import { connectMetaMask } from "redux/reducers/WalletSlice";
 import { RootState } from "redux/store";
+import { getLsdEthName, getTokenName } from "utils/configUtils";
+import { getTokenIcon } from "utils/iconUtils";
 import { formatLargeAmount, formatNumber } from "utils/numberUtils";
+import { useConnect, useSwitchNetwork } from "wagmi";
 import Web3 from "web3";
 import { CustomButton } from "../common/CustomButton";
 import { CustomNumberInput } from "../common/CustomNumberInput";
 import { DataLoading } from "../common/DataLoading";
-import { getTokenIcon } from "utils/iconUtils";
-import { useBalance } from "hooks/useBalance";
-import { getLsdEthName, getTokenName } from "utils/configUtils";
-import { useMinimumStakeLimit } from "hooks/useMinimumStakeLimit";
-import { useApr } from "hooks/useApr";
-import { useAppSlice } from "hooks/selector";
-import aprIcon from "public/images/apr_icon.svg";
-import HoverPopover from "material-ui-popup-state/HoverPopover";
-import { bindPopover } from "material-ui-popup-state";
-import { bindHover, usePopupState } from "material-ui-popup-state/hooks";
-import classNames from "classnames";
-import { useGasPrice } from "hooks/useGasPrice";
-import { useSwitchChain } from "wagmi";
 
 export const LsdTokenStake = () => {
   const dispatch = useAppDispatch();
-  const { switchChainAsync } = useSwitchChain();
+  const { switchNetworkAsync } = useSwitchNetwork();
+  const { connectAsync, connectors } = useConnect();
   const { darkMode } = useAppSlice();
   const { ethPrice } = usePrice();
   const { gasPrice } = useGasPrice();
@@ -165,11 +164,25 @@ export const LsdTokenStake = () => {
     return Number(lsdBalance) + Number(stakeAmount) / Number(lsdEthRate) + "";
   }, [lsdBalance, lsdEthRate, stakeAmount]);
 
-  const clickConnectWallet = () => {
+  const clickConnectWallet = async () => {
     if (isWrongMetaMaskNetwork) {
-      switchChainAsync({ chainId: getEthereumChainId() });
+      await (switchNetworkAsync && switchNetworkAsync(getEthereumChainId()));
     } else {
-      dispatch(connectMetaMask(getEthereumChainId()));
+      const metamaskConnector = connectors.find((c) => c.name === "MetaMask");
+      if (!metamaskConnector) {
+        return;
+      }
+      try {
+        await connectAsync({
+          chainId: getEthereumChainId(),
+          connector: metamaskConnector,
+        });
+      } catch (err: any) {
+        if (err.code === 4001) {
+        } else {
+          console.error(err);
+        }
+      }
     }
   };
 

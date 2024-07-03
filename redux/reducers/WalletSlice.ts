@@ -55,29 +55,6 @@ export const {
 export default walletSlice.reducer;
 
 /**
- * connect to MetaMask.
- */
-export const connectMetaMask =
-  (targetChainId: number | undefined, cb?: Function): AppThunk =>
-  async (dispatch, getState) => {
-    try {
-      const handleError = (err: any) => {
-        snackbarUtil.error(err.message);
-        cb && cb(false);
-      };
-
-      metaMask
-        .activate(targetChainId)
-        .then(() => {
-          cb && cb(true);
-        })
-        .catch(handleError);
-
-      dispatch(setMetaMaskDisconnected(false));
-    } catch (err: unknown) {}
-  };
-
-/**
  * disconnect from wallet
  */
 export const disconnectWallet = (): AppThunk => async (dispatch, getState) => {

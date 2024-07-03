@@ -1,29 +1,25 @@
-import { createConfig, http } from "wagmi";
-import { getEthereumChainId, getEthereumRpc } from "./env";
-import { holesky, mainnet, pulsechain, pulsechainV4 } from "viem/chains";
+import { w3mConnectors, w3mProvider } from "@web3modal/ethereum";
+import { configureChains, createConfig } from "wagmi";
+import { getWagmiChainConfig } from "./env";
 
-const wagmiChain =
-  getEthereumChainId() === mainnet.id
-    ? mainnet
-    : getEthereumChainId() === holesky.id
-    ? holesky
-    : getEthereumChainId() === pulsechain.id
-    ? pulsechain
-    : getEthereumChainId() === pulsechainV4.id
-    ? pulsechainV4
-    : mainnet;
+// 1. Get projectId
+// export const walletConnectProjectId = "b4a5e478100e2abc546807e8fd74dd7f";
+export const walletConnectProjectId = "49d39e856ab00fbe22d96b7a700a9739";
+// 2. Configure wagmi client
+const chains = [getWagmiChainConfig()];
 
-const transports = {
-  [mainnet.id]: http(),
-  [holesky.id]: http(),
-  [pulsechain.id]: http(),
-  [pulsechainV4.id]: http(),
-};
+const { publicClient } = configureChains(chains, [
+  w3mProvider({ projectId: walletConnectProjectId }),
+]);
 
 export const wagmiConfig = createConfig({
-  chains: [wagmiChain],
-  transports: {
-    ...transports,
-    [wagmiChain.id]: http(getEthereumRpc()),
-  },
+  autoConnect: false,
+  connectors: [
+    ...w3mConnectors({
+      // version: 2,
+      chains,
+      projectId: walletConnectProjectId,
+    }),
+  ],
+  publicClient,
 });

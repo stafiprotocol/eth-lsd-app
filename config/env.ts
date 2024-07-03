@@ -44,3 +44,36 @@ export function getLsdEthMetamaskParam() {
     tokenImage: appConfig.token.lsdTokenIconUri,
   };
 }
+
+export function getWagmiChainConfig() {
+  return {
+    id: getEthereumChainId(),
+    name: getEthereumChainName(),
+    network: getEthereumChainName(),
+    nativeCurrency: {
+      decimals: 18,
+      name: "ETH",
+      symbol: "ETH",
+    },
+    rpcUrls: {
+      default: {
+        http: [getEthereumRpc()],
+      },
+      public: {
+        http: [getEthereumRpc()],
+      },
+    },
+    blockExplorers: {
+      etherscan: {
+        name: "",
+        url: getExplorerUrl(),
+      },
+      default: {
+        name: "",
+        url: getExplorerUrl(),
+      },
+    },
+    contracts: {},
+    testnet: isDev(),
+  };
+}

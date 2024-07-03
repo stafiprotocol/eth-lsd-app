@@ -16,7 +16,7 @@ import { store } from "redux/store";
 import "styles/globals.css";
 import { theme } from "styles/material-ui-theme";
 import { SnackbarUtilsConfigurator } from "utils/snackbarUtils";
-import { WagmiProvider } from "wagmi";
+import { WagmiConfig } from "wagmi";
 
 export type NextPageWithLayout<P = {}, IP = P> = NextPage<P, IP> & {
   getLayout?: (page: ReactElement) => ReactNode;
@@ -101,12 +101,12 @@ const MyAppWrapper = ({ Component, pageProps }: any) => {
           warning: StyledMaterialDesignContent,
         }}
       >
-        <WagmiProvider config={wagmiConfig}>
+        <WagmiConfig config={wagmiConfig}>
           <QueryClientProvider client={queryClient}>
             <SnackbarUtilsConfigurator />
             <Layout>{getLayout(<Component {...pageProps} />)}</Layout>
           </QueryClientProvider>
-        </WagmiProvider>
+        </WagmiConfig>
       </SnackbarProvider>
     </ThemeProvider>
   );
