@@ -4,8 +4,7 @@ import { getTokenPriceUrl } from "utils/configUtils";
 export function usePrice() {
   const tokenPriceResult: UseQueryResult<number> = useQuery({
     queryKey: ["GetTokenPrice", getTokenPriceUrl()],
-    staleTime: 60000,
-    initialData: 0,
+    staleTime: 10000,
     queryFn: async () => {
       try {
         const response = await fetch(getTokenPriceUrl(), {
