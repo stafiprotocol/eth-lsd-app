@@ -29,6 +29,13 @@ export function getEthereumRpc() {
   return appProdConfig.rpc;
 }
 
+export function getExplorerUrl() {
+  if (isDev()) {
+    return appDevConfig.explorer;
+  }
+  return appProdConfig.explorer;
+}
+
 export function getLsdEthMetamaskParam() {
   return {
     tokenAddress: getLsdEthTokenContract(),

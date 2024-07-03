@@ -1,29 +1,22 @@
-import { isDev } from "./env";
-
-export function getEtherScanUrl() {
-  if (isDev()) {
-    return `https://holesky.etherscan.io`;
-  }
-  return `https://etherscan.io`;
-}
+import { getExplorerUrl, isDev } from "./env";
 
 export function getEtherScanTxUrl(txHash: string | undefined) {
   if (isDev()) {
-    return `https://holesky.etherscan.io/tx/${txHash}`;
+    return `${getExplorerUrl()}/tx/${txHash}`;
   }
-  return `https://etherscan.io/tx/${txHash}`;
+  return `${getExplorerUrl()}/tx/${txHash}`;
 }
 
 export function getEtherScanAccountUrl(account: string) {
   if (isDev()) {
-    return `https://holesky.etherscan.io/address/${account}`;
+    return `${getExplorerUrl()}/address/${account}`;
   }
-  return `https://etherscan.io/address/${account}`;
+  return `${getExplorerUrl()}/address/${account}`;
 }
 
 export function getEtherScanErc20TxUrl(address: any) {
   if (isDev()) {
-    return `https://holesky.etherscan.io/address/${address}#tokentxns`;
+    return `${getExplorerUrl()}/address/${address}#tokentxns`;
   }
-  return `https://etherscan.io/address/${address}#tokentxns`;
+  return `${getExplorerUrl()}/address/${address}#tokentxns`;
 }

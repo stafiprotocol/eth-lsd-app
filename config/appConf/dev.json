@@ -4,6 +4,7 @@
     "name": "Holesky"
   },
   "rpc": "https://ethereum-holesky.publicnode.com",
+  "explorer": "https://holesky.etherscan.io",
   "contracts": {
     "lsdTokenContract": {
       "address": "0x85F7c01009B1bf540699C4FDDf3589DDE60BCb14"
