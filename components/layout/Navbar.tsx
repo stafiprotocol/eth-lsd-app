@@ -4,10 +4,10 @@ import { CustomButton } from "components/common/CustomButton";
 import { NoticeDrawer } from "components/drawer/NoticeDrawer";
 import { SettingsDrawer } from "components/drawer/SettingsDrawer";
 import { Icomoon } from "components/icon/Icomoon";
+import { getEthereumChainId, getEthereumChainName } from "config/env";
 import { useAppDispatch, useAppSelector } from "hooks/common";
 import { useAppSlice } from "hooks/selector";
 import { useWalletAccount } from "hooks/useWalletAccount";
-import noticeIcon from "public/images/notice.png";
 import {
   bindPopover,
   bindTrigger,
@@ -16,14 +16,14 @@ import {
 import Image from "next/image";
 import auditIcon from "public/images/audit.svg";
 import defaultAvatar from "public/images/default_avatar.png";
+import noticeIcon from "public/images/notice.png";
 import { useEffect, useMemo, useState } from "react";
-import { connectMetaMask, disconnectWallet } from "redux/reducers/WalletSlice";
+import { disconnectWallet } from "redux/reducers/WalletSlice";
 import { RootState } from "redux/store";
-import { getShortAddress } from "utils/stringUtils";
-import { getEthereumChainId, getEthereumChainName } from "config/env";
 import { getAuditList } from "utils/configUtils";
-import { useSwitchChain } from "wagmi";
 import { getChainIcon } from "utils/iconUtils";
+import { getShortAddress } from "utils/stringUtils";
+import { useConnect, useSwitchNetwork } from "wagmi";
 
 const Navbar = () => {
   const { unreadNoticeFlag } = useAppSlice();
@@ -272,7 +272,8 @@ const UserInfo = (props: { auditExpand: boolean }) => {
 const ConnectButton = () => {
   const dispatch = useAppDispatch();
   const { metaMaskChainId } = useWalletAccount();
-  const { switchChainAsync } = useSwitchChain();
+  const { switchNetworkAsync } = useSwitchNetwork();
+  const { connectAsync, connectors } = useConnect();
 
   const isWrongMetaMaskNetwork = useMemo(() => {
     return Number(metaMaskChainId) !== getEthereumChainId();
@@ -280,9 +281,24 @@ const ConnectButton = () => {
 
   const clickConnectWallet = async () => {
     if (isWrongMetaMaskNetwork) {
-      await switchChainAsync({ chainId: getEthereumChainId() });
+      await (switchNetworkAsync && switchNetworkAsync(getEthereumChainId()));
     }
-    dispatch(connectMetaMask(getEthereumChainId()));
+
+    const metamaskConnector = connectors.find((c) => c.name === "MetaMask");
+    if (!metamaskConnector) {
+      return;
+    }
+    try {
+      await connectAsync({
+        chainId: getEthereumChainId(),
+        connector: metamaskConnector,
+      });
+    } catch (err: any) {
+      if (err.code === 4001) {
+      } else {
+        console.error(err);
+      }
+    }
   };
 
   return (
