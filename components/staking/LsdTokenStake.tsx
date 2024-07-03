@@ -26,6 +26,7 @@ import Web3 from "web3";
 import { CustomButton } from "../common/CustomButton";
 import { CustomNumberInput } from "../common/CustomNumberInput";
 import { DataLoading } from "../common/DataLoading";
+import { useDepositEnabled } from "hooks/useDepositEnabled";
 
 export const LsdTokenStake = () => {
   const dispatch = useAppDispatch();
@@ -42,6 +43,7 @@ export const LsdTokenStake = () => {
   const { metaMaskChainId, metaMaskAccount } = useWalletAccount();
 
   const { minimumDeposit: ethMinimumDeposit } = useMinimumStakeLimit();
+  const { depositEnabled } = useDepositEnabled();
 
   const { balance } = useBalance();
 
@@ -109,6 +111,9 @@ export const LsdTokenStake = () => {
   }, [transactionCost, ethPrice]);
 
   const [buttonDisabled, buttonText, isButtonSecondary] = useMemo(() => {
+    if (depositEnabled) {
+      return [true, "Stake is paused"];
+    }
     if (walletNotConnected) {
       return [false, "Connect Wallet"];
     }
