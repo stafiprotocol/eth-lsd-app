@@ -16,7 +16,6 @@ import {
 import Image from "next/image";
 import auditIcon from "public/images/audit.svg";
 import defaultAvatar from "public/images/default_avatar.png";
-import ethereumLogo from "public/images/ethereum.png";
 import { useEffect, useMemo, useState } from "react";
 import { connectMetaMask, disconnectWallet } from "redux/reducers/WalletSlice";
 import { RootState } from "redux/store";
@@ -24,6 +23,7 @@ import { getShortAddress } from "utils/stringUtils";
 import { getEthereumChainId, getEthereumChainName } from "config/env";
 import { getAuditList } from "utils/configUtils";
 import { useSwitchChain } from "wagmi";
+import { getChainIcon } from "utils/iconUtils";
 
 const Navbar = () => {
   const { unreadNoticeFlag } = useAppSlice();
@@ -149,7 +149,7 @@ const UserInfo = (props: { auditExpand: boolean }) => {
       >
         <div className="w-[.34rem] h-[.34rem] relative">
           <Image
-            src={ethereumLogo}
+            src={getChainIcon()}
             alt="logo"
             className="rounded-full  overflow-hidden"
             layout="fill"

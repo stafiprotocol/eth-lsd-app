@@ -1,5 +1,6 @@
 {
   "appTitle": "Pulse LSD App",
+  "chainIcon": "/images/chain/pulse.png",
   "token": {
     "tokenName": "PLS",
     "lsdTokenName": "rPLS",
