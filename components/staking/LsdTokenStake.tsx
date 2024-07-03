@@ -27,6 +27,7 @@ import { CustomButton } from "../common/CustomButton";
 import { CustomNumberInput } from "../common/CustomNumberInput";
 import { DataLoading } from "../common/DataLoading";
 import { useDepositEnabled } from "hooks/useDepositEnabled";
+import { setMetaMaskDisconnected } from "redux/reducers/WalletSlice";
 
 export const LsdTokenStake = () => {
   const dispatch = useAppDispatch();
@@ -111,7 +112,7 @@ export const LsdTokenStake = () => {
   }, [transactionCost, ethPrice]);
 
   const [buttonDisabled, buttonText, isButtonSecondary] = useMemo(() => {
-    if (depositEnabled) {
+    if (!depositEnabled) {
       return [true, "Stake is paused"];
     }
     if (walletNotConnected) {
@@ -178,6 +179,8 @@ export const LsdTokenStake = () => {
         return;
       }
       try {
+        dispatch(setMetaMaskDisconnected(false));
+
         await connectAsync({
           chainId: getEthereumChainId(),
           connector: metamaskConnector,

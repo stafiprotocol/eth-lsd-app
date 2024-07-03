@@ -17,6 +17,7 @@ import { useRouter } from "next/router";
 import { useMemo, useState } from "react";
 import { handleLsdEthUnstake } from "redux/reducers/EthSlice";
 import { updateLsdEthBalance } from "redux/reducers/LsdEthSlice";
+import { setMetaMaskDisconnected } from "redux/reducers/WalletSlice";
 import { RootState } from "redux/store";
 import { openLink } from "utils/commonUtils";
 import {
@@ -187,6 +188,7 @@ export const LsdTokenUnstake = () => {
         return;
       }
       try {
+        dispatch(setMetaMaskDisconnected(false));
         await connectAsync({
           chainId: getEthereumChainId(),
           connector: metamaskConnector,
