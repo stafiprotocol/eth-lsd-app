@@ -192,7 +192,8 @@ const ETHPage = () => {
             </div>
 
             <div className="mt-[.04rem] text-color-text2 text-[.16rem] scale-75 origin-bottom-left">
-              On {getSupportChains().join(", ")} Chains
+              On {getSupportChains().join(", ")}{" "}
+              {getSupportChains().length > 1 ? "Chains" : "Chain"}
             </div>
           </div>
 
