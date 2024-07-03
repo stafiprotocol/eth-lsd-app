@@ -33,11 +33,13 @@ import { bindPopover, bindHover } from "material-ui-popup-state";
 import classNames from "classnames";
 import { usePopupState } from "material-ui-popup-state/hooks";
 import { useGasPrice } from "hooks/useGasPrice";
+import { useSwitchChain } from "wagmi";
 
 export const LsdTokenUnstake = () => {
   const router = useRouter();
   const dispatch = useAppDispatch();
   const { darkMode } = useAppSlice();
+  const { switchChainAsync } = useSwitchChain();
 
   const { metaMaskAccount, metaMaskChainId } = useWalletAccount();
   const { balance } = useBalance();
@@ -178,7 +180,11 @@ export const LsdTokenUnstake = () => {
   };
 
   const clickConnectWallet = () => {
-    dispatch(connectMetaMask(getEthereumChainId()));
+    if (isWrongMetaMaskNetwork) {
+      switchChainAsync({ chainId: getEthereumChainId() });
+    } else {
+      dispatch(connectMetaMask(getEthereumChainId()));
+    }
   };
 
   const clickMax = () => {

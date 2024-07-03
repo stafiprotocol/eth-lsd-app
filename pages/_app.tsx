@@ -1,17 +1,22 @@
 import { Fade, ThemeProvider, styled } from "@mui/material";
+import {
+  QueryClientProvider,
+  useQueryClient,
+  QueryClient,
+} from "@tanstack/react-query";
 import { Layout } from "components/layout/Layout";
+import { wagmiConfig } from "config/wagmi";
 import { useAppSlice } from "hooks/selector";
 import type { NextPage } from "next";
 import type { AppProps } from "next/app";
-import { SnackbarProvider } from "notistack";
+import { MaterialDesignContent, SnackbarProvider } from "notistack";
 import { ReactElement, ReactNode, useEffect, useMemo } from "react";
 import { Provider } from "react-redux";
 import { store } from "redux/store";
+import "styles/globals.css";
 import { theme } from "styles/material-ui-theme";
 import { SnackbarUtilsConfigurator } from "utils/snackbarUtils";
-import "styles/globals.css";
-
-import { MaterialDesignContent } from "notistack";
+import { WagmiProvider } from "wagmi";
 
 export type NextPageWithLayout<P = {}, IP = P> = NextPage<P, IP> & {
   getLayout?: (page: ReactElement) => ReactNode;
@@ -48,6 +53,8 @@ function MyApp({ Component, pageProps }: AppPropsWithLayout) {
 }
 
 export default MyApp;
+
+const queryClient = new QueryClient();
 
 const MyAppWrapper = ({ Component, pageProps }: any) => {
   // Use the layout defined at the page level, if available
@@ -94,8 +101,12 @@ const MyAppWrapper = ({ Component, pageProps }: any) => {
           warning: StyledMaterialDesignContent,
         }}
       >
-        <SnackbarUtilsConfigurator />
-        <Layout>{getLayout(<Component {...pageProps} />)}</Layout>
+        <WagmiProvider config={wagmiConfig}>
+          <QueryClientProvider client={queryClient}>
+            <SnackbarUtilsConfigurator />
+            <Layout>{getLayout(<Component {...pageProps} />)}</Layout>
+          </QueryClientProvider>
+        </WagmiProvider>
       </SnackbarProvider>
     </ThemeProvider>
   );

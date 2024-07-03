@@ -23,6 +23,7 @@ import { RootState } from "redux/store";
 import { getShortAddress } from "utils/stringUtils";
 import { getEthereumChainId } from "config/env";
 import { getAuditList } from "utils/configUtils";
+import { useSwitchChain } from "wagmi";
 
 const Navbar = () => {
   const { unreadNoticeFlag } = useAppSlice();
@@ -270,8 +271,17 @@ const UserInfo = (props: { auditExpand: boolean }) => {
 
 const ConnectButton = () => {
   const dispatch = useAppDispatch();
+  const { metaMaskChainId } = useWalletAccount();
+  const { switchChainAsync } = useSwitchChain();
 
-  const clickConnectWallet = () => {
+  const isWrongMetaMaskNetwork = useMemo(() => {
+    return Number(metaMaskChainId) !== getEthereumChainId();
+  }, [metaMaskChainId]);
+
+  const clickConnectWallet = async () => {
+    if (isWrongMetaMaskNetwork) {
+      await switchChainAsync({ chainId: getEthereumChainId() });
+    }
     dispatch(connectMetaMask(getEthereumChainId()));
   };
 

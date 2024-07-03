@@ -4,6 +4,7 @@
     "name": "PulseChain Testnet v4"
   },
   "rpc": "wss://pulsechain-testnet-rpc.publicnode.com",
+  "explorer": "https://scan.v4.testnet.pulsechain.com/",
   "contracts": {
     "lsdTokenContract": {
       "address": "0x85F7c01009B1bf540699C4FDDf3589DDE60BCb14"
