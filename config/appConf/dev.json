@@ -1,22 +1,22 @@
 {
   "chain": {
-    "id": 943,
-    "name": "PulseChain Testnet v4"
+    "id": 17000,
+    "name": "Holesky"
   },
-  "rpc": "https://rpc.v4.testnet.pulsechain.com",
-  "explorer": "https://scan.v4.testnet.pulsechain.com/#",
+  "rpc": "https://ethereum-holesky.publicnode.com",
+  "explorer": "https://holesky.etherscan.io",
   "contracts": {
     "lsdTokenContract": {
-      "address": "0x21072f1Fe1f8B2b0d88ea2cba9209Ad955262b70"
+      "address": "0x85F7c01009B1bf540699C4FDDf3589DDE60BCb14"
     },
     "depositContract": {
-      "address": "0x80C6840611C36B1656E4D36BcbA29F965d7043F9"
+      "address": "0x044E54D0Fd299917eC9f5cb27B35Ce252D546A2b"
     },
     "withdrawContract": {
-      "address": "0x93564AEBDd016c9cF621e7366Ae7F9bFF554C08E"
+      "address": "0x3CB60643B531632A243dA103f3d0A860eB49EEFC"
     },
     "networkBalanceContract": {
-      "address": "0x5912ECE81449Dd83257F242A10B66b10981434E2"
+      "address": "0xbfa824c78AC83c09dBF33Fcf6bf8116496189F28"
     }
   }
 }
