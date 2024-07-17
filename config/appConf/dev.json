@@ -5,7 +5,7 @@
   },
   "rpc": "https://rpc.v4.testnet.pulsechain.com",
   "explorer": "https://scan.v4.testnet.pulsechain.com/#",
-  "blockSeconds": 12,
+  "blockSeconds": 10,
   "contracts": {
     "lsdTokenContract": {
       "address": "0x21072f1Fe1f8B2b0d88ea2cba9209Ad955262b70"
