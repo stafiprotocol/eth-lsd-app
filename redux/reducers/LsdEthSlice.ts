@@ -12,6 +12,7 @@ import {
   getNetworkBalanceContractAbi,
 } from "config/contract";
 import { getDefaultApr } from "utils/configUtils";
+import { getBlockSeconds } from "config/env";
 
 export interface LsdEthState {
   balance: string | undefined; // balance of lsdETH
@@ -106,23 +107,45 @@ export const updateApr = (): AppThunk => async (dispatch, getState) => {
   try {
     const web3 = getEthWeb3();
     const currentBlock = await web3.eth.getBlockNumber();
-    const contract = new web3.eth.Contract(
+    const networkBalanceContract = new web3.eth.Contract(
       getNetworkBalanceContractAbi(),
       getNetworkBalanceContract()
     );
+
+    const updateBalancesEpochs = await networkBalanceContract.methods
+      .updateBalancesEpochs()
+      .call()
+      .catch((err: any) => {
+        console.log({ err });
+      });
+
+    const eraSeconds = Number(updateBalancesEpochs) * (getBlockSeconds() * 32);
+
+    console.log({ eraSeconds });
+
+    const eventLength = Math.round((7 * 24 * 3600) / eraSeconds);
+    console.log({ eventLength });
+
     const topics = web3.utils.sha3(
       "BalancesUpdated(uint256,uint256,uint256,uint256)"
     );
-    const events = await contract.getPastEvents("allEvents", {
-      fromBlock: currentBlock - Math.floor((1 / 12) * 60 * 60 * 24 * 7),
+    const fromBlock =
+      currentBlock - Math.floor((1 / getBlockSeconds()) * 60 * 60 * 24 * 8);
+    // console.log({ fromBlock });
+    // console.log({ currentBlock });
+    // console.log(currentBlock - fromBlock);
+    const events = await networkBalanceContract.getPastEvents("allEvents", {
+      fromBlock: fromBlock,
       toBlock: currentBlock,
     });
     let apr = getDefaultApr();
     const balancesUpdatedEvents = events
       .filter((e) => e.raw.topics.length === 1 && e.raw.topics[0] === topics)
       .sort((a, b) => a.blockNumber - b.blockNumber);
-    if (balancesUpdatedEvents.length > 1) {
-      const beginEvent = balancesUpdatedEvents[0];
+    // console.log({ balancesUpdatedEvents });
+    if (balancesUpdatedEvents.length >= eventLength) {
+      const beginEvent =
+        balancesUpdatedEvents[balancesUpdatedEvents.length - eventLength];
       const endEvent = balancesUpdatedEvents[balancesUpdatedEvents.length - 1];
       const beginValues: any = decodeBalancesUpdatedLog(
         beginEvent.raw.data,
@@ -134,17 +157,21 @@ export const updateApr = (): AppThunk => async (dispatch, getState) => {
       );
       const beginRate = beginValues.totalEth / beginValues.lsdTokenSupply;
       const endRate = endValues.totalEth / endValues.lsdTokenSupply;
+      // console.log({ beginRate });
+      // console.log({ endRate });
       if (
         !isNaN(beginRate) &&
-        isNaN(endRate) &&
+        !isNaN(endRate) &&
         endRate !== 1 &&
         beginRate !== 1
       ) {
         apr = ((endRate - beginRate) / 7) * 365.25 * 100;
+        // console.log({ apr });
       }
     }
     dispatch(setApr(apr));
   } catch (err: any) {
+    console.log({ err });
     dispatch(setApr(apr));
   }
 };

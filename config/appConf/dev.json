@@ -3,8 +3,9 @@
     "id": 17000,
     "name": "Holesky"
   },
-  "rpc": "https://ethereum-holesky.publicnode.com",
+  "rpc": "https://rpc-holesky.rockx.com",
   "explorer": "https://holesky.etherscan.io",
+  "blockSeconds": 12,
   "contracts": {
     "lsdTokenContract": {
       "address": "0x85F7c01009B1bf540699C4FDDf3589DDE60BCb14"
