@@ -121,19 +121,13 @@ export const updateApr = (): AppThunk => async (dispatch, getState) => {
 
     const eraSeconds = Number(updateBalancesEpochs) * (getBlockSeconds() * 32);
 
-    // console.log({ eraSeconds });
-
     const eventLength = Math.round((7 * 24 * 3600) / eraSeconds);
-    // console.log({ eventLength });
 
     const topics = web3.utils.sha3(
       "BalancesUpdated(uint256,uint256,uint256,uint256)"
     );
     const fromBlock =
       currentBlock - Math.floor((1 / getBlockSeconds()) * 60 * 60 * 24 * 8);
-    // console.log({ fromBlock });
-    // console.log({ currentBlock });
-    // console.log(currentBlock - fromBlock);
     const events = await networkBalanceContract.getPastEvents("allEvents", {
       fromBlock: fromBlock,
       toBlock: currentBlock,
@@ -142,10 +136,9 @@ export const updateApr = (): AppThunk => async (dispatch, getState) => {
     const balancesUpdatedEvents = events
       .filter((e) => e.raw.topics.length === 1 && e.raw.topics[0] === topics)
       .sort((a, b) => a.blockNumber - b.blockNumber);
-    // console.log({ balancesUpdatedEvents });
-    if (balancesUpdatedEvents.length >= eventLength) {
+    if (balancesUpdatedEvents.length > eventLength) {
       const beginEvent =
-        balancesUpdatedEvents[balancesUpdatedEvents.length - eventLength];
+        balancesUpdatedEvents[balancesUpdatedEvents.length - eventLength - 1];
       const endEvent = balancesUpdatedEvents[balancesUpdatedEvents.length - 1];
       const beginValues: any = decodeBalancesUpdatedLog(
         beginEvent.raw.data,
@@ -157,8 +150,6 @@ export const updateApr = (): AppThunk => async (dispatch, getState) => {
       );
       const beginRate = beginValues.totalEth / beginValues.lsdTokenSupply;
       const endRate = endValues.totalEth / endValues.lsdTokenSupply;
-      // console.log({ beginRate });
-      // console.log({ endRate });
       if (
         !isNaN(beginRate) &&
         !isNaN(endRate) &&
@@ -166,7 +157,6 @@ export const updateApr = (): AppThunk => async (dispatch, getState) => {
         beginRate !== 1
       ) {
         apr = ((endRate - beginRate) / 7) * 365.25 * 100;
-        // console.log({ apr });
       }
     }
     dispatch(setApr(apr));
