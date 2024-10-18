@@ -27,4 +27,4 @@ Run `yarn build` or `yarn build:dev` to build your app, the static files will be
 
 ## Other resources
 
-You can find more details here: [lsaas-docs](https://lsaas-docs.stafi.io/docs/developethlsd/ethlsdapp.html)
+You can find more details here: [lsaas-docs](https://docs.stafi.io/lsaas/develop_eth_lsd/ethlsdapp/)
