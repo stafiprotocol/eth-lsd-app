@@ -23,7 +23,7 @@ export function useEthWithdrawLimit() {
   useEffect(() => {
     if (metaMaskAccount) {
       (async () => {
-        const web3 = createWeb3();
+        const web3 = createWeb3(window.ethereum);
         const customWeb3 = getEthWeb3();
         const contract = new web3.eth.Contract(
           getEthWithdrawContractAbi(),

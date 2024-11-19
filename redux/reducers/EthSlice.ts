@@ -143,7 +143,7 @@ export const handleEthStake =
         })
       );
 
-      const web3 = createWeb3();
+      const web3 = createWeb3(window.ethereum);
       const metaMaskAccount = getState().wallet.metaMaskAccount;
       if (!metaMaskAccount) {
         throw new Error("Please connect MetaMask");
@@ -276,7 +276,7 @@ export const handleLsdEthUnstake =
         throw new Error("Please connect MetaMask");
       }
 
-      const web3 = createWeb3();
+      const web3 = createWeb3(window.ethereum);
       const contract = new web3.eth.Contract(
         getEthWithdrawContractAbi(),
         getEthWithdrawContract(),
@@ -431,7 +431,7 @@ export const handleEthWithdraw =
         throw new Error("Please connect MetaMask");
       }
 
-      const web3 = createWeb3();
+      const web3 = createWeb3(window.ethereum);
       const contract = new web3.eth.Contract(
         getEthWithdrawContractAbi(),
         getEthWithdrawContract(),
