@@ -1,61 +1,301 @@
 [
   {
     "inputs": [
-      { "internalType": "string", "name": "_name", "type": "string" },
-      { "internalType": "string", "name": "_symbol", "type": "string" }
+      {
+        "internalType": "string",
+        "name": "_name",
+        "type": "string"
+      },
+      {
+        "internalType": "string",
+        "name": "_symbol",
+        "type": "string"
+      }
     ],
     "stateMutability": "nonpayable",
     "type": "constructor"
   },
-  { "inputs": [], "name": "AddressNotAllowed", "type": "error" },
-  { "inputs": [], "name": "AlreadyClaimed", "type": "error" },
-  { "inputs": [], "name": "AlreadyDealedEpoch", "type": "error" },
-  { "inputs": [], "name": "AlreadyDealedHeight", "type": "error" },
-  { "inputs": [], "name": "AlreadyInitialized", "type": "error" },
-  { "inputs": [], "name": "AlreadyNotifiedCycle", "type": "error" },
-  { "inputs": [], "name": "AlreadyVoted", "type": "error" },
-  { "inputs": [], "name": "AmountNotZero", "type": "error" },
-  { "inputs": [], "name": "AmountUnmatch", "type": "error" },
-  { "inputs": [], "name": "AmountZero", "type": "error" },
-  { "inputs": [], "name": "BalanceNotEnough", "type": "error" },
-  { "inputs": [], "name": "BlockNotMatch", "type": "error" },
-  { "inputs": [], "name": "CallerNotAllowed", "type": "error" },
-  { "inputs": [], "name": "ClaimableAmountZero", "type": "error" },
-  { "inputs": [], "name": "ClaimableDepositZero", "type": "error" },
-  { "inputs": [], "name": "ClaimableRewardZero", "type": "error" },
-  { "inputs": [], "name": "ClaimableWithdrawIndexOverflow", "type": "error" },
-  { "inputs": [], "name": "CommissionRateInvalid", "type": "error" },
-  { "inputs": [], "name": "CycleNotMatch", "type": "error" },
-  { "inputs": [], "name": "DepositAmountLTMinAmount", "type": "error" },
-  { "inputs": [], "name": "EthAmountZero", "type": "error" },
-  { "inputs": [], "name": "FailedToCall", "type": "error" },
-  { "inputs": [], "name": "InvalidMerkleProof", "type": "error" },
-  { "inputs": [], "name": "InvalidThreshold", "type": "error" },
-  { "inputs": [], "name": "LengthNotMatch", "type": "error" },
-  { "inputs": [], "name": "LsdTokenAmountZero", "type": "error" },
-  { "inputs": [], "name": "NodeAlreadyExist", "type": "error" },
-  { "inputs": [], "name": "NodeAlreadyRemoved", "type": "error" },
-  { "inputs": [], "name": "NodeNotClaimable", "type": "error" },
-  { "inputs": [], "name": "NotAuthorizedLsdToken", "type": "error" },
-  { "inputs": [], "name": "NotClaimable", "type": "error" },
-  { "inputs": [], "name": "NotPubkeyOwner", "type": "error" },
-  { "inputs": [], "name": "NotTrustNode", "type": "error" },
-  { "inputs": [], "name": "ProposalExecFailed", "type": "error" },
-  { "inputs": [], "name": "PubkeyAlreadyExist", "type": "error" },
-  { "inputs": [], "name": "PubkeyNotExist", "type": "error" },
-  { "inputs": [], "name": "PubkeyNumberOverLimit", "type": "error" },
-  { "inputs": [], "name": "PubkeyStatusUnmatch", "type": "error" },
-  { "inputs": [], "name": "RateChangeOverLimit", "type": "error" },
-  { "inputs": [], "name": "SecondsZero", "type": "error" },
-  { "inputs": [], "name": "SoloNodeDepositAmountZero", "type": "error" },
-  { "inputs": [], "name": "SoloNodeDepositDisabled", "type": "error" },
-  { "inputs": [], "name": "SubmitBalancesDisabled", "type": "error" },
-  { "inputs": [], "name": "TrustNodeDepositDisabled", "type": "error" },
-  { "inputs": [], "name": "UserDepositDisabled", "type": "error" },
-  { "inputs": [], "name": "VotersDuplicate", "type": "error" },
-  { "inputs": [], "name": "VotersNotEnough", "type": "error" },
-  { "inputs": [], "name": "VotersNotExist", "type": "error" },
-  { "inputs": [], "name": "WithdrawIndexEmpty", "type": "error" },
+  {
+    "inputs": [],
+    "name": "AddressNotAllowed",
+    "type": "error"
+  },
+  {
+    "inputs": [],
+    "name": "AlreadyClaimed",
+    "type": "error"
+  },
+  {
+    "inputs": [],
+    "name": "AlreadyDealedEpoch",
+    "type": "error"
+  },
+  {
+    "inputs": [],
+    "name": "AlreadyDealedHeight",
+    "type": "error"
+  },
+  {
+    "inputs": [],
+    "name": "AlreadyInitialized",
+    "type": "error"
+  },
+  {
+    "inputs": [],
+    "name": "AlreadyNotifiedCycle",
+    "type": "error"
+  },
+  {
+    "inputs": [],
+    "name": "AlreadyVoted",
+    "type": "error"
+  },
+  {
+    "inputs": [],
+    "name": "AmountNotZero",
+    "type": "error"
+  },
+  {
+    "inputs": [],
+    "name": "AmountUnmatch",
+    "type": "error"
+  },
+  {
+    "inputs": [],
+    "name": "AmountZero",
+    "type": "error"
+  },
+  {
+    "inputs": [],
+    "name": "BalanceNotEnough",
+    "type": "error"
+  },
+  {
+    "inputs": [],
+    "name": "BlockNotMatch",
+    "type": "error"
+  },
+  {
+    "inputs": [],
+    "name": "CallerNotAllowed",
+    "type": "error"
+  },
+  {
+    "inputs": [],
+    "name": "ClaimableAmountZero",
+    "type": "error"
+  },
+  {
+    "inputs": [],
+    "name": "ClaimableDepositZero",
+    "type": "error"
+  },
+  {
+    "inputs": [],
+    "name": "ClaimableRewardZero",
+    "type": "error"
+  },
+  {
+    "inputs": [],
+    "name": "ClaimableWithdrawIndexOverflow",
+    "type": "error"
+  },
+  {
+    "inputs": [],
+    "name": "CommissionRateInvalid",
+    "type": "error"
+  },
+  {
+    "inputs": [],
+    "name": "CycleNotMatch",
+    "type": "error"
+  },
+  {
+    "inputs": [],
+    "name": "DepositAmountGTMaxAmount",
+    "type": "error"
+  },
+  {
+    "inputs": [],
+    "name": "DepositAmountLTMinAmount",
+    "type": "error"
+  },
+  {
+    "inputs": [],
+    "name": "EmptyEntrustedVoters",
+    "type": "error"
+  },
+  {
+    "inputs": [],
+    "name": "EthAmountZero",
+    "type": "error"
+  },
+  {
+    "inputs": [],
+    "name": "FailedToCall",
+    "type": "error"
+  },
+  {
+    "inputs": [],
+    "name": "InvalidMerkleProof",
+    "type": "error"
+  },
+  {
+    "inputs": [],
+    "name": "InvalidThreshold",
+    "type": "error"
+  },
+  {
+    "inputs": [],
+    "name": "LengthNotMatch",
+    "type": "error"
+  },
+  {
+    "inputs": [],
+    "name": "LsdTokenAmountZero",
+    "type": "error"
+  },
+  {
+    "inputs": [],
+    "name": "LsdTokenCanOnlyUseOnce",
+    "type": "error"
+  },
+  {
+    "inputs": [],
+    "name": "NodeAlreadyExist",
+    "type": "error"
+  },
+  {
+    "inputs": [],
+    "name": "NodeAlreadyRemoved",
+    "type": "error"
+  },
+  {
+    "inputs": [],
+    "name": "NodeNotClaimable",
+    "type": "error"
+  },
+  {
+    "inputs": [],
+    "name": "NotAuthorizedLsdToken",
+    "type": "error"
+  },
+  {
+    "inputs": [],
+    "name": "NotClaimable",
+    "type": "error"
+  },
+  {
+    "inputs": [],
+    "name": "NotPubkeyOwner",
+    "type": "error"
+  },
+  {
+    "inputs": [],
+    "name": "NotTrustNode",
+    "type": "error"
+  },
+  {
+    "inputs": [],
+    "name": "ProposalExecFailed",
+    "type": "error"
+  },
+  {
+    "inputs": [],
+    "name": "PubkeyAlreadyExist",
+    "type": "error"
+  },
+  {
+    "inputs": [],
+    "name": "PubkeyNotExist",
+    "type": "error"
+  },
+  {
+    "inputs": [],
+    "name": "PubkeyNumberOverLimit",
+    "type": "error"
+  },
+  {
+    "inputs": [],
+    "name": "PubkeyStatusUnmatch",
+    "type": "error"
+  },
+  {
+    "inputs": [],
+    "name": "RateChangeOverLimit",
+    "type": "error"
+  },
+  {
+    "inputs": [],
+    "name": "SoloNodeDepositAmountZero",
+    "type": "error"
+  },
+  {
+    "inputs": [],
+    "name": "SoloNodeDepositDisabled",
+    "type": "error"
+  },
+  {
+    "inputs": [],
+    "name": "SubmitBalancesDisabled",
+    "type": "error"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "uint256",
+        "name": "min",
+        "type": "uint256"
+      }
+    ],
+    "name": "TooLow",
+    "type": "error"
+  },
+  {
+    "inputs": [],
+    "name": "TrustNodeDepositDisabled",
+    "type": "error"
+  },
+  {
+    "inputs": [],
+    "name": "UnknownClaimType",
+    "type": "error"
+  },
+  {
+    "inputs": [],
+    "name": "UnknownDistributeType",
+    "type": "error"
+  },
+  {
+    "inputs": [],
+    "name": "UnknownNodeType",
+    "type": "error"
+  },
+  {
+    "inputs": [],
+    "name": "UserDepositDisabled",
+    "type": "error"
+  },
+  {
+    "inputs": [],
+    "name": "VotersDuplicate",
+    "type": "error"
+  },
+  {
+    "inputs": [],
+    "name": "VotersNotEnough",
+    "type": "error"
+  },
+  {
+    "inputs": [],
+    "name": "VotersNotExist",
+    "type": "error"
+  },
+  {
+    "inputs": [],
+    "name": "WithdrawIndexEmpty",
+    "type": "error"
+  },
   {
     "anonymous": false,
     "inputs": [
@@ -85,6 +325,25 @@
     "anonymous": false,
     "inputs": [
       {
+        "indexed": false,
+        "internalType": "address",
+        "name": "oldMinter",
+        "type": "address"
+      },
+      {
+        "indexed": false,
+        "internalType": "address",
+        "name": "newMinter",
+        "type": "address"
+      }
+    ],
+    "name": "MinterChanged",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
         "indexed": true,
         "internalType": "address",
         "name": "from",
@@ -108,36 +367,78 @@
   },
   {
     "inputs": [
-      { "internalType": "address", "name": "owner", "type": "address" },
-      { "internalType": "address", "name": "spender", "type": "address" }
+      {
+        "internalType": "address",
+        "name": "owner",
+        "type": "address"
+      },
+      {
+        "internalType": "address",
+        "name": "spender",
+        "type": "address"
+      }
     ],
     "name": "allowance",
-    "outputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }],
+    "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
+    ],
     "stateMutability": "view",
     "type": "function"
   },
   {
     "inputs": [
-      { "internalType": "address", "name": "spender", "type": "address" },
-      { "internalType": "uint256", "name": "amount", "type": "uint256" }
+      {
+        "internalType": "address",
+        "name": "spender",
+        "type": "address"
+      },
+      {
+        "internalType": "uint256",
+        "name": "amount",
+        "type": "uint256"
+      }
     ],
     "name": "approve",
-    "outputs": [{ "internalType": "bool", "name": "", "type": "bool" }],
+    "outputs": [
+      {
+        "internalType": "bool",
+        "name": "",
+        "type": "bool"
+      }
+    ],
     "stateMutability": "nonpayable",
     "type": "function"
   },
   {
     "inputs": [
-      { "internalType": "address", "name": "account", "type": "address" }
+      {
+        "internalType": "address",
+        "name": "account",
+        "type": "address"
+      }
     ],
     "name": "balanceOf",
-    "outputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }],
+    "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
+    ],
     "stateMutability": "view",
     "type": "function"
   },
   {
     "inputs": [
-      { "internalType": "uint256", "name": "amount", "type": "uint256" }
+      {
+        "internalType": "uint256",
+        "name": "amount",
+        "type": "uint256"
+      }
     ],
     "name": "burn",
     "outputs": [],
@@ -146,8 +447,16 @@
   },
   {
     "inputs": [
-      { "internalType": "address", "name": "account", "type": "address" },
-      { "internalType": "uint256", "name": "amount", "type": "uint256" }
+      {
+        "internalType": "address",
+        "name": "account",
+        "type": "address"
+      },
+      {
+        "internalType": "uint256",
+        "name": "amount",
+        "type": "uint256"
+      }
     ],
     "name": "burnFrom",
     "outputs": [],
@@ -157,13 +466,23 @@
   {
     "inputs": [],
     "name": "decimals",
-    "outputs": [{ "internalType": "uint8", "name": "", "type": "uint8" }],
+    "outputs": [
+      {
+        "internalType": "uint8",
+        "name": "",
+        "type": "uint8"
+      }
+    ],
     "stateMutability": "view",
     "type": "function"
   },
   {
     "inputs": [
-      { "internalType": "address", "name": "spender", "type": "address" },
+      {
+        "internalType": "address",
+        "name": "spender",
+        "type": "address"
+      },
       {
         "internalType": "uint256",
         "name": "subtractedValue",
@@ -171,30 +490,60 @@
       }
     ],
     "name": "decreaseAllowance",
-    "outputs": [{ "internalType": "bool", "name": "", "type": "bool" }],
+    "outputs": [
+      {
+        "internalType": "bool",
+        "name": "",
+        "type": "bool"
+      }
+    ],
     "stateMutability": "nonpayable",
     "type": "function"
   },
   {
     "inputs": [],
     "name": "getRate",
-    "outputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }],
+    "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
+    ],
     "stateMutability": "view",
     "type": "function"
   },
   {
     "inputs": [
-      { "internalType": "address", "name": "spender", "type": "address" },
-      { "internalType": "uint256", "name": "addedValue", "type": "uint256" }
+      {
+        "internalType": "address",
+        "name": "spender",
+        "type": "address"
+      },
+      {
+        "internalType": "uint256",
+        "name": "addedValue",
+        "type": "uint256"
+      }
     ],
     "name": "increaseAllowance",
-    "outputs": [{ "internalType": "bool", "name": "", "type": "bool" }],
+    "outputs": [
+      {
+        "internalType": "bool",
+        "name": "",
+        "type": "bool"
+      }
+    ],
     "stateMutability": "nonpayable",
     "type": "function"
   },
   {
     "inputs": [
-      { "internalType": "address", "name": "_minter", "type": "address" }
+      {
+        "internalType": "address",
+        "name": "_minter",
+        "type": "address"
+      }
     ],
     "name": "initMinter",
     "outputs": [],
@@ -203,7 +552,11 @@
   },
   {
     "inputs": [
-      { "internalType": "address", "name": "_to", "type": "address" },
+      {
+        "internalType": "address",
+        "name": "_to",
+        "type": "address"
+      },
       {
         "internalType": "uint256",
         "name": "_lsdTokenAmount",
@@ -218,49 +571,118 @@
   {
     "inputs": [],
     "name": "minter",
-    "outputs": [{ "internalType": "address", "name": "", "type": "address" }],
+    "outputs": [
+      {
+        "internalType": "address",
+        "name": "",
+        "type": "address"
+      }
+    ],
     "stateMutability": "view",
     "type": "function"
   },
   {
     "inputs": [],
     "name": "name",
-    "outputs": [{ "internalType": "string", "name": "", "type": "string" }],
+    "outputs": [
+      {
+        "internalType": "string",
+        "name": "",
+        "type": "string"
+      }
+    ],
     "stateMutability": "view",
     "type": "function"
   },
   {
     "inputs": [],
     "name": "symbol",
-    "outputs": [{ "internalType": "string", "name": "", "type": "string" }],
+    "outputs": [
+      {
+        "internalType": "string",
+        "name": "",
+        "type": "string"
+      }
+    ],
     "stateMutability": "view",
     "type": "function"
   },
   {
     "inputs": [],
     "name": "totalSupply",
-    "outputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }],
+    "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
+    ],
     "stateMutability": "view",
     "type": "function"
   },
   {
     "inputs": [
-      { "internalType": "address", "name": "to", "type": "address" },
-      { "internalType": "uint256", "name": "amount", "type": "uint256" }
+      {
+        "internalType": "address",
+        "name": "to",
+        "type": "address"
+      },
+      {
+        "internalType": "uint256",
+        "name": "amount",
+        "type": "uint256"
+      }
     ],
     "name": "transfer",
-    "outputs": [{ "internalType": "bool", "name": "", "type": "bool" }],
+    "outputs": [
+      {
+        "internalType": "bool",
+        "name": "",
+        "type": "bool"
+      }
+    ],
     "stateMutability": "nonpayable",
     "type": "function"
   },
   {
     "inputs": [
-      { "internalType": "address", "name": "from", "type": "address" },
-      { "internalType": "address", "name": "to", "type": "address" },
-      { "internalType": "uint256", "name": "amount", "type": "uint256" }
+      {
+        "internalType": "address",
+        "name": "from",
+        "type": "address"
+      },
+      {
+        "internalType": "address",
+        "name": "to",
+        "type": "address"
+      },
+      {
+        "internalType": "uint256",
+        "name": "amount",
+        "type": "uint256"
+      }
     ],
     "name": "transferFrom",
-    "outputs": [{ "internalType": "bool", "name": "", "type": "bool" }],
+    "outputs": [
+      {
+        "internalType": "bool",
+        "name": "",
+        "type": "bool"
+      }
+    ],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "_newMinter",
+        "type": "address"
+      }
+    ],
+    "name": "updateMinter",
+    "outputs": [],
     "stateMutability": "nonpayable",
     "type": "function"
   }

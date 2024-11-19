@@ -1,23 +1,23 @@
 {
   "chain": {
-    "id": 1,
-    "name": "Ethereum"
+    "id": 105105,
+    "name": "Stratis"
   },
-  "rpc": "https://mainnet.infura.io/v3/b3611f564322439ab2491e04ddd55b39",
-  "explorer": "https://etherscan.io",
-  "blockSeconds": 12,
+  "rpc": "https://rpc.stratisevm.com",
+  "explorer": "https://explorer.stratisevm.com",
+  "blockSeconds": 15,
   "contracts": {
     "lsdTokenContract": {
-      "address": "0x9559aaa82d9649c7a7b220e7c461d2e74c9a3593"
+      "address": ""
     },
     "depositContract": {
-      "address": "0x70C5744d377aE6E9926CcBCF19D501340CB26285"
+      "address": ""
     },
     "withdrawContract": {
-      "address": "0xE773dbe9d073dBEfdC147fbdCCB06dBD4f5AAF54"
+      "address": ""
     },
     "networkBalanceContract": {
-      "address": "0xda9726Fd1B125a3923f9D9521e28fE888091698d"
+      "address": ""
     }
   }
 }

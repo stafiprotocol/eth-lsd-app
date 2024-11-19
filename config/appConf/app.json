@@ -1,133 +1,138 @@
 {
-	"appTitle": "ETH LSD App",
-	"chainIcon": "/images/chain/ethereum.png",
-	"token": {
-		"tokenName": "ETH",
-		"lsdTokenName": "rETH",
-		"supportChains": ["Ethereum", "Arbitrum", "Optimism", "Polygon"],
-		"lsdTokenIconUri": "https://cdn.stafi.io/rtoken/logo/rETH.png",
-		"tokenIcon": "/images/token/ETH.svg",
-		"lsdTokenIcon": "/images/token/rETH.svg"
-	},
-	"unstake": {
-		"lockTipLink": "https://docs.stafi.io/stake/stakingeth/unstake/",
-		"duration": "1-5 days"
-	},
-	"apr": 3.1,
-	"detailedInfo": {
-		"audit": {
-			"nameList": ["Peckshield", "Blocksec"],
-			"link": "https://github.com/stafiprotocol/security/blob/main/audits/202304_BlockSec_StaFi-ETHWithdraw/blocksec_stafi_v1.0-signed.pdf"
-		},
-		"listedIns": [
-			{
-				"name": "Coingecko",
-				"link": "https://www.coingecko.com/en/coins/stafi-staked-eth"
-			},
-			{
-				"name": "Defilama",
-				"link": "https://defillama.com/yields/pool/b2fe5b13-eca4-47cc-b3fd-1de24a296018"
-			}
-		]
-	},
-	"auditList": [
-		{
-			"name": "PeckShield",
-			"icon": "/images/audit/peck_shield.svg",
-			"iconDark": "/images/audit/peck_shield_dark.svg"
-		},
-		{
-			"name": "BlockSec",
-			"icon": "/images/audit/block_sec.svg",
-			"iconDark": "/images/audit/block_sec_dark.svg"
-		}
-	],
-	"faqList": [
-		{
-			"title": "What are the factors that affect the staking rewards?",
-			"contents": [
-				{
-					"type": "text",
-					"content": "Staking rewards in the StaFi protocol are influenced by various factors including the total amount of native tokens staked and redeemed, the staking rewards earned, slash occurrences, penalties, and the commission ratio. Slashing events, caused by disconnection or malicious behavior of validator nodes, could potentially reduce rewards; however, StaFi mitigates this risk by diversifying the staking funds across multiple validators with clean records and requiring them to provide additional deposits as collaterals. The staking reward claim status and the timing of claims on the original chain can also affect staking rewards.\n"
-				},
-				{
-					"type": "text",
-					"content": "To learn more about how staking rewards are calculated, please read:\n"
-				},
-				{
-					"type": "link",
-					"content": "https://docs.stafi.io/lsaas/develop_eth_lsd/deploy/#rewards-distribution\n",
-					"link": "https://docs.stafi.io/lsaas/develop_eth_lsd/deploy/#rewards-distribution"
-				}
-			]
-		},
-		{
-			"title": "How much time is needed for ETH withdrawals?",
-			"contents": [
-				{
-					"type": "text",
-					"content": "If the unstaking pool's ETH balance exceeds your withdrawal amount, you will instantly receive your ETH upon transaction approval.\n"
-				},
-				{
-					"type": "text",
-					"content": "However, if the unstaking pool's ETH balance is less than your withdrawal amount, the withdrawal process will take 1-5 days. After this period, you can claim your ETH using the withdraw function.\n"
-				}
-			]
-		},
-		{
-			"title": "What's the exchange rate of rETH?",
-			"contents": [
-				{
-					"type": "text",
-					"content": "To learn more about the exchange rate of rTokens and how they are calculated, please read:\n"
-				},
-				{
-					"type": "link",
-					"content": "https://docs.stafi.io/stake/rtoken/#rtoken-exchange-rate\n",
-					"link": "https://docs.stafi.io/stake/rtoken/#rtoken-exchange-rate"
-				}
-			]
-		}
-	],
-	"externalLinkList": [
-		{
-			"name": "Docs",
-			"link": "https://docs.stafi.io/"
-		},
-		{
-			"name": "Website",
-			"link": "https://www.stafi.io/"
-		},
-		{
-			"name": "DAO Forum",
-			"link": "https://dao.stafi.io/"
-		},
-		{
-			"name": "Dune Dashboard",
-			"link": "https://dune.com/stafi-analysis/stafi"
-		},
-		{
-			"name": "rETH Listing",
-			"link": "https://docs.stafi.io/"
-		}
-	],
-	"contactList": [
-		{
-			"type": "Twitter",
-			"link": "https://twitter.com/Stafi_Protocol"
-		},
-		{
-			"type": "Medium",
-			"link": "https://stafi-protocol.medium.com/"
-		},
-		{
-			"type": "Discord",
-			"link": "https://discord.com/invite/jB77etn"
-		},
-		{
-			"type": "Telegram",
-			"link": "https://t.me/stafi_protocol"
-		}
-	],
-	"tokenPriceUrl": "https://api.coingecko.com/api/v3/simple/price?ids=ethereum&vs_currencies=usd"
+  "appTitle": "STRAX LSD App",
+  "chainIcon": "/images/token/STRAX.svg",
+  "token": {
+    "tokenName": "STRAX",
+    "lsdTokenName": "rSTRAX",
+    "supportChains": [
+      "Stratis"
+    ],
+    "lsdTokenIconUri": "/images/token/STRAX.svg",
+    "tokenIcon": "/images/token/STRAX.svg",
+    "lsdTokenIcon": "/images/token/STRAX.svg"
+  },
+  "unstake": {
+    "lockTipLink": "https://docs.stafi.io/stake/stakingeth/unstake/",
+    "duration": "1-5 days"
+  },
+  "apr": 0,
+  "detailedInfo": {
+    "audit": {
+      "nameList": [
+        "Peckshield",
+        "Blocksec"
+      ],
+      "link": "https://github.com/stafiprotocol/security/blob/main/audits/202304_BlockSec_StaFi-ETHWithdraw/blocksec_stafi_v1.0-signed.pdf"
+    },
+    "listedIns": [
+      {
+        "name": "Coingecko",
+        "link": "https://www.coingecko.com/en/coins/stafi-staked-eth"
+      },
+      {
+        "name": "Defilama",
+        "link": "https://defillama.com/yields/pool/b2fe5b13-eca4-47cc-b3fd-1de24a296018"
+      }
+    ]
+  },
+  "auditList": [
+    {
+      "name": "PeckShield",
+      "icon": "/images/audit/peck_shield.svg",
+      "iconDark": "/images/audit/peck_shield_dark.svg"
+    },
+    {
+      "name": "BlockSec",
+      "icon": "/images/audit/block_sec.svg",
+      "iconDark": "/images/audit/block_sec_dark.svg"
+    }
+  ],
+  "faqList": [
+    {
+      "title": "What are the factors that affect the staking rewards?",
+      "contents": [
+        {
+          "type": "text",
+          "content": "Staking rewards in the StaFi protocol are influenced by various factors including the total amount of native tokens staked and redeemed, the staking rewards earned, slash occurrences, penalties, and the commission ratio. Slashing events, caused by disconnection or malicious behavior of validator nodes, could potentially reduce rewards; however, StaFi mitigates this risk by diversifying the staking funds across multiple validators with clean records and requiring them to provide additional deposits as collaterals. The staking reward claim status and the timing of claims on the original chain can also affect staking rewards.\n"
+        },
+        {
+          "type": "text",
+          "content": "To learn more about how staking rewards are calculated, please read:\n"
+        },
+        {
+          "type": "link",
+          "content": "https://docs.stafi.io/lsaas/develop_eth_lsd/deploy/#rewards-distribution\n",
+          "link": "https://docs.stafi.io/lsaas/develop_eth_lsd/deploy/#rewards-distribution"
+        }
+      ]
+    },
+    {
+      "title": "How much time is needed for ETH withdrawals?",
+      "contents": [
+        {
+          "type": "text",
+          "content": "If the unstaking pool's ETH balance exceeds your withdrawal amount, you will instantly receive your ETH upon transaction approval.\n"
+        },
+        {
+          "type": "text",
+          "content": "However, if the unstaking pool's ETH balance is less than your withdrawal amount, the withdrawal process will take 1-5 days. After this period, you can claim your ETH using the withdraw function.\n"
+        }
+      ]
+    },
+    {
+      "title": "What's the exchange rate of rETH?",
+      "contents": [
+        {
+          "type": "text",
+          "content": "To learn more about the exchange rate of rTokens and how they are calculated, please read:\n"
+        },
+        {
+          "type": "link",
+          "content": "https://docs.stafi.io/stake/rtoken/#rtoken-exchange-rate\n",
+          "link": "https://docs.stafi.io/stake/rtoken/#rtoken-exchange-rate"
+        }
+      ]
+    }
+  ],
+  "externalLinkList": [
+    {
+      "name": "Docs",
+      "link": "https://docs.stafi.io/"
+    },
+    {
+      "name": "Website",
+      "link": "https://www.stafi.io/"
+    },
+    {
+      "name": "DAO Forum",
+      "link": "https://dao.stafi.io/"
+    },
+    {
+      "name": "Dune Dashboard",
+      "link": "https://dune.com/stafi-analysis/stafi"
+    },
+    {
+      "name": "rETH Listing",
+      "link": "https://docs.stafi.io/"
+    }
+  ],
+  "contactList": [
+    {
+      "type": "Twitter",
+      "link": "https://twitter.com/Stafi_Protocol"
+    },
+    {
+      "type": "Medium",
+      "link": "https://stafi-protocol.medium.com/"
+    },
+    {
+      "type": "Discord",
+      "link": "https://discord.com/invite/jB77etn"
+    },
+    {
+      "type": "Telegram",
+      "link": "https://t.me/stafi_protocol"
+    }
+  ],
+  "tokenPriceUrl": "https://api.coingecko.com/api/v3/simple/price?ids=stratis&vs_currencies=usd"
 }

@@ -126,11 +126,14 @@ export const updateApr = (): AppThunk => async (dispatch, getState) => {
     const topics = web3.utils.sha3(
       "BalancesUpdated(uint256,uint256,uint256,uint256)"
     );
-    const fromBlock =
+    let fromBlock =
       currentBlock - Math.floor((1 / getBlockSeconds()) * 60 * 60 * 24 * 8);
+    if (fromBlock < 0) {
+      fromBlock = 0
+    }
     const events = await networkBalanceContract.getPastEvents("allEvents", {
-      fromBlock: fromBlock,
-      toBlock: currentBlock,
+      fromBlock: `0x${fromBlock.toString(16)}`,
+      toBlock: `0x${currentBlock.toString(16)}`,
     });
     let apr = getDefaultApr();
     const balancesUpdatedEvents = events

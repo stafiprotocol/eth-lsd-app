@@ -1,23 +1,23 @@
 {
   "chain": {
-    "id": 17000,
-    "name": "Holesky"
+    "id": 205205,
+    "name": "Auroria"
   },
-  "rpc": "https://rpc-holesky.rockx.com",
-  "explorer": "https://holesky.etherscan.io",
-  "blockSeconds": 12,
+  "rpc": "https://auroria.rpc.stratisevm.com",
+  "explorer": "https://auroria.explorer.stratisevm.com",
+  "blockSeconds": 15,
   "contracts": {
     "lsdTokenContract": {
-      "address": "0x85F7c01009B1bf540699C4FDDf3589DDE60BCb14"
+      "address": "0x5c0958e166144606A5d0Aeaf8efe2f1110c37B53"
     },
     "depositContract": {
-      "address": "0x044E54D0Fd299917eC9f5cb27B35Ce252D546A2b"
+      "address": "0x632ae1A591D165C68cF3cCccA492748a2184d37b"
     },
     "withdrawContract": {
-      "address": "0x3CB60643B531632A243dA103f3d0A860eB49EEFC"
+      "address": "0xce5C6540a239D13453Ac601Fe359CDc2eBB5F84F"
     },
     "networkBalanceContract": {
-      "address": "0xbfa824c78AC83c09dBF33Fcf6bf8116496189F28"
+      "address": "0x15A0EB8a9412278E67676bA97f3c0C9F89112843"
     }
   }
 }
