@@ -3,7 +3,7 @@
     "id": 205205,
     "name": "Auroria"
   },
-  "rpc": "http://207.154.197.204:8545",
+  "rpc": "https://auroria.rpc.stratisevm.com",
   "explorer": "https://auroria.explorer.stratisevm.com",
   "blockSeconds": 15,
   "contracts": {
