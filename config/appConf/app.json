@@ -4,9 +4,7 @@
   "token": {
     "tokenName": "STRAX",
     "lsdTokenName": "rSTRAX",
-    "supportChains": [
-      "Stratis"
-    ],
+    "supportChains": ["Stratis"],
     "lsdTokenIconUri": "/images/token/STRAX.svg",
     "tokenIcon": "/images/token/STRAX.svg",
     "lsdTokenIcon": "/images/token/STRAX.svg"
@@ -18,10 +16,7 @@
   "apr": 0,
   "detailedInfo": {
     "audit": {
-      "nameList": [
-        "Peckshield",
-        "Blocksec"
-      ],
+      "nameList": ["Peckshield", "Blocksec"],
       "link": "https://github.com/stafiprotocol/security/blob/main/audits/202304_BlockSec_StaFi-ETHWithdraw/blocksec_stafi_v1.0-signed.pdf"
     },
     "listedIns": [
@@ -67,20 +62,20 @@
       ]
     },
     {
-      "title": "How much time is needed for ETH withdrawals?",
+      "title": "How much time is needed for STRAX withdrawals?",
       "contents": [
         {
           "type": "text",
-          "content": "If the unstaking pool's ETH balance exceeds your withdrawal amount, you will instantly receive your ETH upon transaction approval.\n"
+          "content": "If the unstaking pool's STRAX balance exceeds your withdrawal amount, you will instantly receive your STRAX upon transaction approval.\n"
         },
         {
           "type": "text",
-          "content": "However, if the unstaking pool's ETH balance is less than your withdrawal amount, the withdrawal process will take 1-5 days. After this period, you can claim your ETH using the withdraw function.\n"
+          "content": "However, if the unstaking pool's STRAX balance is less than your withdrawal amount, the withdrawal process will take 1-5 days. After this period, you can claim your STRAX using the withdraw function.\n"
         }
       ]
     },
     {
-      "title": "What's the exchange rate of rETH?",
+      "title": "What's the exchange rate of rSTRAX?",
       "contents": [
         {
           "type": "text",
