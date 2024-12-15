@@ -24,9 +24,7 @@ type ButtonProps = React.PropsWithChildren<{
 }>;
 
 export const CustomButton = (props: ButtonProps) => {
-  const { darkMode } = useAppSelector((state: RootState) => {
-    return { darkMode: state.app.darkMode };
-  });
+  const darkMode = useAppSelector((state: RootState) => state.app.darkMode);
 
   const textColor = darkMode
     ? props.disabled

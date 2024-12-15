@@ -2,16 +2,8 @@ import { RootState } from "redux/store";
 import { useAppSelector } from "./common";
 
 export function useWalletAccount() {
-  const { metaMaskAccount, metaMaskChainId } = useAppSelector(
-    (state: RootState) => {
-      return {
-        metaMaskAccount: state.wallet.metaMaskDisconnected
-          ? undefined
-          : state.wallet.metaMaskAccount,
-        metaMaskChainId: state.wallet.metaMaskChainId,
-      };
-    }
-  );
+  const metaMaskAccount = useAppSelector((state: RootState) => state.wallet.metaMaskAccount)
+  const metaMaskChainId = useAppSelector((state: RootState) => state.wallet.metaMaskChainId)
 
   return {
     metaMaskAccount,

@@ -26,9 +26,7 @@ export const WithdrawUnstaked = (props: Props) => {
   const router = useRouter();
 
   const dispatch = useAppDispatch();
-  const { withdrawLoading } = useAppSelector((state: RootState) => {
-    return { withdrawLoading: state.app.withdrawLoading };
-  });
+  const withdrawLoading = useAppSelector((state: RootState) => state.app.withdrawLoading);
 
   const { remainingDays } = useEthWithdrawRemainingTime();
 

@@ -13,11 +13,7 @@ import { useAppSlice } from "hooks/selector";
 export const StakeLoadingSidebar = () => {
   const { darkMode } = useAppSlice();
   const dispatch = useAppDispatch();
-  const { stakeLoadingParams } = useAppSelector((state: RootState) => {
-    return {
-      stakeLoadingParams: state.app.stakeLoadingParams,
-    };
-  });
+  const stakeLoadingParams = useAppSelector((state: RootState) => state.app.stakeLoadingParams);
 
   return (
     <div

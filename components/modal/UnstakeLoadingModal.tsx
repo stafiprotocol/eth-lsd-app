@@ -25,14 +25,8 @@ import snackbarUtil from "utils/snackbarUtils";
 export const UnstakeLoadingModal = () => {
   const dispatch = useAppDispatch();
 
-  const { unstakeLoadingParams, darkMode } = useAppSelector(
-    (state: RootState) => {
-      return {
-        unstakeLoadingParams: state.app.unstakeLoadingParams,
-        darkMode: state.app.darkMode,
-      };
-    }
-  );
+  const unstakeLoadingParams = useAppSelector((state: RootState) => state.app.unstakeLoadingParams)
+  const darkMode = useAppSelector((state: RootState) => state.app.darkMode)
 
   const title = useMemo(() => {
     return unstakeLoadingParams?.customTitle

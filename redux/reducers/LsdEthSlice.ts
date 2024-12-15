@@ -159,7 +159,7 @@ export const updateApr = (): AppThunk => async (dispatch, getState) => {
         endRate !== 1 &&
         beginRate !== 1
       ) {
-        apr = ((endRate - beginRate) / 7) * 365.25 * 100;
+        apr = ((endRate - beginRate) / 5) * 365.25 * 100;
       }
     }
     dispatch(setApr(apr));

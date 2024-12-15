@@ -8,12 +8,8 @@ export function useBalance() {
   const { updateFlag } = useAppSlice();
   const dispatch = useAppDispatch();
 
-  const { balance, lsdBalance } = useAppSelector((state: RootState) => {
-    return {
-      balance: state.eth.balance,
-      lsdBalance: state.lsdEth.balance,
-    };
-  });
+  const balance = useAppSelector((state: RootState) => state.eth.balance)
+  const lsdBalance = useAppSelector((state: RootState) => state.lsdEth.balance)
 
   useEffect(() => {
     if (updateFlag) {

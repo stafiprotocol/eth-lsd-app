@@ -33,11 +33,7 @@ export const NoticeItem = (props: {
   const dispatch = useAppDispatch();
   const { notice, visible } = props;
 
-  const { stakeLoadingParams } = useAppSelector((state: RootState) => {
-    return {
-      stakeLoadingParams: state.app.stakeLoadingParams,
-    };
-  });
+  const stakeLoadingParams = useAppSelector((state: RootState) => state.app.stakeLoadingParams);
 
   useEffect(() => {
     if (visible) {

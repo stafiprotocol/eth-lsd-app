@@ -54,11 +54,7 @@ export const LsdTokenUnstake = () => {
 
   const [unstakeAmount, setUnstakeAmount] = useState("");
 
-  const { unstakeLoading } = useAppSelector((state: RootState) => {
-    return {
-      unstakeLoading: state.app.unstakeLoading,
-    };
-  });
+  const unstakeLoading = useAppSelector((state: RootState) => state.app.unstakeLoading);
 
   const walletNotConnected = useMemo(() => {
     return !metaMaskAccount;

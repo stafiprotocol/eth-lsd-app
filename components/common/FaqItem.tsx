@@ -17,9 +17,7 @@ export const FaqItem = (props: Props) => {
   const { id } = props;
   const [collapsed, setCollapsed] = useState(false);
 
-  const collapseOpenId = useAppSelector((state: RootState) => {
-    return state.app.collapseOpenId;
-  });
+  const collapseOpenId = useAppSelector((state: RootState) => state.app.collapseOpenId);
 
   useEffect(() => {
     if (props.id && collapseOpenId === props.id) {

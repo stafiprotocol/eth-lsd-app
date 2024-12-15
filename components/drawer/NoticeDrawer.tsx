@@ -10,9 +10,7 @@ interface Props {
 
 export const NoticeDrawer = (props: Props) => {
   const { open, onChangeOpen } = props;
-  const { darkMode } = useAppSelector((state: RootState) => {
-    return { darkMode: state.app.darkMode };
-  });
+  const darkMode = useAppSelector((state: RootState) => state.app.darkMode);
 
   return (
     <Drawer

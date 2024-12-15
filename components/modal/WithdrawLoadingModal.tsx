@@ -18,14 +18,8 @@ import { getTokenName } from "utils/configUtils";
 export const WithdrawLoadingModal = () => {
   const dispatch = useAppDispatch();
 
-  const { withdrawLoadingParams, darkMode } = useAppSelector(
-    (state: RootState) => {
-      return {
-        withdrawLoadingParams: state.app.withdrawLoadingParams,
-        darkMode: state.app.darkMode,
-      };
-    }
-  );
+  const withdrawLoadingParams = useAppSelector((state: RootState) => state.app.withdrawLoadingParams)
+  const darkMode = useAppSelector((state: RootState) => state.app.darkMode)
 
   const closeModal = () => {
     if (withdrawLoadingParams?.status !== "loading") {

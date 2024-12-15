@@ -48,11 +48,7 @@ export const LsdTokenStake = () => {
 
   const { balance } = useBalance();
 
-  const { stakeLoading } = useAppSelector((state: RootState) => {
-    return {
-      stakeLoading: state.app.stakeLoading,
-    };
-  });
+  const stakeLoading = useAppSelector((state: RootState) => state.app.stakeLoading);
 
   const walletNotConnected = useMemo(() => {
     return !metaMaskAccount;

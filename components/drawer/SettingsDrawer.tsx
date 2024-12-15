@@ -17,9 +17,7 @@ interface Props {
 export const SettingsDrawer = (props: Props) => {
   const { open, onChangeOpen } = props;
   const dispatch = useAppDispatch();
-  const { darkMode } = useAppSelector((state: RootState) => {
-    return { darkMode: state.app.darkMode };
-  });
+  const darkMode = useAppSelector((state: RootState) => state.app.darkMode);
 
   const getContactIcon = (type: string) => {
     if (darkMode) {

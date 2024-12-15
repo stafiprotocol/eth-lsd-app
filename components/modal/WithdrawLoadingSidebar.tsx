@@ -13,11 +13,7 @@ import { useAppSlice } from "hooks/selector";
 export const WithdrawLoadingSidebar = () => {
   const dispatch = useAppDispatch();
   const { darkMode } = useAppSlice();
-  const { withdrawLoadingParams } = useAppSelector((state: RootState) => {
-    return {
-      withdrawLoadingParams: state.app.withdrawLoadingParams,
-    };
-  });
+  const withdrawLoadingParams = useAppSelector((state: RootState) => state.app.withdrawLoadingParams);
 
   return (
     <div

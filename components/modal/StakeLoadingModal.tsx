@@ -20,14 +20,8 @@ import { getLsdEthName, getTokenName } from "utils/configUtils";
 export const StakeLoadingModal = () => {
   const dispatch = useAppDispatch();
 
-  const { stakeLoadingParams, darkMode } = useAppSelector(
-    (state: RootState) => {
-      return {
-        stakeLoadingParams: state.app.stakeLoadingParams,
-        darkMode: state.app.darkMode,
-      };
-    }
-  );
+  const stakeLoadingParams = useAppSelector((state: RootState) => state.app.stakeLoadingParams)
+  const darkMode = useAppSelector((state: RootState) => state.app.darkMode)
 
   const title = useMemo(() => {
     return stakeLoadingParams?.customTitle

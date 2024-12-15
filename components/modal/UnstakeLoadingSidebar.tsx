@@ -13,11 +13,7 @@ import { useAppSlice } from "hooks/selector";
 export const UnstakeLoadingSidebar = () => {
   const { darkMode } = useAppSlice();
   const dispatch = useAppDispatch();
-  const { unstakeLoadingParams } = useAppSelector((state: RootState) => {
-    return {
-      unstakeLoadingParams: state.app.unstakeLoadingParams,
-    };
-  });
+  const unstakeLoadingParams = useAppSelector((state: RootState) => state.app.unstakeLoadingParams);
 
   return (
     <div

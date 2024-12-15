@@ -8,9 +8,7 @@ export function useLsdEthRate() {
   const dispatch = useAppDispatch();
   const { updateFlag } = useAppSlice();
 
-  const lsdEthRate = useAppSelector((state: RootState) => {
-    return state.lsdEth.rate;
-  });
+  const lsdEthRate = useAppSelector((state: RootState) => state.lsdEth.rate);
 
   useEffect(() => {
     dispatch(updateLsdEthRate());

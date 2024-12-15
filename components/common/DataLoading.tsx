@@ -8,9 +8,7 @@ interface Props {
 
 export const DataLoading = (props: Props) => {
   const { height } = props;
-  const { darkMode } = useAppSelector((state: RootState) => {
-    return { darkMode: state.app.darkMode };
-  });
+  const darkMode = useAppSelector((state: RootState) => state.app.darkMode);
 
   return (
     <div className="min-w-[0.5rem]">

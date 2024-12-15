@@ -1,6 +1,4 @@
 import classNames from "classnames";
-import { useAppSelector } from "hooks/common";
-import { RootState } from "redux/store";
 
 interface CustomInputProps {
   disabled?: boolean;
@@ -16,10 +14,6 @@ interface CustomInputProps {
 }
 
 export const CustomNumberInput = (props: CustomInputProps) => {
-  const { darkMode } = useAppSelector((state: RootState) => {
-    return { darkMode: state.app.darkMode };
-  });
-
   return (
     <input
       disabled={props.disabled}
