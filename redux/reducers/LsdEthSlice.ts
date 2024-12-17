@@ -121,7 +121,7 @@ export const updateApr = (): AppThunk => async (dispatch, getState) => {
 
     const eraSeconds = Number(updateBalancesEpochs) * (getBlockSeconds() * 32);
 
-    const eventLength = Math.round((5 * 24 * 3600) / eraSeconds);
+    const eventLength = Math.round((7 * 24 * 3600) / eraSeconds);
 
     const topics = web3.utils.sha3(
       "BalancesUpdated(uint256,uint256,uint256,uint256)"
@@ -159,7 +159,7 @@ export const updateApr = (): AppThunk => async (dispatch, getState) => {
         endRate !== 1 &&
         beginRate !== 1
       ) {
-        apr = ((endRate - beginRate) / 5) * 365.25 * 100;
+        apr = ((endRate - beginRate) / 7) * 365.25 * 100;
       }
     }
     dispatch(setApr(apr));
