@@ -1,12 +1,7 @@
 import { Fade, ThemeProvider, styled } from "@mui/material";
-import {
-  QueryClientProvider,
-  useQueryClient,
-  QueryClient,
-} from "@tanstack/react-query";
+import { QueryClientProvider, useQueryClient, QueryClient } from "@tanstack/react-query";
 import { Layout } from "components/layout/Layout";
 import { wagmiConfig } from "config/wagmi";
-import { useAppSlice } from "hooks/selector";
 import type { NextPage } from "next";
 import type { AppProps } from "next/app";
 import { MaterialDesignContent, SnackbarProvider } from "notistack";
@@ -60,11 +55,9 @@ const MyAppWrapper = ({ Component, pageProps }: any) => {
   // Use the layout defined at the page level, if available
   const getLayout = Component.getLayout ?? ((page: any) => page);
 
-  const { darkMode } = useAppSlice();
-
   const StyledMaterialDesignContent = useMemo(() => {
-    const successBg = darkMode ? "#5A5DE0" : "#E8EFFD";
-    const successTextColor = darkMode ? "#E8EFFD" : "#222C3C";
+    const successBg = "#5A5DE0";
+    const successTextColor = "#E8EFFD";
 
     return styled(MaterialDesignContent)(() => ({
       "&.notistack-MuiContent-success": {
@@ -83,7 +76,7 @@ const MyAppWrapper = ({ Component, pageProps }: any) => {
         fontSize: ".16rem",
       },
     }));
-  }, [darkMode]);
+  }, []);
 
   return (
     <ThemeProvider theme={theme}>

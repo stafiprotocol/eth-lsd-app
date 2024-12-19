@@ -6,8 +6,7 @@ import { AppBar } from "@mui/material";
 import dynamic from "next/dynamic";
 import { useInit } from "hooks/useInit";
 import classNames from "classnames";
-import { useAppSlice } from "hooks/selector";
-import { roboto } from "config/font";
+import { inter } from "config/font";
 import { StakeLoadingModal } from "components/modal/StakeLoadingModal";
 import { UnstakeLoadingModal } from "components/modal/UnstakeLoadingModal";
 import { WithdrawLoadingModal } from "components/modal/WithdrawLoadingModal";
@@ -29,8 +28,6 @@ export const MyLayoutContext = React.createContext<{
 export const Layout = (props: React.PropsWithChildren) => {
   useInit();
 
-  const { darkMode } = useAppSlice();
-
   const [navigation, setNavigation] = useState<NavigationItem[]>([]);
 
   return (
@@ -40,14 +37,11 @@ export const Layout = (props: React.PropsWithChildren) => {
         setNavigation,
       }}
     >
-      <div className={classNames(darkMode ? "dark" : "", roboto.className)}>
+      <div className={classNames("bg-[#101112] text-[#6C6F77]", inter.className)}>
         <Head>
           <title>{getAppTitle()}</title>
           <meta name="description" content="" />
-          <meta
-            name="viewport"
-            content="initial-scale=1.0, width=device-width"
-          />
+          <meta name="viewport" content="initial-scale=1.0, width=device-width" />
         </Head>
 
         <HideOnScroll>

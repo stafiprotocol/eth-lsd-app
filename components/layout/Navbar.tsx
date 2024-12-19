@@ -8,21 +8,13 @@ import { getEthereumChainId, getEthereumChainName } from "config/env";
 import { useAppDispatch, useAppSelector } from "hooks/common";
 import { useAppSlice } from "hooks/selector";
 import { useWalletAccount } from "hooks/useWalletAccount";
-import {
-  bindPopover,
-  bindTrigger,
-  usePopupState,
-} from "material-ui-popup-state/hooks";
+import { bindPopover, bindTrigger, usePopupState } from "material-ui-popup-state/hooks";
 import Image from "next/image";
 import auditIcon from "public/images/audit.svg";
 import defaultAvatar from "public/images/default_avatar.png";
 import noticeIcon from "public/images/notice.png";
 import { useEffect, useMemo, useState } from "react";
-import {
-  disconnectWallet,
-  setMetaMaskDisconnected,
-} from "redux/reducers/WalletSlice";
-import { RootState } from "redux/store";
+import { disconnectWallet, setMetaMaskDisconnected } from "redux/reducers/WalletSlice";
 import { getAuditList } from "utils/configUtils";
 import { getChainIcon } from "utils/iconUtils";
 import { getShortAddress } from "utils/stringUtils";
@@ -34,9 +26,7 @@ const Navbar = () => {
   const [noticeDrawerOpen, setNoticeDrawerOpen] = useState(false);
   const [settingsDrawerOpen, setSettingsDrawerOpen] = useState(false);
   const [auditExpand, setAuditExpand] = useState(false);
-  const [pageWidth, setPageWidth] = useState(
-    document.documentElement.clientWidth
-  );
+  const [pageWidth, setPageWidth] = useState(document.documentElement.clientWidth);
   const { metaMaskAccount } = useWalletAccount();
 
   const resizeListener = () => {
@@ -54,26 +44,17 @@ const Navbar = () => {
   }, []);
 
   return (
-    <div className="bg-color-bgPage py-[.36rem] flex items-center justify-center">
+    <div className="bg-[#101112] py-[.24rem] flex items-center justify-center">
       <div className="w-smallContentW xl:w-contentW 2xl:w-largeContentW mx-auto flex items-center justify-between relative">
-        <div
-          className={classNames("absolute top-[.11rem] w-[.82rem] h-[.2rem]")}
-        ></div>
+        {/* <div className={classNames("absolute top-[.11rem] w-[.82rem] h-[.2rem]")}></div> */}
 
         <div className={classNames("flex items-center")}>
-          <AuditComponent
-            expand={auditExpand}
-            onExpandChange={setAuditExpand}
-          />
+          <AuditComponent expand={auditExpand} onExpandChange={setAuditExpand} />
         </div>
 
         <div className={classNames("flex items-center")}>
           <div className={classNames("ml-[.16rem]")}>
-            {metaMaskAccount ? (
-              <UserInfo auditExpand={auditExpand} />
-            ) : (
-              <ConnectButton />
-            )}
+            {metaMaskAccount ? <UserInfo auditExpand={auditExpand} /> : <ConnectButton />}
           </div>
 
           <div
@@ -109,15 +90,9 @@ const Navbar = () => {
           </div>
         </div>
 
-        <SettingsDrawer
-          open={settingsDrawerOpen}
-          onChangeOpen={setSettingsDrawerOpen}
-        />
+        <SettingsDrawer open={settingsDrawerOpen} onChangeOpen={setSettingsDrawerOpen} />
 
-        <NoticeDrawer
-          open={noticeDrawerOpen}
-          onChangeOpen={setNoticeDrawerOpen}
-        />
+        <NoticeDrawer open={noticeDrawerOpen} onChangeOpen={setNoticeDrawerOpen} />
       </div>
     </div>
   );
@@ -127,11 +102,6 @@ const UserInfo = (props: { auditExpand: boolean }) => {
   const { auditExpand } = props;
   const dispatch = useAppDispatch();
   const { metaMaskAccount } = useWalletAccount();
-  const { darkMode } = useAppSelector((state: RootState) => {
-    return {
-      darkMode: state.app.darkMode,
-    };
-  });
 
   const hideAddress = useMemo(() => {
     return auditExpand;
@@ -151,19 +121,10 @@ const UserInfo = (props: { auditExpand: boolean }) => {
         )}
       >
         <div className="w-[.34rem] h-[.34rem] relative">
-          <Image
-            src={getChainIcon()}
-            alt="logo"
-            className="rounded-full  overflow-hidden"
-            layout="fill"
-          />
+          <Image src={getChainIcon()} alt="logo" className="rounded-full  overflow-hidden" layout="fill" />
         </div>
 
-        <div
-          className={classNames("ml-[.08rem] text-[.16rem] text-color-text1")}
-        >
-          {getEthereumChainName()}
-        </div>
+        <div className={classNames("ml-[.08rem] text-[.16rem] text-color-text1")}>{getEthereumChainName()}</div>
 
         {/* <div className="ml-[.12rem]">
           <Icomoon icon="arrow-down" size=".1rem" color="#848B97" />
@@ -187,11 +148,7 @@ const UserInfo = (props: { auditExpand: boolean }) => {
         )}
         {...bindTrigger(addressPopupState)}
       >
-        <Image
-          src={defaultAvatar}
-          alt="logo"
-          className="w-[.34rem] h-[.34rem] rounded-full"
-        />
+        <Image src={defaultAvatar} alt="logo" className="w-[.34rem] h-[.34rem] rounded-full" />
 
         {!hideAddress && (
           <div
@@ -220,10 +177,8 @@ const UserInfo = (props: { auditExpand: boolean }) => {
         sx={{
           marginTop: ".15rem",
           "& .MuiPopover-paper": {
-            background: darkMode ? "#6C86AD4D" : "#ffffff80",
-            border: darkMode
-              ? "0.01rem solid #6C86AD80"
-              : "0.01rem solid #FFFFFF",
+            background: "#6C86AD4D",
+            border: "0.01rem solid #6C86AD80",
             backdropFilter: "blur(.4rem)",
             borderRadius: ".3rem",
           },
@@ -235,9 +190,7 @@ const UserInfo = (props: { auditExpand: boolean }) => {
           },
         }}
       >
-        <div
-          className={classNames("p-[.16rem] w-[2rem]", darkMode ? "dark" : "")}
-        >
+        <div className={classNames("p-[.16rem] w-[2rem]", "dark")}>
           <div
             className="cursor-pointer flex items-center justify-between"
             onClick={() => {
@@ -247,9 +200,7 @@ const UserInfo = (props: { auditExpand: boolean }) => {
             }}
           >
             <div className="flex items-center">
-              <div className="ml-[.12rem] text-color-text1 text-[.16rem]">
-                Copy Address
-              </div>
+              <div className="ml-[.12rem] text-color-text1 text-[.16rem]">Copy Address</div>
             </div>
           </div>
 
@@ -262,9 +213,7 @@ const UserInfo = (props: { auditExpand: boolean }) => {
               dispatch(disconnectWallet());
             }}
           >
-            <div className="ml-[.12rem] text-color-text1 text-[.16rem]">
-              Disconnect
-            </div>
+            <div className="ml-[.12rem] text-color-text1 text-[.16rem]">Disconnect</div>
           </div>
         </div>
       </Popover>
@@ -339,7 +288,7 @@ const AuditComponent = (props: AuditComponentProps) => {
   return (
     <div
       className={classNames(
-        "h-[.42rem] rounded-[.3rem] border-[#6C86AD]/20 flex items-center",
+        "h-[.42rem] rounded-[.3rem] border-[#f699ff96] flex items-center",
         expand ? "border-[0.01rem]" : ""
       )}
     >
@@ -355,10 +304,7 @@ const AuditComponent = (props: AuditComponentProps) => {
       </div>
 
       <div
-        className={classNames(
-          "items-center origin-left",
-          expand ? "animate-expand flex" : "animate-collapse hidden"
-        )}
+        className={classNames("items-center origin-left", expand ? "animate-expand flex" : "animate-collapse hidden")}
       >
         <div
           className="text-color-text2 ml-[.06rem] text-[.14rem] w-[.8rem] min-w-[.8rem] break-normal"
@@ -377,20 +323,11 @@ const AuditComponent = (props: AuditComponentProps) => {
           Audited By
         </div>
 
-        {getAuditList().map(
-          (item: { name: string; icon: string; iconDark: string }) => (
-            <div
-              className="ml-[.1rem] w-[.8rem] h-[.17rem] relative"
-              key={item.name}
-            >
-              <Image
-                src={darkMode ? item.iconDark : item.icon}
-                alt="audit"
-                layout="fill"
-              />
-            </div>
-          )
-        )}
+        {getAuditList().map((item: { name: string; icon: string; iconDark: string }) => (
+          <div className="ml-[.1rem] w-[.8rem] h-[.17rem] relative" key={item.name}>
+            <Image src={darkMode ? item.iconDark : item.icon} alt="audit" layout="fill" />
+          </div>
+        ))}
 
         <div
           className="mx-[.12rem] cursor-pointer"
