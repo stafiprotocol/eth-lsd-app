@@ -7,7 +7,7 @@
     "supportChains": ["Stratis"],
     "lsdTokenIconUri": "/images/token/STRAX.svg",
     "tokenIcon": "/images/token/STRAX.svg",
-    "lsdTokenIcon": "/images/token/STRAX.svg"
+    "lsdTokenIcon": "/images/token/rSTRAX.svg"
   },
   "unstake": {
     "lockTipLink": "https://docs.stafi.io/stake/stakingeth/unstake/",

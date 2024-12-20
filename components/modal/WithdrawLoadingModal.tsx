@@ -6,20 +6,17 @@ import { useAppDispatch, useAppSelector } from "hooks/common";
 import Image from "next/image";
 import successIcon from "public/images/tx_success.png";
 import errorIcon from "public/images/tx_error.png";
-import {
-  setWithdrawLoadingParams,
-  updateWithdrawLoadingParams,
-} from "redux/reducers/AppSlice";
+import { setWithdrawLoadingParams, updateWithdrawLoadingParams } from "redux/reducers/AppSlice";
 import { RootState } from "redux/store";
 import { formatNumber } from "utils/numberUtils";
-import { roboto } from "config/font";
+import { inter } from "config/font";
 import { getTokenName } from "utils/configUtils";
 
 export const WithdrawLoadingModal = () => {
   const dispatch = useAppDispatch();
 
-  const withdrawLoadingParams = useAppSelector((state: RootState) => state.app.withdrawLoadingParams)
-  const darkMode = useAppSelector((state: RootState) => state.app.darkMode)
+  const withdrawLoadingParams = useAppSelector((state: RootState) => state.app.withdrawLoadingParams);
+  const darkMode = useAppSelector((state: RootState) => state.app.darkMode);
 
   const closeModal = () => {
     if (withdrawLoadingParams?.status !== "loading") {
@@ -59,22 +56,9 @@ export const WithdrawLoadingModal = () => {
           transform: "translate(-50%, -50%)",
         }}
       >
-        <div
-          className={classNames(
-            "flex-1 flex flex-col items-center",
-            darkMode ? "dark" : "",
-            roboto.className
-          )}
-        >
-          <div
-            className="self-end mr-[-0.12rem] mt-[.24rem] cursor-pointer"
-            onClick={closeModal}
-          >
-            <Icomoon
-              icon="close"
-              size=".16rem"
-              color={darkMode ? "#FFFFFF80" : "#6C86AD80"}
-            />
+        <div className={classNames("flex-1 flex flex-col items-center", darkMode ? "dark" : "", inter.className)}>
+          <div className="self-end mr-[-0.12rem] mt-[.24rem] cursor-pointer" onClick={closeModal}>
+            <Icomoon icon="close" size=".16rem" color={darkMode ? "#FFFFFF80" : "#6C86AD80"} />
           </div>
 
           {withdrawLoadingParams?.status === "loading" && (
@@ -101,9 +85,7 @@ export const WithdrawLoadingModal = () => {
           )}
 
           <div
-            className={classNames(
-              "mt-[.24rem] text-[.24rem] text-color-text1 font-[700] text-center leading-tight"
-            )}
+            className={classNames("mt-[.24rem] text-[.24rem] text-color-text1 font-[700] text-center leading-tight")}
           >
             {withdrawLoadingParams?.status === "success"
               ? `Withdraw ${formatNumber(withdrawLoadingParams.tokenAmount, {
@@ -111,24 +93,18 @@ export const WithdrawLoadingModal = () => {
                 })} ${getTokenName()} success`
               : withdrawLoadingParams?.status === "error"
               ? "Withdraw Failed"
-              : `You are now withdrawing ${formatNumber(
-                  Number(withdrawLoadingParams?.tokenAmount),
-                  { roundMode: "floor" }
-                )} ${getTokenName()}`}
+              : `You are now withdrawing ${formatNumber(Number(withdrawLoadingParams?.tokenAmount), {
+                  roundMode: "floor",
+                })} ${getTokenName()}`}
           </div>
 
-          <div
-            className={classNames(
-              "mt-[.24rem] text-[.16rem] text-color-text2 text-center leading-tight"
-            )}
-          >
+          <div className={classNames("mt-[.24rem] text-[.16rem] text-color-text2 text-center leading-tight")}>
             {withdrawLoadingParams?.customMsg
               ? withdrawLoadingParams.customMsg
               : withdrawLoadingParams?.status === "success"
               ? `Withdrawing operation was successful.`
               : withdrawLoadingParams?.status === "error"
-              ? withdrawLoadingParams?.customMsg ||
-                "Something went wrong, please try again"
+              ? withdrawLoadingParams?.customMsg || "Something went wrong, please try again"
               : `Withdraw ${formatNumber(withdrawLoadingParams?.tokenAmount, {
                   roundMode: "floor",
                 })} ${getTokenName()}`}
@@ -142,23 +118,14 @@ export const WithdrawLoadingModal = () => {
                 target="_blank"
                 rel="noreferrer"
               >
-                <span className="text-color-link text-[.16rem] mr-[.12rem] font-[500]">
-                  View on explorer
-                </span>
+                <span className="text-color-link text-[.16rem] mr-[.12rem] font-[500]">View on explorer</span>
 
-                <Icomoon
-                  icon="right"
-                  size=".12rem"
-                  color={darkMode ? "#ffffff" : "#5A5DE0"}
-                />
+                <Icomoon icon="right" size=".12rem" color={darkMode ? "#ffffff" : "#5A5DE0"} />
               </a>
             )}
 
             {withdrawLoadingParams?.status === "error" && (
-              <div
-                className="text-color-link text-[.16rem] cursor-pointer"
-                onClick={clickRetry}
-              >
+              <div className="text-color-link text-[.16rem] cursor-pointer" onClick={clickRetry}>
                 Retry
               </div>
             )}

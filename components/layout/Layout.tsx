@@ -55,8 +55,8 @@ export const Layout = (props: React.PropsWithChildren) => {
           </AppBar>
         </HideOnScroll>
 
-        <main className="flex flex-col items-center pt-[1.16rem] h-[100vh]">
-          <div className="mb-[1rem] w-full">{props.children}</div>
+        <main className="flex flex-col items-center pt-[1.16rem]">
+          <div className="w-full">{props.children}</div>
         </main>
 
         <StakeLoadingModal />

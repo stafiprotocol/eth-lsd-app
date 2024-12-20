@@ -44,7 +44,7 @@ const Navbar = () => {
   }, []);
 
   return (
-    <div className="bg-[#101112] py-[.24rem] flex items-center justify-center">
+    <div className="bg-[#101112] py-[.36rem] flex items-center justify-center">
       <div className="w-smallContentW xl:w-contentW 2xl:w-largeContentW mx-auto flex items-center justify-between relative">
         {/* <div className={classNames("absolute top-[.11rem] w-[.82rem] h-[.2rem]")}></div> */}
 
@@ -60,7 +60,7 @@ const Navbar = () => {
           <div
             className={classNames(
               "cursor-pointer ml-[.3rem] w-[.42rem] h-[.42rem] flex items-center justify-center rounded-[.12rem] relative",
-              noticeDrawerOpen ? "bg-color-selected" : ""
+              noticeDrawerOpen ? "bg-[#272729]" : ""
             )}
             onClick={() => {
               setSettingsDrawerOpen(false);
@@ -79,14 +79,14 @@ const Navbar = () => {
           <div
             className={classNames(
               "cursor-pointer ml-[.3rem] w-[.42rem] h-[.42rem] flex items-center justify-center rounded-[.12rem]",
-              settingsDrawerOpen ? "bg-color-selected" : ""
+              settingsDrawerOpen ? "bg-[#272729]" : ""
             )}
             onClick={() => {
               setNoticeDrawerOpen(false);
               setSettingsDrawerOpen(!settingsDrawerOpen);
             }}
           >
-            <Icomoon icon="more" size=".2rem" color="#6C86AD" />
+            <Icomoon icon="more" size=".2rem" color="#fff" />
           </div>
         </div>
 
@@ -288,12 +288,12 @@ const AuditComponent = (props: AuditComponentProps) => {
   return (
     <div
       className={classNames(
-        "h-[.42rem] rounded-[.3rem] border-[#f699ff96] flex items-center",
+        "h-[.42rem] rounded-[.3rem] border-[#B794F4] flex items-center",
         expand ? "border-[0.01rem]" : ""
       )}
     >
       <div
-        className="cursor-pointer ml-[.04rem] w-[.34rem] h-[.34rem] p-[.06rem] relative rounded-full bg-color-bg1"
+        className="cursor-pointer ml-[.04rem] w-[.34rem] h-[.34rem] p-[.06rem] relative rounded-full bg-[#272729]"
         onClick={() => {
           onExpandChange(!expand);
         }}
@@ -307,7 +307,7 @@ const AuditComponent = (props: AuditComponentProps) => {
         className={classNames("items-center origin-left", expand ? "animate-expand flex" : "animate-collapse hidden")}
       >
         <div
-          className="text-color-text2 ml-[.06rem] text-[.14rem] w-[.8rem] min-w-[.8rem] break-normal"
+          className="ml-[.06rem] text-[.14rem] w-[.8rem] min-w-[.8rem] break-normal"
           style={
             {
               // maxLines: 1,
@@ -325,7 +325,7 @@ const AuditComponent = (props: AuditComponentProps) => {
 
         {getAuditList().map((item: { name: string; icon: string; iconDark: string }) => (
           <div className="ml-[.1rem] w-[.8rem] h-[.17rem] relative" key={item.name}>
-            <Image src={darkMode ? item.iconDark : item.icon} alt="audit" layout="fill" />
+            <Image src={item.icon} alt="audit" layout="fill" />
           </div>
         ))}
 
@@ -335,7 +335,7 @@ const AuditComponent = (props: AuditComponentProps) => {
             onExpandChange(false);
           }}
         >
-          <Icomoon icon="collapse" size=".12rem" />
+          <Icomoon icon="collapse" size=".12rem" className="!fill-white" />
         </div>
       </div>
     </div>

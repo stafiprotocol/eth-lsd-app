@@ -1,23 +1,20 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   darkMode: "class",
-  content: [
-    "./pages/**/*.{js,ts,jsx,tsx}",
-    "./components/**/*.{js,ts,jsx,tsx}",
-  ],
+  content: ["./pages/**/*.{js,ts,jsx,tsx}", "./components/**/*.{js,ts,jsx,tsx}"],
   theme: {
     colors: {
       transparent: "transparent",
       white: "#ffffff",
       primary: "#00F3AB",
       // Background
-      bgPage: "#E8EFFD",
+      bgPage: "#101112",
       bgPageDark: "#222C3C",
       bg1: "#FFFFFF",
       bg1Dark: "#6C86AD80",
-      bg2: "#FFFFFF80",
+      bg2: "#1b1b1c",
       bg2Dark: "#6C86AD4D",
-      bg3: "#6C86AD1A",
+      bg3: "#272729",
       bg3Dark: "#6C86AD1A",
       bgHighlight: "#222C3C",
       bgHighlightDark: "#E8EFFD",
@@ -35,18 +32,19 @@ module.exports = {
       divider2: "#6C86AD14",
       divider2Dark: "#6C86AD14",
       // Text
-      text1: "#222C3C",
+      text1: "#fff",
       text1Dark: "#E8EFFD",
-      text2: "#6C86AD",
+      text2: "#6c6f77",
       text2Dark: "#FFFFFF80",
       textHighlight: "#ffffff",
       textHighlightDark: "#222C3C",
-      link: "#5A5DE0",
+      link: "#dcb3ff",
       linkDark: "#ffffff",
       error: "#FF52C4",
     },
     fontFamily: {
       helvetica: [
+        "Inter",
         "Helvetica",
         "-apple-system",
         "BlinkMacSystemFont",

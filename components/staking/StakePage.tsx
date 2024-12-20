@@ -36,31 +36,15 @@ export const StakePage = () => {
   };
 
   return (
-    <div>
-      <div className="bg-color-bg2 rounded-[.3rem] pb-[.14rem] border-[.01rem] border-color-border1">
-        <div
-          className="h-[.56rem] grid items-stretch"
-          style={{ gridTemplateColumns: "50% 50%" }}
-        >
+    <div className="g-border-pink rounded-[.2rem] box-border">
+      <div className="g-bg-box  rounded-[inherit] overflow-hidden  pb-[.32rem] border border-white/5">
+        <div className="h-[.64rem] grid items-stretch" style={{ gridTemplateColumns: "50% 50%" }}>
           <div
             className={classNames(
-              "cursor-pointer flex items-center justify-center rounded-tl-[.3rem] text-[.16rem] text-color-text1 border-[0.01rem]",
-              selectedTab === "stake"
-                ? "font-[700] border-color-borderActive"
-                : "border-color-border1",
-              selectedTab === "stake" ? styles["selected-bg"] : "bg-color-bg2"
+              "cursor-pointer flex items-center justify-center  text-[.16rem] text-color-text1 ",
+              selectedTab === "stake" ? "font-[700] border-color-borderActive" : "border-color-border1",
+              selectedTab === "stake" ? styles["selected-bg"] : ""
             )}
-            style={{
-              // background:
-              //   selectedTab === "stake"
-              //     ? darkMode
-              //       ? "linear-gradient(274.08deg, rgba(128, 202, 255, 0.5) 1.81%, rgba(133, 224, 163, 0.5) 96.22%)"
-              //       : "linear-gradient(274.08deg, rgba(128, 202, 255, 0.2) 1.81%, rgba(133, 224, 163, 0.2) 96.22%)"
-              //     : darkMode
-              //     ? "#6C86AD4D"
-              //     : "#ffffff80",
-              borderRightWidth: selectedTab === "stake" ? "0.01rem" : "0px",
-            }}
             onClick={() => {
               updateTab("stake");
             }}
@@ -70,23 +54,10 @@ export const StakePage = () => {
 
           <div
             className={classNames(
-              "cursor-pointer flex items-center justify-center rounded-tr-[.3rem] text-[.16rem] text-color-text1 border-[0.01rem]",
-              selectedTab === "unstake"
-                ? "font-[700] border-color-borderActive"
-                : "border-color-border1",
-              selectedTab === "unstake" ? styles["selected-bg"] : "bg-color-bg2"
+              "cursor-pointer flex items-center justify-center  text-[.16rem] text-color-text1 ",
+              selectedTab === "unstake" ? "font-[700] border-color-borderActive" : "border-color-border1",
+              selectedTab === "unstake" ? styles["selected-bg"] : ""
             )}
-            style={{
-              // background:
-              //   selectedTab === "unstake"
-              //     ? darkMode
-              //       ? "linear-gradient(274.08deg, rgba(128, 202, 255, 0.5) 1.81%, rgba(133, 224, 163, 0.5) 96.22%)"
-              //       : "linear-gradient(274.08deg, rgba(128, 202, 255, 0.2) 1.81%, rgba(133, 224, 163, 0.2) 96.22%)"
-              //     : darkMode
-              //     ? "#6C86AD4D"
-              //     : "#ffffff80",
-              borderLeftWidth: selectedTab === "unstake" ? "0.01rem" : "0px",
-            }}
             onClick={() => {
               updateTab("unstake");
             }}

@@ -24,17 +24,7 @@ type ButtonProps = React.PropsWithChildren<{
 }>;
 
 export const CustomButton = (props: ButtonProps) => {
-  const darkMode = useAppSelector((state: RootState) => state.app.darkMode);
-
-  const textColor = darkMode
-    ? props.disabled
-      ? "#6C86AD80"
-      : props.type === "stroke"
-      ? "#E8EFFD"
-      : "#222C3C"
-    : props.disabled
-    ? "#6C86AD80"
-    : "#222C3C";
+  const textColor = "#E8EFFD";
 
   return (
     <div
@@ -91,9 +81,7 @@ export const CustomButton = (props: ButtonProps) => {
         </div>
       )}
 
-      <div className={classNames({ "ml-1": props.loading })}>
-        {props.children}
-      </div>
+      <div className={classNames({ "ml-1": props.loading })}>{props.children}</div>
     </div>
   );
 };

@@ -7,29 +7,24 @@ import Image from "next/image";
 import successIcon from "public/images/tx_success.png";
 import errorIcon from "public/images/tx_error.png";
 import { useMemo } from "react";
-import {
-  setStakeLoadingParams,
-  updateStakeLoadingParams,
-} from "redux/reducers/AppSlice";
+import { setStakeLoadingParams, updateStakeLoadingParams } from "redux/reducers/AppSlice";
 import { handleEthStake } from "redux/reducers/EthSlice";
 import { RootState } from "redux/store";
 import { formatNumber } from "utils/numberUtils";
-import { roboto } from "config/font";
+import { inter } from "config/font";
 import { getLsdEthName, getTokenName } from "utils/configUtils";
 
 export const StakeLoadingModal = () => {
   const dispatch = useAppDispatch();
 
-  const stakeLoadingParams = useAppSelector((state: RootState) => state.app.stakeLoadingParams)
-  const darkMode = useAppSelector((state: RootState) => state.app.darkMode)
+  const stakeLoadingParams = useAppSelector((state: RootState) => state.app.stakeLoadingParams);
+  const darkMode = useAppSelector((state: RootState) => state.app.darkMode);
 
   const title = useMemo(() => {
     return stakeLoadingParams?.customTitle
       ? stakeLoadingParams.customTitle
       : stakeLoadingParams?.status === "success"
-      ? `Your new balance is ${formatNumber(
-          stakeLoadingParams?.newLsdTokenBalance
-        )} ${getLsdEthName()}`
+      ? `Your new balance is ${formatNumber(stakeLoadingParams?.newLsdTokenBalance)} ${getLsdEthName()}`
       : stakeLoadingParams?.status === "error"
       ? "Transaction Failed"
       : `You are now staking ${stakeLoadingParams?.amount} ${getTokenName()}`;
@@ -41,12 +36,9 @@ export const StakeLoadingModal = () => {
       : stakeLoadingParams?.status === "success"
       ? `Staking operation was successful`
       : stakeLoadingParams?.status === "error"
-      ? stakeLoadingParams?.displayMsg ||
-        "Something went wrong, please try again"
+      ? stakeLoadingParams?.displayMsg || "Something went wrong, please try again"
       : stakeLoadingParams?.displayMsg ||
-        `Staking ${
-          stakeLoadingParams?.amount
-        } ${getTokenName()}, you will receive ${formatNumber(
+        `Staking ${stakeLoadingParams?.amount} ${getTokenName()}, you will receive ${formatNumber(
           stakeLoadingParams?.willReceiveAmount
         )} 
   ${getLsdEthName()}`;
@@ -75,10 +67,7 @@ export const StakeLoadingModal = () => {
   };
 
   return (
-    <Modal
-      open={stakeLoadingParams?.modalVisible === true}
-      onClose={closeModal}
-    >
+    <Modal open={stakeLoadingParams?.modalVisible === true} onClose={closeModal}>
       <Box
         pt="0"
         sx={{
@@ -92,28 +81,12 @@ export const StakeLoadingModal = () => {
           transform: "translate(-50%, -50%)",
         }}
       >
-        <div
-          className={classNames(
-            "flex-1 flex flex-col items-center",
-            darkMode ? "dark" : "",
-            roboto.className
-          )}
-        >
-          <div
-            className={classNames(
-              "mr-[.24rem] self-end mt-[.24rem] cursor-pointer"
-            )}
-            onClick={closeModal}
-          >
-            <Icomoon
-              icon="close"
-              size=".16rem"
-              color={darkMode ? "#FFFFFF80" : "#6C86AD80"}
-            />
+        <div className={classNames("flex-1 flex flex-col items-center", darkMode ? "dark" : "", inter.className)}>
+          <div className={classNames("mr-[.24rem] self-end mt-[.24rem] cursor-pointer")} onClick={closeModal}>
+            <Icomoon icon="close" size=".16rem" color={darkMode ? "#FFFFFF80" : "#6C86AD80"} />
           </div>
 
-          {(stakeLoadingParams?.status === "loading" ||
-            !stakeLoadingParams?.status) && (
+          {(stakeLoadingParams?.status === "loading" || !stakeLoadingParams?.status) && (
             <div className="mt-[.0rem] w-[.8rem] h-[.8rem]">
               <PrimaryLoading size=".8rem" />
             </div>
@@ -157,10 +130,7 @@ export const StakeLoadingModal = () => {
           </div>
 
           {stakeLoadingParams?.status === "error" ? (
-            <div
-              className="mb-[.32rem] text-color-link text-[.16rem] cursor-pointer"
-              onClick={clickRetry}
-            >
+            <div className="mb-[.32rem] text-color-link text-[.16rem] cursor-pointer" onClick={clickRetry}>
               Retry
             </div>
           ) : (
@@ -171,15 +141,9 @@ export const StakeLoadingModal = () => {
                 target="_blank"
                 rel="noreferrer"
               >
-                <span className="text-color-link text-[.16rem] mr-[.12rem] font-[500]">
-                  View on explorer
-                </span>
+                <span className="text-color-link text-[.16rem] mr-[.12rem] font-[500]">View on explorer</span>
 
-                <Icomoon
-                  icon="right"
-                  size=".12rem"
-                  color={darkMode ? "#ffffff" : "#5A5DE0"}
-                />
+                <Icomoon icon="right" size=".12rem" color={darkMode ? "#ffffff" : "#5A5DE0"} />
               </a>
             )
           )}

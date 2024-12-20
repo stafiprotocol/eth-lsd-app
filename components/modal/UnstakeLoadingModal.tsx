@@ -2,44 +2,33 @@ import { Box, Modal } from "@mui/material";
 import classNames from "classnames";
 import { PrimaryLoading } from "components/common/PrimaryLoading";
 import { Icomoon } from "components/icon/Icomoon";
-import { roboto } from "config/font";
+import { inter } from "config/font";
 import { useAppDispatch, useAppSelector } from "hooks/common";
 import Image from "next/image";
 import errorIcon from "public/images/tx_error.png";
 import successIcon from "public/images/tx_success.png";
 import { useMemo } from "react";
-import {
-  setUnstakeLoadingParams,
-  updateUnstakeLoadingParams,
-} from "redux/reducers/AppSlice";
+import { setUnstakeLoadingParams, updateUnstakeLoadingParams } from "redux/reducers/AppSlice";
 import { handleLsdEthUnstake } from "redux/reducers/EthSlice";
 import { RootState } from "redux/store";
-import {
-  getLsdEthName,
-  getTokenName,
-  getUnstakeDuration,
-} from "utils/configUtils";
+import { getLsdEthName, getTokenName, getUnstakeDuration } from "utils/configUtils";
 import { formatNumber } from "utils/numberUtils";
 import snackbarUtil from "utils/snackbarUtils";
 
 export const UnstakeLoadingModal = () => {
   const dispatch = useAppDispatch();
 
-  const unstakeLoadingParams = useAppSelector((state: RootState) => state.app.unstakeLoadingParams)
-  const darkMode = useAppSelector((state: RootState) => state.app.darkMode)
+  const unstakeLoadingParams = useAppSelector((state: RootState) => state.app.unstakeLoadingParams);
+  const darkMode = useAppSelector((state: RootState) => state.app.darkMode);
 
   const title = useMemo(() => {
     return unstakeLoadingParams?.customTitle
       ? unstakeLoadingParams?.customTitle
       : unstakeLoadingParams?.status === "success"
-      ? `Your new balance is ${formatNumber(
-          unstakeLoadingParams?.newLsdTokenBalance
-        )} ${getLsdEthName()}`
+      ? `Your new balance is ${formatNumber(unstakeLoadingParams?.newLsdTokenBalance)} ${getLsdEthName()}`
       : unstakeLoadingParams?.status === "error"
       ? "Unstake Failed"
-      : `You are now unstaking ${Number(
-          unstakeLoadingParams?.amount
-        )} ${getLsdEthName()}`;
+      : `You are now unstaking ${Number(unstakeLoadingParams?.amount)} ${getLsdEthName()}`;
   }, [unstakeLoadingParams]);
 
   const secondaryMsg = useMemo(() => {
@@ -48,11 +37,8 @@ export const UnstakeLoadingModal = () => {
       : unstakeLoadingParams?.status === "success"
       ? `Unstaking operation was successful. It takes Est. ${getUnstakeDuration()} to complete the unstake operation`
       : unstakeLoadingParams?.status === "error"
-      ? unstakeLoadingParams?.errorMsg ||
-        "Something went wrong, please try again"
-      : `Unstake ${
-          unstakeLoadingParams?.amount
-        } ${getLsdEthName()}, you will receive ${formatNumber(
+      ? unstakeLoadingParams?.errorMsg || "Something went wrong, please try again"
+      : `Unstake ${unstakeLoadingParams?.amount} ${getLsdEthName()}, you will receive ${formatNumber(
           unstakeLoadingParams?.willReceiveAmount
         )} ${getTokenName()}`;
   }, [unstakeLoadingParams]);
@@ -70,15 +56,9 @@ export const UnstakeLoadingModal = () => {
       return;
     }
 
-    const { amount, targetAddress, willReceiveAmount, newLsdTokenBalance } =
-      unstakeLoadingParams;
+    const { amount, targetAddress, willReceiveAmount, newLsdTokenBalance } = unstakeLoadingParams;
 
-    if (
-      !amount ||
-      !targetAddress ||
-      !willReceiveAmount ||
-      !newLsdTokenBalance
-    ) {
+    if (!amount || !targetAddress || !willReceiveAmount || !newLsdTokenBalance) {
       snackbarUtil.error("Invalid parameters, please retry manually");
       return;
     }
@@ -94,10 +74,7 @@ export const UnstakeLoadingModal = () => {
   };
 
   return (
-    <Modal
-      open={unstakeLoadingParams?.modalVisible === true}
-      onClose={closeModal}
-    >
+    <Modal open={unstakeLoadingParams?.modalVisible === true} onClose={closeModal}>
       <Box
         pt="0"
         pl=".36rem"
@@ -114,24 +91,9 @@ export const UnstakeLoadingModal = () => {
           transform: "translate(-50%, -50%)",
         }}
       >
-        <div
-          className={classNames(
-            "flex-1 flex flex-col items-center",
-            darkMode ? "dark" : "",
-            roboto.className
-          )}
-        >
-          <div
-            className={classNames(
-              "self-end mr-[-0.12rem] mt-[.24rem] cursor-pointer"
-            )}
-            onClick={closeModal}
-          >
-            <Icomoon
-              icon="close"
-              size=".16rem"
-              color={darkMode ? "#FFFFFF80" : "#6C86AD80"}
-            />
+        <div className={classNames("flex-1 flex flex-col items-center", darkMode ? "dark" : "", inter.className)}>
+          <div className={classNames("self-end mr-[-0.12rem] mt-[.24rem] cursor-pointer")} onClick={closeModal}>
+            <Icomoon icon="close" size=".16rem" color={darkMode ? "#FFFFFF80" : "#6C86AD80"} />
           </div>
 
           {unstakeLoadingParams?.status === "loading" && (
@@ -153,17 +115,13 @@ export const UnstakeLoadingModal = () => {
           )}
 
           <div
-            className={classNames(
-              "mt-[.24rem] text-[.24rem] text-color-text1 font-[700] text-center leading-tight"
-            )}
+            className={classNames("mt-[.24rem] text-[.24rem] text-color-text1 font-[700] text-center leading-tight")}
           >
             {title}
           </div>
 
           <div
-            className={classNames(
-              "mt-[.12rem] text-[.16rem] text-color-text2 text-center leading-tight"
-            )}
+            className={classNames("mt-[.12rem] text-[.16rem] text-color-text2 text-center leading-tight")}
             style={{
               maxLines: 5,
               WebkitLineClamp: 5,
@@ -185,23 +143,14 @@ export const UnstakeLoadingModal = () => {
                 target="_blank"
                 rel="noreferrer"
               >
-                <span className="text-color-link text-[.16rem] mr-[.12rem] font-[500]">
-                  View on explorer
-                </span>
+                <span className="text-color-link text-[.16rem] mr-[.12rem] font-[500]">View on explorer</span>
 
-                <Icomoon
-                  icon="right"
-                  size=".12rem"
-                  color={darkMode ? "#ffffff" : "#5A5DE0"}
-                />
+                <Icomoon icon="right" size=".12rem" color={darkMode ? "#ffffff" : "#5A5DE0"} />
               </a>
             )}
 
             {unstakeLoadingParams?.status === "error" && (
-              <div
-                className="text-color-link text-[.24rem] cursor-pointer"
-                onClick={clickRetry}
-              >
+              <div className="text-color-link text-[.24rem] cursor-pointer" onClick={clickRetry}>
                 Retry
               </div>
             )}

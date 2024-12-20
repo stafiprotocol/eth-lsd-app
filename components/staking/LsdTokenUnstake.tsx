@@ -20,12 +20,7 @@ import { updateLsdEthBalance } from "redux/reducers/LsdEthSlice";
 import { setMetaMaskDisconnected } from "redux/reducers/WalletSlice";
 import { RootState } from "redux/store";
 import { openLink } from "utils/commonUtils";
-import {
-  getLsdEthName,
-  getTokenName,
-  getUnstakeDuration,
-  getUnstakeTipLink,
-} from "utils/configUtils";
+import { getLsdEthName, getTokenName, getUnstakeDuration, getUnstakeTipLink } from "utils/configUtils";
 import { formatLargeAmount, formatNumber } from "utils/numberUtils";
 import { useConnect, useSwitchNetwork } from "wagmi";
 import Web3 from "web3";
@@ -72,12 +67,7 @@ export const LsdTokenUnstake = () => {
   }, [metaMaskChainId]);
 
   const unstakeValue = useMemo(() => {
-    if (
-      !unstakeAmount ||
-      isNaN(Number(unstakeAmount)) ||
-      Number(unstakeAmount) === 0 ||
-      isNaN(Number(lsdEthPrice))
-    ) {
+    if (!unstakeAmount || isNaN(Number(unstakeAmount)) || Number(unstakeAmount) === 0 || isNaN(Number(lsdEthPrice))) {
       return undefined;
     }
     return Number(unstakeAmount) * Number(lsdEthPrice);
@@ -102,11 +92,7 @@ export const LsdTokenUnstake = () => {
   }, []);
 
   const willReceiveAmount = useMemo(() => {
-    if (
-      isNaN(Number(unstakeAmount)) ||
-      isNaN(Number(lsdEthRate)) ||
-      Number(unstakeAmount) === 0
-    ) {
+    if (isNaN(Number(unstakeAmount)) || isNaN(Number(lsdEthRate)) || Number(unstakeAmount) === 0) {
       return "--";
     }
     return Number(unstakeAmount) * Number(lsdEthRate) - Number(redeemFee) + "";
@@ -124,11 +110,7 @@ export const LsdTokenUnstake = () => {
       return [false, "Connect Wallet"];
     }
     if (isWrongMetaMaskNetwork) {
-      return [
-        false,
-        `Wrong network, click to change into ${getEthereumChainName()}`,
-        true,
-      ];
+      return [false, `Wrong network, click to change into ${getEthereumChainName()}`, true];
     }
 
     if (
@@ -144,22 +126,12 @@ export const LsdTokenUnstake = () => {
       return [true, `Not Enough ${getLsdEthName()} to Unstake`];
     }
 
-    if (
-      (isNaN(Number(estimateFee)) ? 0 : Number(estimateFee) * 1.4) >
-      Number(balance)
-    ) {
+    if ((isNaN(Number(estimateFee)) ? 0 : Number(estimateFee) * 1.4) > Number(balance)) {
       return [true, `Not Enough ${getTokenName()} for Fee`];
     }
 
     return [false, "Unstake"];
-  }, [
-    isWrongMetaMaskNetwork,
-    availableBalance,
-    unstakeAmount,
-    walletNotConnected,
-    estimateFee,
-    balance,
-  ]);
+  }, [isWrongMetaMaskNetwork, availableBalance, unstakeAmount, walletNotConnected, estimateFee, balance]);
 
   const newRTokenBalance = useMemo(() => {
     if (isNaN(Number(availableBalance))) {
@@ -199,11 +171,7 @@ export const LsdTokenUnstake = () => {
   };
 
   const clickMax = () => {
-    if (
-      isWrongMetaMaskNetwork ||
-      walletNotConnected ||
-      isNaN(Number(availableBalance))
-    ) {
+    if (isWrongMetaMaskNetwork || walletNotConnected || isNaN(Number(availableBalance))) {
       return;
     }
     setUnstakeAmount(
@@ -232,21 +200,15 @@ export const LsdTokenUnstake = () => {
     }
 
     dispatch(
-      handleLsdEthUnstake(
-        unstakeAmount,
-        willReceiveAmount,
-        newRTokenBalance,
-        false,
-        (success, needWithdraw) => {
-          dispatch(updateLsdEthBalance());
-          if (success) {
-            resetState();
-            if (needWithdraw) {
-              jumpToWithdraw();
-            }
+      handleLsdEthUnstake(unstakeAmount, willReceiveAmount, newRTokenBalance, false, (success, needWithdraw) => {
+        dispatch(updateLsdEthBalance());
+        if (success) {
+          resetState();
+          if (needWithdraw) {
+            jumpToWithdraw();
           }
         }
-      )
+      })
     );
   };
 
@@ -258,35 +220,32 @@ export const LsdTokenUnstake = () => {
   return (
     <div>
       <div
-        className="cursor-pointer h-[.56rem] mt-[.18rem] mx-[.24rem] bg-[#6C86AD14] dark:bg-[#6C86AD50] rounded-[.16rem] flex items-center justify-between pl-[.12rem] pr-[.18rem]"
+        className="cursor-pointer h-[.56rem] mt-[.18rem] mx-[.24rem] bg-bg2 rounded-[.1rem] flex items-center justify-between pl-[.12rem] pr-[.18rem] gap-[.1rem]"
         onClick={() => {
           openLink(getUnstakeTipLink());
         }}
       >
         <div className="flex items-center">
-          <Icomoon icon="tip" size=".2rem" />
+          <Icomoon icon="tip" size=".2rem" color="#fff" />
 
           <div className="ml-[.06rem] text-color-text2 text-[.14rem]">
-            Unstaking may take around{" "}
-            <span className="text-color-text1">{getUnstakeDuration()}</span>.
-            After that, withdraw function will open
+            Unstaking may take around <span className="text-color-text1">{getUnstakeDuration()}</span>. After that,
+            withdraw function will open
           </div>
         </div>
 
-        <Icomoon icon="right" color="#6C86AD" size=".11rem" />
+        <Icomoon icon="right" color="white" size=".11rem" />
       </div>
 
-      <div className="h-[1.07rem] mt-[.18rem] pt-[.24rem] mx-[.24rem] bg-color-bgPage rounded-[.3rem]">
+      <div className="h-[1.07rem] mt-[.18rem] pt-[.24rem] mx-[.2rem] bg-color-bgPage rounded-[.1rem] border border-white/5">
         <div className="mx-[.12rem] flex items-start">
-          <div className="h-[.42rem] bg-color-bg2 rounded-[.3rem] flex items-center cursor-pointer">
+          <div className="h-[.42rem] bg-bg2 rounded-[.3rem] flex items-center cursor-pointer">
             <div className="ml-[.08rem] flex items-center">
               <div className="w-[.34rem] h-[.34rem] relative">
                 <Image src={getLsdTokenIcon()} alt="logo" layout="fill" />
               </div>
 
-              <div className="text-color-text1 text-[.16rem] ml-[.16rem]">
-                {getLsdEthName()}
-              </div>
+              <div className=" text-text1Dark text-[.16rem] ml-[.16rem]">{getLsdEthName()}</div>
             </div>
 
             <div className="ml-[.16rem] mr-[.16rem]">
@@ -308,9 +267,9 @@ export const LsdTokenUnstake = () => {
                   width=".63rem"
                   height=".36rem"
                   fontSize=".16rem"
-                  className="bg-color-bg1 border-color-border1"
+                  className="bg-bg2"
                   onClick={clickMax}
-                  border={`0.01rem solid ${darkMode ? "#6C86AD80" : "#ffffff"}`}
+                  border={`0.01rem solid ${"#fff4"}`}
                 >
                   Max
                 </CustomButton>
@@ -319,16 +278,12 @@ export const LsdTokenUnstake = () => {
 
             <div className="mt-[.1rem] flex items-center justify-between text-[.14rem]">
               <div className="text-color-text2">
-                {unstakeValue
-                  ? `$${formatNumber(unstakeValue, { decimals: 2 })}`
-                  : ""}{" "}
+                {unstakeValue ? `$${formatNumber(unstakeValue, { decimals: 2 })}` : ""}{" "}
               </div>
 
               <div className="flex items-center">
                 <div className="text-color-text2">Balance</div>
-                <div className="ml-[.06rem] text-color-text1">
-                  {formatNumber(availableBalance)}
-                </div>
+                <div className="ml-[.06rem] text-color-text1">{formatNumber(availableBalance)}</div>
               </div>
             </div>
           </div>
@@ -339,7 +294,7 @@ export const LsdTokenUnstake = () => {
         loading={unstakeLoading}
         disabled={buttonDisabled}
         mt=".18rem"
-        className="mx-[.24rem]"
+        className="mx-[.2rem]"
         height=".56rem"
         onClick={clickUnstake}
         type={isButtonSecondary ? "secondary" : "primary"}
@@ -348,8 +303,7 @@ export const LsdTokenUnstake = () => {
         <div className="flex items-center">
           {buttonText}
 
-          {(buttonText.indexOf("Wrong network") >= 0 ||
-            buttonText.indexOf("Insufficient FIS.") >= 0) && (
+          {(buttonText.indexOf("Wrong network") >= 0 || buttonText.indexOf("Insufficient FIS.") >= 0) && (
             <div className="ml-[.12rem] flex items-center">
               <Icomoon icon="arrow-right" size=".12rem" color="#222C3C" />
             </div>
@@ -363,13 +317,8 @@ export const LsdTokenUnstake = () => {
       >
         <div className="flex justify-start ml-[.18rem]">
           <div className="flex flex-col items-center">
-            <div className="text-text2/50 dark:text-text2Dark/50 text-[.14rem]">
-              Will Receive
-            </div>
-            <div
-              className="mt-[.1rem] flex items-center"
-              {...bindHover(ratePopupState)}
-            >
+            <div className="text-text2/50 dark:text-text2Dark/50 text-[.14rem]">Will Receive</div>
+            <div className="mt-[.1rem] flex items-center" {...bindHover(ratePopupState)}>
               <div className="text-color-text2 text-[.16rem]">
                 {formatLargeAmount(willReceiveAmount)} {getTokenName()}
               </div>
@@ -379,21 +328,14 @@ export const LsdTokenUnstake = () => {
                   ratePopupState.isOpen ? "rotate-[270deg]" : "rotate-90"
                 )}
               >
-                <Icomoon
-                  icon="right"
-                  size=".12rem"
-                  color="#6C86AD"
-                  layout="fill"
-                />
+                <Icomoon icon="right" size=".12rem" color="#6c6f77" layout="fill" />
               </div>
             </div>
           </div>
         </div>
 
         <div className="flex flex-col items-center">
-          <div className="text-text2/50 dark:text-text2Dark/50 text-[.14rem]">
-            APR
-          </div>
+          <div className="text-text2/50 dark:text-text2Dark/50 text-[.14rem]">APR</div>
 
           <div className="mt-[.1rem] flex items-center">
             {apr !== undefined ? (
@@ -410,9 +352,7 @@ export const LsdTokenUnstake = () => {
 
         <div className="flex justify-end mr-[.0rem]">
           <div className="flex flex-col items-center">
-            <div className="text-text2/50 dark:text-text2Dark/50 text-[.14rem]">
-              Est. Cost
-            </div>
+            <div className="text-text2/50 dark:text-text2Dark/50 text-[.14rem]">Est. Cost</div>
 
             <div className="mt-[.1rem] text-color-text2 text-[.16rem]">
               ${formatNumber(estimateCostValue, { decimals: 2 })}
@@ -435,12 +375,10 @@ export const LsdTokenUnstake = () => {
         sx={{
           marginTop: ".15rem",
           "& .MuiPopover-paper": {
-            background: darkMode ? "#6C86AD4D" : "#ffffff80",
-            border: darkMode
-              ? "0.01rem solid #6C86AD80"
-              : "0.01rem solid #FFFFFF",
+            background: "#101112",
+            border: "1px solid #fff3",
             backdropFilter: "blur(.4rem)",
-            borderRadius: ".3rem",
+            borderRadius: ".1rem",
           },
           "& .MuiTypography-root": {
             padding: "0px",
@@ -450,16 +388,9 @@ export const LsdTokenUnstake = () => {
           },
         }}
       >
-        <div
-          className={classNames(
-            "p-[.16rem] text-[.14rem] text-color-text2 flex flex-col justify-center",
-            darkMode ? "dark" : ""
-          )}
-        >
+        <div className={classNames("p-[.16rem] text-[.14rem] text-color-text2 flex flex-col justify-center")}>
           <div className="text-center leading-[150%]">Exchange Rate</div>
-          <div className="text-center mt-[.08rem] leading-[150%]">
-            1:{formatNumber(lsdEthRate, { decimals: 6 })}
-          </div>
+          <div className="text-center mt-[.08rem] leading-[150%]">1:{formatNumber(lsdEthRate, { decimals: 6 })}</div>
         </div>
       </HoverPopover>
     </div>
