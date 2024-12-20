@@ -379,6 +379,7 @@ export const LsdTokenUnstake = () => {
             border: "1px solid #fff3",
             backdropFilter: "blur(.4rem)",
             borderRadius: ".1rem",
+            filter: "drop-shadow(0px 0px 12px #0002)!important",
           },
           "& .MuiTypography-root": {
             padding: "0px",

@@ -33,7 +33,7 @@ export const SettingsDrawer = (props: Props) => {
       onClose={() => onChangeOpen(false)}
       sx={{
         "& .MuiPaper-root": {
-          background: darkMode ? "#222C3C" : "#E8EFFD",
+          background: "#101112",
           width: "4.85rem",
           paddingTop: "1rem",
         },
@@ -42,10 +42,8 @@ export const SettingsDrawer = (props: Props) => {
       <div className="pb-[1rem] flex-1 flex flex-col justify-between items-stretch">
         <div>
           <div className="px-[.36rem]">
-            <div className="ml-[.24rem] mt-[.56rem] flex items-center">
-              <div className="text-[.16rem] text-color-text2 mr-[.16rem]">
-                Dark Mode
-              </div>
+            {/* <div className="ml-[.24rem] mt-[.56rem] flex items-center">
+              <div className="text-[.16rem] text-color-text2 mr-[.16rem]">Dark Mode</div>
 
               <IOSSwitch
                 checked={darkMode}
@@ -53,42 +51,30 @@ export const SettingsDrawer = (props: Props) => {
                   dispatch(setDarkMode(e.target.checked));
                 }}
               />
-            </div>
+            </div> */}
 
-            <div className="mt-[.32rem] h-[0.01rem] bg-color-divider2" />
+            {/* <div className="mt-[.32rem] h-[0.01rem] bg-color-divider2" /> */}
 
             <div className="ml-[.24rem]">
-              {getExternalLinkList().map(
-                (item: { name: string; link: string }) => (
-                  <MenuItem
-                    key={item.name}
-                    mt=".36rem"
-                    text={item.name}
-                    link={item.link}
-                  />
-                )
-              )}
+              {getExternalLinkList().map((item: { name: string; link: string }) => (
+                <MenuItem key={item.name} mt=".36rem" text={item.name} link={item.link} />
+              ))}
             </div>
           </div>
         </div>
 
         <div className="pl-[.56rem] flex items-center">
-          {getContactList().map(
-            (item: { type: string; link: string }, index: number) => (
-              <div
-                key={item.type}
-                className={classNames(
-                  "cursor-pointer",
-                  index > 0 ? "ml-[.4rem]" : ""
-                )}
-                onClick={() => {
-                  openLink(item.link);
-                }}
-              >
-                <Icomoon icon={getContactIcon(item.type)} size=".48rem" />
-              </div>
-            )
-          )}
+          {getContactList().map((item: { type: string; link: string }, index: number) => (
+            <div
+              key={item.type}
+              className={classNames("cursor-pointer", index > 0 ? "ml-[.4rem]" : "")}
+              onClick={() => {
+                openLink(item.link);
+              }}
+            >
+              <Icomoon icon={getContactIcon(item.type)} size=".48rem" />
+            </div>
+          ))}
         </div>
       </div>
     </Drawer>

@@ -18,15 +18,13 @@ export const UnstakeLoadingSidebar = () => {
   return (
     <div
       className={classNames(
-        "mt-[.2rem] rounded-l-[.16rem] h-[.7rem] w-[1.9rem] flex items-center cursor-pointer border-solid border-[0.01rem] border-color-border1",
+        "mt-[.2rem] rounded-l-[.16rem] h-[.7rem] w-[1.9rem] flex items-center cursor-pointer border-solid border-[0.01rem] border-color-white/10",
         {
-          hidden:
-            unstakeLoadingParams?.modalVisible === true ||
-            !unstakeLoadingParams,
+          hidden: unstakeLoadingParams?.modalVisible === true || !unstakeLoadingParams,
         }
       )}
       style={{
-        backgroundColor: darkMode ? "#222C3C" : "#ffffff80",
+        backgroundColor: "#121314",
         backdropFilter: "blur(.13rem)",
         zIndex: 2000,
       }}
@@ -73,7 +71,7 @@ export const UnstakeLoadingSidebar = () => {
       </div>
 
       <div className="ml-[.2rem] rotate-90">
-        <Icomoon icon="right" color="#9DAFBE" size=".16rem" />
+        <Icomoon icon="right" color="white" size=".16rem" />
       </div>
     </div>
   );

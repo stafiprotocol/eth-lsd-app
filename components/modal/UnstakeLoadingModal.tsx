@@ -81,7 +81,7 @@ export const UnstakeLoadingModal = () => {
         pr=".36rem"
         pb="0.36rem"
         sx={{
-          backgroundColor: darkMode ? "#38475D" : "#ffffff",
+          backgroundColor: "#101112",
           width: "3.5rem",
           borderRadius: "0.16rem",
           outline: "none",
@@ -91,9 +91,9 @@ export const UnstakeLoadingModal = () => {
           transform: "translate(-50%, -50%)",
         }}
       >
-        <div className={classNames("flex-1 flex flex-col items-center", darkMode ? "dark" : "", inter.className)}>
+        <div className={classNames("flex-1 flex flex-col items-center", inter.className)}>
           <div className={classNames("self-end mr-[-0.12rem] mt-[.24rem] cursor-pointer")} onClick={closeModal}>
-            <Icomoon icon="close" size=".16rem" color={darkMode ? "#FFFFFF80" : "#6C86AD80"} />
+            <Icomoon icon="close" size=".16rem" color={"#FFFFFF80"} />
           </div>
 
           {unstakeLoadingParams?.status === "loading" && (
@@ -145,7 +145,7 @@ export const UnstakeLoadingModal = () => {
               >
                 <span className="text-color-link text-[.16rem] mr-[.12rem] font-[500]">View on explorer</span>
 
-                <Icomoon icon="right" size=".12rem" color={darkMode ? "#ffffff" : "#5A5DE0"} />
+                <Icomoon icon="right" size=".12rem" color="#dcb3ff" />
               </a>
             )}
 

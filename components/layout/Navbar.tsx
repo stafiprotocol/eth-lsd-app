@@ -141,7 +141,7 @@ const UserInfo = (props: { auditExpand: boolean }) => {
       <div
         className={classNames(
           "cursor-pointer pr-[.04rem] flex items-center rounded-r-[.6rem]",
-          addressPopupState.isOpen ? "bg-color-selected" : "",
+          addressPopupState.isOpen ? "" : "",
           auditExpand
             ? "rounded-[.6rem] pl-[.04rem] 2xl:rounded-r-[.6rem] 2xl:pl-[.12rem]"
             : "rounded-r-[.6rem]  pl-[.12rem]"
@@ -177,10 +177,11 @@ const UserInfo = (props: { auditExpand: boolean }) => {
         sx={{
           marginTop: ".15rem",
           "& .MuiPopover-paper": {
-            background: "#6C86AD4D",
-            border: "0.01rem solid #6C86AD80",
+            background: "#111213",
+            border: "0.01rem solid #fff1",
             backdropFilter: "blur(.4rem)",
-            borderRadius: ".3rem",
+            borderRadius: ".1rem",
+            filter: "drop-shadow(0px 0px 12px #0002)!important",
           },
           "& .MuiTypography-root": {
             padding: "0px",
@@ -204,7 +205,7 @@ const UserInfo = (props: { auditExpand: boolean }) => {
             </div>
           </div>
 
-          <div className="my-[.16rem] h-[0.01rem] bg-color-divider1" />
+          <div className="my-[.16rem] h-[0.01rem] bg-[#fff1]" />
 
           <div
             className="cursor-pointer flex items-center justify-between"

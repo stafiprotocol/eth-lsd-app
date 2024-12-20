@@ -76,8 +76,9 @@
 }
 
 .button-disabled {
-  cursor: default;
-  background: #6c86ad34;
+  cursor: not-allowed;
+  border: 1px solid #fff3 !important;
+  background: linear-gradient(90deg, #0f0f0f, #171717, #0f0f0f);
 
   display: flex;
   align-items: center;

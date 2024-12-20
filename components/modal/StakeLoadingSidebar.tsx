@@ -18,14 +18,13 @@ export const StakeLoadingSidebar = () => {
   return (
     <div
       className={classNames(
-        "mt-[.2rem] rounded-l-[.16rem] h-[.7rem] w-[1.9rem] flex items-center cursor-pointer border-solid border-[0.01rem] border-color-border1",
+        "mt-[.2rem] rounded-l-[.16rem] h-[.7rem] w-[1.9rem] flex items-center cursor-pointer border-solid border-[0.01rem] border-color-white/10",
         {
-          hidden:
-            stakeLoadingParams?.modalVisible === true || !stakeLoadingParams,
+          hidden: stakeLoadingParams?.modalVisible === true || !stakeLoadingParams,
         }
       )}
       style={{
-        backgroundColor: darkMode ? "#222C3C" : "#ffffff80",
+        backgroundColor: "#121314",
         backdropFilter: "blur(.13rem)",
         zIndex: 2000,
       }}
@@ -72,7 +71,7 @@ export const StakeLoadingSidebar = () => {
       </div>
 
       <div className="ml-[.2rem] rotate-90">
-        <Icomoon icon="right" color="#6C86AD" size=".16rem" />
+        <Icomoon icon="right" color="white" size=".16rem" />
       </div>
     </div>
   );

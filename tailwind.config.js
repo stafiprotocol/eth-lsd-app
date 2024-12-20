@@ -14,7 +14,7 @@ module.exports = {
       bg1Dark: "#6C86AD80",
       bg2: "#1b1b1c",
       bg2Dark: "#6C86AD4D",
-      bg3: "#272729",
+      bg3: "#1b1b1c",
       bg3Dark: "#6C86AD1A",
       bgHighlight: "#222C3C",
       bgHighlightDark: "#E8EFFD",
