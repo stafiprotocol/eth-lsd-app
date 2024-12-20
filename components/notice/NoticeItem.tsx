@@ -4,31 +4,18 @@ import { useEffect } from "react";
 import stakeIcon from "public/images/notice/notice_stake.svg";
 import unstakeIcon from "public/images/notice/notice_unstake.svg";
 import withdrawIcon from "public/images/notice/notice_withdraw.svg";
-import {
-  LocalNotice,
-  NoticeStakeData,
-  NoticeUnstakeData,
-  NoticeWithdrawData,
-} from "utils/noticeUtils";
+import { LocalNotice, NoticeStakeData, NoticeUnstakeData, NoticeWithdrawData } from "utils/noticeUtils";
 import { formatNumber } from "utils/numberUtils";
 import { formatDate } from "utils/timeUtils";
 import { useAppDispatch, useAppSelector } from "hooks/common";
 import { RootState } from "redux/store";
-import {
-  setStakeLoadingParams,
-  updateNotice,
-  updateStakeLoadingParams,
-} from "redux/reducers/AppSlice";
+import { setStakeLoadingParams, updateNotice, updateStakeLoadingParams } from "redux/reducers/AppSlice";
 import { openLink } from "utils/commonUtils";
 import Image from "next/image";
 import { useAppSlice } from "hooks/selector";
 import { getLsdEthName, getTokenName } from "utils/configUtils";
 
-export const NoticeItem = (props: {
-  notice: LocalNotice;
-  visible: boolean;
-  onUpdate: () => void;
-}) => {
+export const NoticeItem = (props: { notice: LocalNotice; visible: boolean; onUpdate: () => void }) => {
   const { darkMode } = useAppSlice();
   const dispatch = useAppDispatch();
   const { notice, visible } = props;
@@ -134,9 +121,7 @@ export const NoticeItem = (props: {
             data.willReceiveAmount
           )} ${getTokenName()}.`;
         } else {
-          return `Unstake ${formatNumber(
-            data.amount
-          )} ${getLsdEthName()} from LSD Pool Contract to your wallet.`;
+          return `Unstake ${formatNumber(data.amount)} ${getLsdEthName()} from LSD Pool Contract to your wallet.`;
         }
       }
       if (notice.type === "Withdraw" || notice.type === "Validator Withdraw") {
@@ -169,9 +154,7 @@ export const NoticeItem = (props: {
   const openStakeLoadingModal = (notice: LocalNotice) => {
     if (notice.stakeLoadingParams) {
       if (stakeLoadingParams) {
-        if (
-          notice.stakeLoadingParams.noticeUuid === stakeLoadingParams.noticeUuid
-        ) {
+        if (notice.stakeLoadingParams.noticeUuid === stakeLoadingParams.noticeUuid) {
           dispatch(
             updateStakeLoadingParams({
               modalVisible: true,
@@ -215,9 +198,7 @@ export const NoticeItem = (props: {
   return (
     <div className={classNames(darkMode ? "dark" : "")}>
       <div
-        className={classNames(
-          "cursor-pointer mt-[.08rem] p-[.16rem] bg-hover rounded-[.12rem]"
-        )}
+        className={classNames("cursor-pointer mt-[.08rem] p-[.16rem] hover:bg-white/5 rounded-[.12rem]")}
         onClick={() => {
           onClickItem();
         }}
@@ -228,15 +209,13 @@ export const NoticeItem = (props: {
               <Image src={getNoticeIcon(notice)} alt="icon" layout="fill" />
             </div>
 
-            <div className="ml-[.12rem] font-[700] text-color-text1 text-[.16rem]">
-              {notice.type}
-            </div>
+            <div className="ml-[.12rem] font-[700] text-color-text1 text-[.16rem]">{notice.type}</div>
 
             <div
               className={classNames(
                 "ml-[.06rem] h-[.2rem] rounded-[.04rem] px-[.04rem] flex items-center text-[.12rem]",
                 notice.status === "Confirmed"
-                  ? "bg-bgSuccess text-text1 dark:text-white "
+                  ? "bg-[#7130bb] text-text1 dark:text-white "
                   : notice.status === "Error"
                   ? "bg-[#FEA4FF80] text-error dark:text-white "
                   : "bg-text2/20 text-text1 dark:text-white "
@@ -246,15 +225,11 @@ export const NoticeItem = (props: {
             </div>
           </div>
 
-          <div className="text-text2 text-[.14rem] opacity-50">
-            {formatDate(notice.timestamp || 0, "DD MMM HH:mm")}
-          </div>
+          <div className="text-text2 text-[.14rem] opacity-50">{formatDate(notice.timestamp || 0, "DD MMM HH:mm")}</div>
         </div>
 
         <div className="mt-[.1rem]">
-          <div className="text-text2 text-[.14rem] leading-normal">
-            {getNoticeContent(notice)}
-          </div>
+          <div className="text-text2 text-[.14rem] leading-normal">{getNoticeContent(notice)}</div>
         </div>
       </div>
     </div>

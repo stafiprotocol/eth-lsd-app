@@ -35,15 +35,9 @@ export const DrawerNoticeList = (props: Props) => {
       {noticeList.length === 0 && <EmptyContent mt="1rem" />}
       {noticeList.map((notice, index) => (
         <div key={notice.id}>
-          <NoticeItem
-            notice={notice}
-            visible={open}
-            onUpdate={updateNoticeList}
-          />
+          <NoticeItem notice={notice} visible={open} onUpdate={updateNoticeList} />
 
-          {index !== noticeList.length - 1 && (
-            <div className="h-[0.02rem] bg-color-divider2" />
-          )}
+          {index !== noticeList.length - 1 && <div className="h-[0.01rem] bg-white/5" />}
         </div>
       ))}
     </div>
