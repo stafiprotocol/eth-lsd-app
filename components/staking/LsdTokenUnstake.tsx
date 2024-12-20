@@ -220,7 +220,7 @@ export const LsdTokenUnstake = () => {
   return (
     <div>
       <div
-        className="cursor-pointer h-[.56rem] mt-[.18rem] mx-[.24rem] bg-bg2 rounded-[.1rem] flex items-center justify-between pl-[.12rem] pr-[.18rem] gap-[.1rem]"
+        className="cursor-pointer py-[.16rem] mt-[.18rem] mx-[.24rem] bg-bg2 rounded-[.1rem] flex items-center justify-between pl-[.12rem] pr-[.18rem] gap-[.1rem]"
         onClick={() => {
           openLink(getUnstakeTipLink());
         }}
@@ -228,7 +228,7 @@ export const LsdTokenUnstake = () => {
         <div className="flex items-center">
           <Icomoon icon="tip" size=".2rem" color="#fff" />
 
-          <div className="ml-[.06rem] text-color-text2 text-[.14rem]">
+          <div className="ml-[.06rem] text-color-text2 text-[.14rem] leading-tight">
             Unstaking may take around <span className="text-color-text1">{getUnstakeDuration()}</span>. After that,
             withdraw function will open
           </div>
@@ -239,7 +239,7 @@ export const LsdTokenUnstake = () => {
 
       <div className="h-[1.07rem] mt-[.18rem] pt-[.24rem] mx-[.2rem] bg-color-bgPage rounded-[.1rem] border border-white/5">
         <div className="mx-[.12rem] flex items-start">
-          <div className="h-[.42rem] bg-bg2 rounded-[.3rem] flex items-center cursor-pointer">
+          <div className="h-[.42rem] bg-bg2 rounded-[.3rem] flex items-center cursor-pointer  max-[560px]:hidden">
             <div className="ml-[.08rem] flex items-center">
               <div className="w-[.34rem] h-[.34rem] relative">
                 <Image src={getLsdTokenIcon()} alt="logo" layout="fill" />
@@ -312,19 +312,19 @@ export const LsdTokenUnstake = () => {
       </CustomButton>
 
       <div
-        className="mt-[.24rem] grid items-stretch font-[500] mx-[.75rem]"
+        className="mx-[.75rem] my-[.24rem] grid items-stretch font-[500] max-[560px]:mx-[.1rem]"
         style={{ gridTemplateColumns: "40% 30% 30%" }}
       >
-        <div className="flex justify-start ml-[.18rem]">
+        <div className="flex justify-start">
           <div className="flex flex-col items-center">
             <div className="text-text2/50 dark:text-text2Dark/50 text-[.14rem]">Will Receive</div>
             <div className="mt-[.1rem] flex items-center" {...bindHover(ratePopupState)}>
-              <div className="text-color-text2 text-[.16rem]">
+              <div className="text-color-text2 text-[.16rem] text-center">
                 {formatLargeAmount(willReceiveAmount)} {getTokenName()}
               </div>
               <div
                 className={classNames(
-                  "ml-[.06rem] flex items-center relative self-center",
+                  "ml-[.06rem] flex items-center relative self-center max-[560px]:hidden",
                   ratePopupState.isOpen ? "rotate-[270deg]" : "rotate-90"
                 )}
               >

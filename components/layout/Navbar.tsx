@@ -44,11 +44,11 @@ const Navbar = () => {
   }, []);
 
   return (
-    <div className="bg-[#101112] py-[.36rem] flex items-center justify-center">
-      <div className="w-smallContentW xl:w-contentW 2xl:w-largeContentW mx-auto flex items-center justify-between relative">
+    <div className="bg-[#101112] py-[.36rem] flex items-center justify-center px-[.1rem]">
+      <div className="w-full max-w-[1280px] mx-auto flex items-center justify-between relative max-[560px]:justify-end">
         {/* <div className={classNames("absolute top-[.11rem] w-[.82rem] h-[.2rem]")}></div> */}
 
-        <div className={classNames("flex items-center")}>
+        <div className={classNames("flex items-center max-[560px]:hidden")}>
           <AuditComponent expand={auditExpand} onExpandChange={setAuditExpand} />
         </div>
 
@@ -59,7 +59,7 @@ const Navbar = () => {
 
           <div
             className={classNames(
-              "cursor-pointer ml-[.3rem] w-[.42rem] h-[.42rem] flex items-center justify-center rounded-[.12rem] relative",
+              "cursor-pointer max-[560px]:ml-[.15rem] ml-[.3rem] w-[.42rem] h-[.42rem] flex items-center justify-center rounded-[.12rem] relative",
               noticeDrawerOpen ? "bg-[#272729]" : ""
             )}
             onClick={() => {
@@ -78,7 +78,7 @@ const Navbar = () => {
 
           <div
             className={classNames(
-              "cursor-pointer ml-[.3rem] w-[.42rem] h-[.42rem] flex items-center justify-center rounded-[.12rem]",
+              "cursor-pointer max-[560px]:ml-[.05rem] ml-[.3rem] w-[.42rem] h-[.42rem] flex items-center justify-center rounded-[.12rem]",
               settingsDrawerOpen ? "bg-[#272729]" : ""
             )}
             onClick={() => {
@@ -120,7 +120,7 @@ const UserInfo = (props: { auditExpand: boolean }) => {
           auditExpand ? "hidden 2xl:flex" : "flex"
         )}
       >
-        <div className="w-[.34rem] h-[.34rem] relative">
+        <div className="w-[.34rem] h-[.34rem] relative max-[560px]:hidden">
           <Image src={getChainIcon()} alt="logo" className="rounded-full  overflow-hidden" layout="fill" />
         </div>
 
@@ -148,7 +148,7 @@ const UserInfo = (props: { auditExpand: boolean }) => {
         )}
         {...bindTrigger(addressPopupState)}
       >
-        <Image src={defaultAvatar} alt="logo" className="w-[.34rem] h-[.34rem] rounded-full" />
+        <Image src={defaultAvatar} alt="logo" className="w-[.34rem] h-[.34rem] rounded-full  max-[560px]:hidden" />
 
         {!hideAddress && (
           <div

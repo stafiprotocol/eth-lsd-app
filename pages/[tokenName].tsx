@@ -140,51 +140,55 @@ const ETHPage = () => {
   return (
     <div>
       <PageTitleContainer>
-        <div className="h-full flex items-center w-smallContentW xl:w-contentW 2xl:w-largeContentW">
+        <div className="h-full flex items-center px-[.1rem] py-[.2rem] max-[560px]:flex-col">
           <div className="w-[.68rem] h-[.68rem] relative">
             <Image src={getLsdTokenIcon()} layout="fill" alt="icon" />
           </div>
-          <div className="ml-[.12rem]">
+          <div className="ml-[.12rem]  max-[560px]:mt-[.15rem] max-[560px]:ml-0 flex flex-col items-start max-[560px]:items-center">
             <div className="flex items-center">
               <div className="text-[.32rem] font-[700] text-[#fff]">{getLsdEthName()}</div>
-
-              <div className="ml-[.16rem]">
-                <CustomTag type="stroke">
-                  <div className="text-[.16rem] scale-75 origin-center">ERC20</div>
-                </CustomTag>
-              </div>
-
-              <div className="ml-[.06rem]">
-                <CustomTag>
-                  <div className="text-[.16rem] scale-75 origin-center flex items-center">
-                    <span className="font-[700]">{formatNumber(apr, { decimals: 2 })}%</span>
-                    <span className="ml-[.02rem]">APR</span>
-                  </div>
-                </CustomTag>
-              </div>
-
-              <div
-                className="ml-[.24rem] flex items-center cursor-pointer"
-                onClick={() => {
-                  addLsdEthToMetaMask();
-                }}
-              >
-                <div className="hover:text-color-link text-[#fff] text-[.14rem]">Add {getLsdEthName()} to Wallet</div>
-
-                <span className="ml-[.06rem] flex items-center">
-                  <Icomoon icon="share" size=".12rem" color="#fff" />
-                </span>
-              </div>
             </div>
 
-            <div className="mt-[.04rem] text-[.18rem] scale-75 origin-bottom-left">
+            <div className="mt-[.04rem] text-[.13rem]">
               On {getSupportChains().join(", ")} {getSupportChains().length > 1 ? "Chains" : "Chain"}
             </div>
           </div>
 
+          <div className=" max-[560px]:ml-0 ml-[.16rem] flex self-start mt-[.1rem] justify-center flex-wrap gap-[.1rem] max-[560px]:w-full">
+            <div className=" max-[856px]:hidden max-[560px]:block">
+              <CustomTag type="stroke">
+                <div className="text-[.16rem] scale-75 origin-center">ERC20</div>
+              </CustomTag>
+            </div>
+
+            <div className=" max-[856px]:hidden  max-[560px]:block">
+              <CustomTag>
+                <div className="text-[.16rem] scale-75 origin-center flex items-center">
+                  <span className="font-[700]">{formatNumber(apr, { decimals: 2 })}%</span>
+                  <span className="ml-[.02rem]">APR</span>
+                </div>
+              </CustomTag>
+            </div>
+
+            <div
+              className=" flex items-center cursor-pointer  max-[640px]:hidden max-[560px]:flex"
+              onClick={() => {
+                addLsdEthToMetaMask();
+              }}
+            >
+              <div className="hover:text-color-link text-[#fff] text-[.14rem]">Add {getLsdEthName()} to Wallet</div>
+
+              <span className="ml-[.06rem] flex items-center">
+                <Icomoon icon="share" size=".12rem" color="#fff" />
+              </span>
+            </div>
+          </div>
+
           {metaMaskAccount && (
-            <div className="ml-auto mr-[.56rem] flex flex-col justify-center items-end">
-              <div className="text-[.32rem] font-[500] text-color-text1">{formatNumber(lsdBalance)}</div>
+            <div className="ml-auto flex flex-col justify-center items-end  max-[560px]:items-center max-[560px]:ml-0  max-[560px]:mt-[.2rem] ">
+              <div className="text-[.32rem] font-[500] text-color-text1  max-[560px]:text-[.2rem]">
+                {formatNumber(lsdBalance)}
+              </div>
               <div className="text-[.12rem] text-color-text2 mt-[.04rem]">
                 {formatNumber(stakedEth)} {getTokenName()} Staked
               </div>
@@ -193,14 +197,14 @@ const ETHPage = () => {
         </div>
       </PageTitleContainer>
 
-      <div className="w-smallContentW xl:w-contentW 2xl:w-largeContentW mx-auto">
+      <div className="w-full max-w-[1280px] mx-auto px-[.1rem]  max-[1200px]:max-w-[720px]">
         <div className="my-[.36rem]">
           {/* {showWithdrawTab && (
             <DashboardTabs selectedTab={selectedTab} onChangeTab={updateTab} showWithdrawTab={showWithdrawTab} />
           )} */}
 
-          <div className="mt-[.36rem] flex ">
-            <div className={classNames("flex-1 min-w-[6.2rem] w-[6.2rem]")}>
+          <div className="mt-[.36rem] flex max-[1200px]:flex-col">
+            <div className={classNames("flex-1 max-w-[7.2rem] w-full")}>
               {(selectedTab === "stake" || selectedTab === "unstake") && <StakePage />}
 
               {/* {selectedTab === "withdraw" && (
@@ -213,7 +217,7 @@ const ETHPage = () => {
               )} */}
             </div>
 
-            <div className="ml-[.6rem] flex-1  max-w-[20rem]">
+            <div className="ml-[.6rem] flex-1  max-w-[20rem] max-[1200px]:ml-0 max-[1200px]:mt-[.4rem]">
               <div className="text-[.24rem] g-text-pink  w-fit font-semibold">Detail Info</div>
 
               <div className="mt-[.15rem] g-bg-box border border-white/5 rounded-[.08rem] p-[.24rem] text-[.14rem]">
@@ -325,14 +329,7 @@ const ETHPage = () => {
           <div className={classNames("pb-[.56rem]")}>
             <div className="mt-[.16rem] text-[.24rem] g-text-pink font-semibold w-fit">FAQ</div>
 
-            <div
-              className="grid items-start mt-[.16rem]"
-              style={{
-                gridTemplateColumns: "48% 48%",
-                columnGap: "4%",
-                rowGap: ".16rem",
-              }}
-            >
+            <div className="flex flex-wrap items-start gap-[.16rem] mt-[.16rem]">
               {getFaqList().map((item: IFaqItem, index: number) => (
                 <FaqItem text={item.title} key={index}>
                   {renderFaqContents(item.contents)}

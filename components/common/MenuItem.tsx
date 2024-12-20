@@ -33,7 +33,7 @@ export const MenuItem = (props: Props) => {
         {props.text}
       </div>
 
-      <Icomoon icon="right" size=".12rem" color="#6C86AD" />
+      <Icomoon icon="right" size=".12rem" color="#fff" />
     </div>
   );
 };

@@ -20,7 +20,8 @@ export const NoticeDrawer = (props: Props) => {
       sx={{
         "& .MuiPaper-root": {
           background: "#101112",
-          width: "4.85rem",
+          maxWidth: "4.85rem",
+          width: "100%",
           paddingTop: "1rem",
         },
       }}

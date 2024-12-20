@@ -82,7 +82,8 @@ export const UnstakeLoadingModal = () => {
         pb="0.36rem"
         sx={{
           backgroundColor: "#101112",
-          width: "3.5rem",
+          maxWidth: "3.5rem",
+          width: "100%",
           borderRadius: "0.16rem",
           outline: "none",
           position: "fixed",

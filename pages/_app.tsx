@@ -28,7 +28,7 @@ function MyApp({ Component, pageProps }: AppPropsWithLayout) {
     let html = document.documentElement;
     let clientW = html.clientWidth;
     let htmlRem = (clientW * 100) / designSize;
-    html.style.fontSize = Math.min(htmlRem, 100) + "px";
+    html.style.fontSize = "100px";
   };
 
   useEffect(() => {

@@ -34,7 +34,8 @@ export const SettingsDrawer = (props: Props) => {
       sx={{
         "& .MuiPaper-root": {
           background: "#101112",
-          width: "4.85rem",
+          maxWidth: "4.85rem",
+          width: "100%",
           paddingTop: "1rem",
         },
       }}
@@ -63,7 +64,7 @@ export const SettingsDrawer = (props: Props) => {
           </div>
         </div>
 
-        <div className="pl-[.56rem] flex items-center">
+        {/* <div className="pl-[.56rem] flex items-center">
           {getContactList().map((item: { type: string; link: string }, index: number) => (
             <div
               key={item.type}
@@ -75,7 +76,7 @@ export const SettingsDrawer = (props: Props) => {
               <Icomoon icon={getContactIcon(item.type)} size=".48rem" />
             </div>
           ))}
-        </div>
+        </div> */}
       </div>
     </Drawer>
   );

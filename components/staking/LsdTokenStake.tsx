@@ -209,7 +209,7 @@ export const LsdTokenStake = () => {
     <div>
       <div className="h-[1.07rem] mt-[.18rem] pt-[.24rem] mx-[.2rem] bg-color-bgPage rounded-[.1rem] border border-white/5">
         <div className="mx-[.12rem] flex items-start">
-          <div className="h-[.42rem] bg-bg2 rounded-[.3rem] flex items-center cursor-pointer">
+          <div className="h-[.42rem] bg-bg2 rounded-[.3rem] flex items-center cursor-pointer max-[560px]:hidden">
             <div className="ml-[.08rem] flex items-center">
               <div className="w-[.34rem] h-[.34rem] relative">
                 <Image src={getTokenIcon()} alt="logo" layout="fill" />
@@ -282,19 +282,19 @@ export const LsdTokenStake = () => {
       </CustomButton>
 
       <div
-        className="mx-[.75rem] my-[.24rem] grid items-stretch font-[500]"
+        className="mx-[.75rem] my-[.24rem] grid items-stretch font-[500] max-[560px]:mx-[.1rem]"
         style={{ gridTemplateColumns: "40% 30% 30%" }}
       >
-        <div className="flex justify-start ml-[.18rem]">
+        <div className="flex justify-start">
           <div className="flex flex-col items-center">
             <div className="text-text2/50 dark:text-text2Dark/50 text-[.14rem]">Will Receive</div>
             <div className="mt-[.1rem] flex items-center">
-              <div className="text-color-text2 text-[.16rem]" {...bindHover(ratePopupState)}>
+              <div className="text-color-text2 text-[.16rem] text-center" {...bindHover(ratePopupState)}>
                 {formatLargeAmount(willReceiveAmount)} {getLsdEthName()}
               </div>
               <div
                 className={classNames(
-                  "ml-[.06rem] flex items-center relative self-center",
+                  "ml-[.06rem] flex items-center relative self-center max-[560px]:hidden",
                   ratePopupState.isOpen ? "rotate-[270deg]" : "rotate-90"
                 )}
               >

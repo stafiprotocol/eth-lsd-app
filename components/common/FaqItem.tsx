@@ -27,7 +27,7 @@ export const FaqItem = (props: Props) => {
   }, [collapseOpenId, props.id, dispatch]);
 
   return (
-    <div className="g-bg-box rounded-[.08rem] border border-white/5" id={id}>
+    <div className="g-bg-box rounded-[.08rem] border border-white/5 max-[1280px]:w-full w-[6.2rem]" id={id}>
       <div
         className="py-[.24rem] flex items-start justify-between px-[.24rem] cursor-pointer"
         style={{

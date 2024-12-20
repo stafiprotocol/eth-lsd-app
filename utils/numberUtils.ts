@@ -19,10 +19,8 @@ export function formatNumber(
 
   let decimals = options.decimals === undefined ? 6 : options.decimals;
   const withSplit = options.withSplit === undefined ? true : options.withSplit;
-  const fixedDecimals =
-    options.fixedDecimals === undefined ? true : options.fixedDecimals;
-  const toReadable =
-    options.toReadable === undefined ? true : options.toReadable;
+  const fixedDecimals = options.fixedDecimals === undefined ? true : options.fixedDecimals;
+  const toReadable = options.toReadable === undefined ? true : options.toReadable;
   const roundMode = options.roundMode || "floor";
   const hideDecimalsForZero = !!options.hideDecimalsForZero;
   let suffix = "";
@@ -48,17 +46,9 @@ export function formatNumber(
     newNum = num + "";
   }
 
-  const roundMethod =
-    roundMode === "floor"
-      ? Math.floor
-      : roundMode === "ceil"
-      ? Math.ceil
-      : Math.round;
+  const roundMethod = roundMode === "floor" ? Math.floor : roundMode === "ceil" ? Math.ceil : Math.round;
 
-  newNum =
-    roundMethod(Number(newNum) * Math.pow(10, decimals)) /
-      Math.pow(10, decimals) +
-    "";
+  newNum = roundMethod(Number(newNum) * Math.pow(10, decimals)) / Math.pow(10, decimals) + "";
 
   if (fixedDecimals) {
     newNum = Number(newNum).toFixed(decimals);
@@ -85,7 +75,7 @@ export function formatLargeAmount(amount: string | number) {
   if (!isNaN(Number(amount)) && Number(amount) > 1000) {
     return formatNumber(amount, { decimals: 2 });
   }
-  return formatNumber(amount, { decimals: 4 });
+  return formatNumber(amount, { decimals: 2 });
 }
 
 export function chainAmountToHuman(num: string | number) {
