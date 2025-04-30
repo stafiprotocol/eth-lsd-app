@@ -1,7 +1,4 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
-import { getEthereumChainId } from "config/env";
-import { metaMask } from "connectors/metaMask";
-import snackbarUtil from "utils/snackbarUtils";
 import {
   STORAGE_KEY_DISCONNECT_METAMASK,
   saveStorage,
